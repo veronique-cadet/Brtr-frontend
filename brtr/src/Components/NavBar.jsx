@@ -29,7 +29,7 @@ function NavBar() {
 </div>
         <div className="hidden w-auto lg:block">
           <div className="inline-block">
-            <button className="w-full px-5 py-3 font-medium transition duration-200 ease-in-out bg-transparent hover:text-gray-700 rounded-xl" type="button">Log In</button>
+            <button className="w-full px-5 py-3 font-medium transition duration-200 ease-in-out bg-transparent hover:text-orange-700 rounded-xl" type="button">Log In</button>
           </div>
           <div className="inline-block">
             <button className="w-full px-5 py-3 font-semibold text-white transition duration-200 ease-in-out bg-amber-500 border-amber-500 rounded-xl focus:ring focus:ring-indigo-300 hover:bg-amber-700" type="button">Sign Up </button>

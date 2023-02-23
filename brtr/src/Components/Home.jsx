@@ -1,5 +1,8 @@
 import React from 'react'
 import NavBar from './NavBar'
+import Features from './Features'
+import Footer from './Footer'
+import HowItWorks from './HowItWorks'
 
 function Home() {
   return (
@@ -16,7 +19,7 @@ function Home() {
             bg-gradient-to-r bg-clip-text  text-transparent 
             from-indigo-500 via-orange-500 to-indigo-500
             animate-text transition duration-500 ease-in-out hover:-translate-y-4">Barter Your Way to Success</h1>
-                <p className="text-lg font-medium text-gray-900 mb-11 md:max-w-md">Exchange Your Skills, Build Your Network - Join Our Bartering Community Now!</p>
+                <p className="text-lg font-medium mb-11 md:max-w-md">Exchange Your Skills, Build Your Network - Join Our Bartering Community Now!</p>
                 <div className="flex flex-wrap -m-2.5 mb-20">
                   <div className="w-full md:w-auto p-2.5">
                     <div className="block">
@@ -51,14 +54,16 @@ function Home() {
                 </div>
               </div>
               <div className="w-full p-8 md:w-1/2 ">
-              <img className="absolute z-10 -left-10 -top-12 w-18" src="./wave2-violet.svg" alt=""/>
-            <img className= "absolute z-10 -right-4 -bottom-4 w-28 md:w-auto" src="./wave3-yellow.svg" alt=""/>
+              
                 <img className="  transition duration-1000 ease-in-out transform hover:-translate-y-16 center mt-7 rounded-lg" src="./hero2.jpeg" alt=""/>
       </div>
             </div>
           </div>
         </div>
     </div>
+    <Features />
+    <HowItWorks />
+    <Footer />
     </div>
   )
 }
