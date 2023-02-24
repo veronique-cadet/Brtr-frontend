@@ -3,8 +3,9 @@ import NavBarTwo from './NavBarTwo'
 
 function Browse({user, setUser}) {
   return (
-    <div><NavBarTwo />
-  <h1>Hi {user.first_name}</h1>
+    <div>
+      <NavBarTwo setUser={setUser} />
+  <h1>Hi {user?.first_name}</h1>
     </div>
   )
 }

@@ -1,10 +1,10 @@
 import React from 'react'
-import NavBarTwo from './Components/NavBarTwo'
+import NavBarTwo from './NavBarTwo'
 
-function Messages() {
+function Messages({setUser}) {
   return (
     <div>
-<NavBarTwo />
+<NavBarTwo setUser={setUser} />
         <h1>Messages</h1>
     </div>
   )

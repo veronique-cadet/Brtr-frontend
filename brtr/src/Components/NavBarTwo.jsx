@@ -1,20 +1,21 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 function NavBarTwo({user, setUser}) {
+  const navigate = useNavigate()
 
   function handleDelete(e){
-
     e.preventDefault()
-    if(window.confirm("Are you sure you want to remove friend?")){
-        setUser(null)
-        fetch(`/logout`,{ method: 'DELETE' })
-        .then(req => req.json())
-        .then()
-        .catch(error => console.error("Error:", error));
-        navigate("/")
-    }
+    setUser(null)
+    fetch(`/logout`,{ method: 'DELETE' })
+    .then(req => req.json())
+    .then()
+    .catch(error => console.error("Error:", error));
+    navigate("/")
 }
+
+console.log(setUser)
   return (
     <div><div className="container mx-auto overflow-hidden">
     <div className="flex items-center justify-between px-4 py-5">
@@ -34,14 +35,15 @@ function NavBarTwo({user, setUser}) {
           <ul className="flex items-center mr-16">
 <Link to="/Browse"><li className="font-medium text-xl mr-9 text-amber-500 hover:text-amber-700"> Browse
             </li></Link>
-          
-            <li className="font-m<edium text-xl mr-9 text-amber-500 hover:text-amber-700"> Bartrs
-            </li>
+            <Link to="/barters">
+            <li className="font-medium text-xl mr-9 text-amber-500 hover:text-amber-700"> Bartrs
+            </li></Link>
             <Link to="/Messages">
             <li className="font-medium  text-xl mr-9 text-amber-500 hover:text-amber-700"> Messages
             </li></Link>
+            <Link to="/yourprofile">
             <li className="font-medium mr-9 text-xl text-amber-500 hover:text-amber-700"> Profile
-            </li>
+            </li> </Link>
           </ul>
 </div>
         <div className="hidden w-auto lg:block">

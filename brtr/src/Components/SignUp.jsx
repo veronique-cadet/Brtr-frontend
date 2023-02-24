@@ -7,7 +7,38 @@ const [firstName,setFirstName] = useState("")
 const [lastName,setLastName] = useState("")
 const [signUpEmail,setSignUpEmail] = useState("")
 const [signUpPassword,setSignUpPassword] = useState("")
+const [errors, setErrors] = useState()
 const navigate = useNavigate()
+
+function handleSignUp(e){
+  e.preventDefault()
+  fetch("/signup",{
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        first_name: firstName,
+        last_name: lastName,
+        email: signUpEmail, 
+        password: signUpPassword 
+      })
+  })
+  .then(req => {
+      if(req.ok){
+          req.json().then((session) => {
+               setUser(session)
+              navigate("/")
+          })
+      }
+      else{
+          req.json().then((session) => {
+              setErrors(session.error)
+          })
+      }
+  })
+}
+
 
   return (
     <section className="bg-white Class
@@ -32,7 +63,7 @@ const navigate = useNavigate()
               <h2 className="mb-4 text-5xl font-bold font-heading tracking-px-n leading-tight">Create a free account!</h2>
               <p className="mb-9 text-gray-600 font-medium leading-relaxed" contenteditable="false">Start Bartering Today!</p>
             </div>
-            <form className="md:max-w-lg">
+            <form onSubmit={handleSignUp} className="md:max-w-lg">
               <label className="block mb-5">
                 <input 
                 className="px-4 py-3.5 w-full text-gray-500 font-medium placeholder-gray-500 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" 
@@ -74,7 +105,7 @@ const navigate = useNavigate()
                   </div>
                 </div>
               </div>
-              <button className="mb-6 py-4 px-9 w-full text-white font-semibold border border-indigo-700 rounded-xl focus:ring focus:ring-indigo-300 bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200" type="button">Sign In</button>
+              <button className="mb-6 py-4 px-9 w-full text-white font-semibold border border-indigo-700 rounded-xl focus:ring focus:ring-indigo-300 bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200" type="button">Sign Up!</button>
               <div className="flex flex-wrap justify-center -m-2.5">
                 <div className="w-full p-2.5">
                   <button className="flex items-center justify-center w-full p-4 bg-white hover:bg-gray-50 border rounded-lg transition ease-in-out duration-200">
@@ -86,6 +117,15 @@ const navigate = useNavigate()
                   <button className="flex items-center justify-center w-full p-4 bg-white hover:bg-gray-50 border rounded-lg transition ease-in-out duration-200">
                     <img className="mr-3" src="flaro-assets/logos/brands/fb.svg" alt=""/><span className="font-semibold leading-normal">Sign in with Facebook</span>
                   </button>
+                  {errors ? (
+                errors.map(error=>{
+                    return(
+                        <div className="signupErrors" >{error}</div>
+                    )
+                })
+            ):(
+                null
+            )}
                 </div>
               </div>
             </form>

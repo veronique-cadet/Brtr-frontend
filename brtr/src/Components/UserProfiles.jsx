@@ -1,8 +1,11 @@
 import React from 'react'
+import NavBarTwo from './NavBarTwo'
 
-function UserProfiles() {
+function UserProfiles({setUser}) {
   return (
-    <div>UserProfiles</div>
+    <div>
+      <NavBarTwo setUser={setUser} />
+      UserProfiles</div>
   )
 }
 

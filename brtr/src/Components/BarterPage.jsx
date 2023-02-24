@@ -1,8 +1,10 @@
 import React from 'react'
+import NavBarTwo from './NavBarTwo'
 
-function BarterPage() {
+function BarterPage({setUser}) {
   return (
-    <div>BarterPage</div>
+    <div><NavBarTwo setUser={setUser} />
+      BarterPage</div>
   )
 }
 
