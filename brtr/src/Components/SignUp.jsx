@@ -1,10 +1,19 @@
-import React from 'react'
-import { Link } from "react-router-dom"
+import React, {useState} from 'react'
+import { Link, useNavigate } from "react-router-dom"
 
 function SignUp() {
+
+const [firstName,setFirstName] = useState("")
+const [lastName,setLastName] = useState("")
+const [signUpEmail,setSignUpEmail] = useState("")
+const [signUpPassword,setSignUpPassword] = useState("")
+const navigate = useNavigate()
+
   return (
-    <section className="bg-white overflow-hidden"><div className="flex flex-wrap -m-8">
-  <div className="w-full md:w-1/2 p-8">
+    <section className="bg-white Class
+    Properties
+    overflow-auto h-screen"><div className="flex flex-wrap -m-8">
+  <div className="w-full md:w-1/2 p-8 h-screen">
     <div className="container px-4 mx-auto">
       <div className="flex flex-wrap">
         <div className="w-full h-screen">
@@ -25,13 +34,35 @@ function SignUp() {
             </div>
             <form className="md:max-w-lg">
               <label className="block mb-5">
-                <input className="px-4 py-3.5 w-full text-gray-500 font-medium placeholder-gray-500 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" id="signUpInput3-1" type="text" placeholder="Full name"/></label>
+                <input 
+                className="px-4 py-3.5 w-full text-gray-500 font-medium placeholder-gray-500 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" 
+                type="text" 
+                placeholder="First Name"
+                value = {firstName}
+                onChange = {(e) => setFirstName(e.target.value)}
+                /></label>
               <label className="block mb-5">
-                <input className="px-4 py-3.5 w-full text-gray-500 font-medium placeholder-gray-500 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" id="signUpInput3-2" type="text" placeholder="Email address"/></label>
+                <input 
+                className="px-4 py-3.5 w-full text-gray-500 font-medium placeholder-gray-500 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300"  
+                type="text" 
+                placeholder="Last Name"
+                value = {lastName}
+                onChange = {(e) => setLastName(e.target.value)}/></label>
               <label className="block mb-5">
-                <input className="px-4 py-3.5 w-full text-gray-500 font-medium placeholder-gray-500 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" id="signUpInput3-3" type="password" placeholder="Password"/></label>
+                <input 
+                className="px-4 py-3.5 w-full text-gray-500 font-medium placeholder-gray-500 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300"
+                 type="text" 
+                 placeholder="Email"
+                 value = {signUpEmail}
+                 onChange = {(e) => setSignUpEmail(e.target.value)}
+                 /></label>
               <label className="block mb-5">
-                <input className="px-4 py-3.5 w-full text-gray-500 font-medium placeholder-gray-500 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" id="signUpInput3-3" type="password" placeholder="Password"/></label>
+                <input 
+                className="px-4 py-3.5 w-full text-gray-500 font-medium placeholder-gray-500 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" 
+                type="password" 
+                placeholder="Password"   
+                value = {signUpPassword}
+                onChange = {(e) => setSignUpPassword(e.target.value)}/></label>
               <div className="flex flex-wrap justify-between mb-4">
                 <div className="w-full">
                   <div className="flex items-center">
@@ -63,9 +94,9 @@ function SignUp() {
       </div>
     </div>
   </div>
-  <div className="w-full md:w-1/2 p-8">
-    <div className="flex flex-col justify-center h-full bg-indigo-600">
-      <div className="p-16 text-center">
+  <div className="w-full md:w-1/2 p-8 h-screen">
+    <div className="flex flex-col justify-center h-screen bg-indigo-600">
+      <div className="p-16 text-center h-screen">
         <img className="mx-auto transform hover:scale-105 transition ease-in-out duration-1000" src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?crop=entropy&amp;cs=tinysrgb&amp;fm=jpg&amp;ixid=MnwzMzIzMzB8MHwxfHNlYXJjaHwxMXx8cGVvcGxlJTIwb24lMjBjb21wdXRlcnxlbnwwfHx8fDE2NzcyMDI4Njg&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1920" alt=""/><h2 className="mb-5 text-5xl text-white font-semibold tracking-px-n leading-tight" contenteditable="false"></h2>
         <p className="mb-24 text-lg text-white text-opacity-80 font-medium leading-normal md:max-w-md mx-auto" contenteditable="false"></p>
         <div className="flex flex-wrap justify-center items-center -m-1.5">

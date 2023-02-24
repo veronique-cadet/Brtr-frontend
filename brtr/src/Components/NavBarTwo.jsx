@@ -1,7 +1,20 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-function NavBarTwo() {
+function NavBarTwo({user, setUser}) {
+
+  function handleDelete(e){
+
+    e.preventDefault()
+    if(window.confirm("Are you sure you want to remove friend?")){
+        setUser(null)
+        fetch(`/logout`,{ method: 'DELETE' })
+        .then(req => req.json())
+        .then()
+        .catch(error => console.error("Error:", error));
+        navigate("/")
+    }
+}
   return (
     <div><div className="container mx-auto overflow-hidden">
     <div className="flex items-center justify-between px-4 py-5">
@@ -34,7 +47,11 @@ function NavBarTwo() {
         <div className="hidden w-auto lg:block">
         
           <div className="inline-block">
-            <button className="w-full px-5 py-3 font-semibold text-white transition duration-200 ease-in-out bg-indigo-500 border-indigo-500 rounded-xl focus:ring focus:ring-indigo-300 hover:bg-amber-700" type="button">Log Out </button>
+            <button 
+            className="w-full px-5 py-3 font-semibold text-white transition duration-200 ease-in-out bg-indigo-500 border-indigo-500 rounded-xl focus:ring focus:ring-indigo-300 hover:bg-amber-700" 
+            type="button"
+            onClick={handleDelete}
+            >Log Out </button>
           </div>
         </div>
         <div className="w-auto lg:hidden">
