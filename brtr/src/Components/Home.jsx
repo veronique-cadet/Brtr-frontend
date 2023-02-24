@@ -3,6 +3,7 @@ import NavBar from './NavBar'
 import Features from './Features'
 import Footer from './Footer'
 import HowItWorks from './HowItWorks'
+import { Link } from "react-router-dom"
 
 function Home() {
   return (
@@ -23,21 +24,12 @@ function Home() {
                 <div className="flex flex-wrap -m-2.5 mb-20">
                   <div className="w-full md:w-auto p-2.5">
                     <div className="block">
-                      <button className="w-full px-6 py-4 font-semibold text-white transition duration-500 ease-in-out bg-amber-500 border border-amber-500 rounded-xl focus:ring focus:ring-indigo-300 hover:bg-amber-700  hover:-translate-y-4" type="button">Sign Up for Free!</button>
+                    <Link to="/signup">
+                      <button className="w-full px-6 py-4 font-semibold text-white transition duration-500 ease-in-out bg-indigo-500 border border-indigo-500 rounded-xl focus:ring  hover:bg-amber-700  hover:-translate-y-4" type="button">Sign Up for Free!</button></Link>
                     </div>
                   </div>
                   <div className="w-full md:w-auto p-2.5">
-                    <div className="block">
-                      <button className="w-full py-4 font-semibold transition duration-500 ease-in-out bg-indigo-500
-                       border border-gray-300 px-9 hover:border-gray-400   hover:-translate-y-4 rounded-xl focus:ring focus:ring-gray-50 hover:bg-gray-100" type="button">
-                        <div className="flex flex-wrap items-center justify-center -m-1">
-      
-                          <div className="w-auto p-1">
-                            <span>Log In</span>
-                          </div>
-                        </div>
-                      </button>
-                    </div>
+                   
                   </div>
                 </div>
                 <p className="mb-6 text-sm font-semibold text-gray-500 uppercase">TRUSTED AND LOVED BY EVERY PERSON IN THE EMPTY ARRAY FLATIRON COHORT</p>

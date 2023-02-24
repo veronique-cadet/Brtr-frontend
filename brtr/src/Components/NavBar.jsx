@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+
 
 function NavBar() {
   return (
@@ -29,10 +31,12 @@ function NavBar() {
 </div>
         <div className="hidden w-auto lg:block">
           <div className="inline-block">
-            <button className="w-full px-5 py-3 font-medium transition duration-200 ease-in-out bg-transparent hover:text-orange-700 rounded-xl" type="button">Log In</button>
+          <Link to="/login">
+<button className="w-full px-5 py-3 font-medium transition duration-200 ease-in-out bg-transparent hover:text-orange-700 rounded-xl" type="button">Log In</button></Link>
           </div>
           <div className="inline-block">
-            <button className="w-full px-5 py-3 font-semibold text-white transition duration-200 ease-in-out bg-amber-500 border-amber-500 rounded-xl focus:ring focus:ring-indigo-300 hover:bg-amber-700" type="button">Sign Up </button>
+          <Link to="/signup">
+            <button className="w-full px-5 py-3 font-semibold text-white transition duration-200 ease-in-out bg-amber-500 border-amber-500 rounded-xl focus:ring focus:ring-indigo-300 hover:bg-amber-700" type="button">Sign Up </button></Link>
           </div>
         </div>
         <div className="w-auto lg:hidden">
