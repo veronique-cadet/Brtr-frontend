@@ -17,12 +17,12 @@ function NavBarTwo({user, setUser}) {
 
 console.log(setUser)
   return (
-    <div><div className="container mx-auto overflow-hidden">
+  <div className="container fixed mx-auto ml-32 overflow-hidden">
     <div className="flex items-center justify-between px-4 py-5">
       <div className="w-auto">
         <div className="flex flex-wrap items-center">
           <div className="flex w-auto mr-14">
-          <a href="#" className="flex">
+          <a href="" className="flex">
               <img src="./logo.png" alt="" className="h-14"/><p className="mt-1 text-4xl font-bold ">artr</p></a>
           </div>
         </div>
@@ -61,7 +61,7 @@ console.log(setUser)
         </div>
       </div>
     </div>
-    </div></div>
+    </div>
   )
 }
 
