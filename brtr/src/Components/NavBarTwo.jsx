@@ -21,11 +21,9 @@ console.log(setUser)
     <div className="flex items-center justify-between px-4 py-5">
       <div className="w-auto">
         <div className="flex flex-wrap items-center">
-          <div className="flex w-auto  mr-14">
-          <Link to="/">
-            <a href="" className="flex">
-              <img src="./logo.png" alt="" className="h-14"/><p className="text-4xl font-bold mt-1
-              ">artr</p></a></Link>
+          <div className="flex w-auto mr-14">
+          <a href="#" className="flex">
+              <img src="./logo.png" alt="" className="h-14"/><p className="mt-1 text-4xl font-bold ">artr</p></a>
           </div>
         </div>
       </div>
@@ -33,16 +31,16 @@ console.log(setUser)
       <div className="flex flex-wrap items-center">
         <div className="hidden w-auto lg:block">
           <ul className="flex items-center mr-16">
-<Link to="/Browse"><li className="font-medium text-xl mr-9 text-amber-500 hover:text-amber-700"> Browse
+<Link to="/Browse"><li className="text-xl font-medium mr-9 text-amber-500 hover:text-amber-700"> Browse
             </li></Link>
             <Link to="/barters">
-            <li className="font-medium text-xl mr-9 text-amber-500 hover:text-amber-700"> Bartrs
+            <li className="text-xl font-medium mr-9 text-amber-500 hover:text-amber-700"> Bartrs
             </li></Link>
             <Link to="/Messages">
-            <li className="font-medium  text-xl mr-9 text-amber-500 hover:text-amber-700"> Messages
+            <li className="text-xl font-medium mr-9 text-amber-500 hover:text-amber-700"> Messages
             </li></Link>
             <Link to="/yourprofile">
-            <li className="font-medium mr-9 text-xl text-amber-500 hover:text-amber-700"> Profile
+            <li className="text-xl font-medium mr-9 text-amber-500 hover:text-amber-700"> Profile
             </li> </Link>
           </ul>
 </div>

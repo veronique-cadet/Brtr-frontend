@@ -33,8 +33,8 @@ function App() {
         <Route path="/messages" element={<Messages setUser={setUser}/>} />
         <Route path="/login" element={<LogIn user={user} setUser={setUser}/>} />
         <Route path="/signup" element={<SignUp user={user} setUser={setUser} />} />
-        <Route path="/barters" element={<BarterPage/>} />
-        <Route path="/yourprofile" element={<UserProfiles/>} />
+        <Route path="/barters" element={<BarterPage setUser={setUser}/>} />
+        <Route path="/yourprofile" element={<UserProfiles setUser={setUser}/>} />
       </Routes>
       
     </div>
