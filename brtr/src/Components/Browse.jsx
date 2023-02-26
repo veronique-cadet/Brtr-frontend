@@ -28,6 +28,7 @@ function Browse({user, setUser}) {
     } else {
       setFilteredSearch(newFilter);
     }
+    // console.log(searchWord)
   };
 
 
