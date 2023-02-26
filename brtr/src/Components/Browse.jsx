@@ -1,7 +1,38 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import NavBarTwo from './NavBarTwo'
 
 function Browse({user, setUser}) {
+
+  const [searchTerm, setSearchedTerm] = useState("");
+  const [filteredSearch, setFilteredSearch] = useState([]);
+  const [skills, setSkills] = useState([]);
+
+  useEffect(() => {
+    fetch("/skills")
+      .then((res) => res.json())
+      .then((data) => {
+        setSkills(data);
+        console.log(data);
+      });
+  }, []);
+
+  const handleFilter = (event) => {
+    const searchWord = event.target.value;
+    setSearchedTerm(searchWord);
+    const newFilter = skills.filter((skill) => {
+      return skill.name.toLowerCase().includes(searchTerm.toLowerCase());
+      console.log(skill.name);
+    });
+    if (searchWord === "") {
+      setFilteredSearch([]);
+    } else {
+      setFilteredSearch(newFilter);
+    }
+  };
+
+
+
+
   return (
 <div className>
 <NavBarTwo setUser={setUser} />
@@ -14,7 +45,11 @@ function Browse({user, setUser}) {
        via-orange-500 to-white animate-text transition duration-500 ease-in-out hover:-translate-y-4" >{user?.first_name}, Start Bartering Today!</h1>
       <div class="flex">
 
-        <input class="appearance-none block py-3 px-4 mb-2 md:mb-0 leading-tight text-gray-700 bg-gray-200 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none mr-3 w-8/12" type="text" placeholder="Search for Skilled Professionals to Barter With Now!" /><button class="py-4 text-white font-semibold rounded-xl shadow-4xl focus:ring focus:ring-indigo-300 bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200 pl-2 px-6 text-center w-3/12" type="button">Search</button>
+        <input class="appearance-none block py-3 px-4 mb-2 md:mb-0 leading-tight text-gray-700 bg-gray-200 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none mr-3 w-8/12" type="text" 
+        placeholder="Search for Skilled Professionals to Barter With Now!" 
+        value={searchTerm}
+        onChange={handleFilter}
+        /><button class="py-4 text-white font-semibold rounded-xl shadow-4xl focus:ring focus:ring-indigo-300 bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200 pl-2 px-6 text-center w-3/12" type="button">Search</button>
       </div>
     </div>
   </div>

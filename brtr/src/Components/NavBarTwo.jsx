@@ -15,7 +15,7 @@ function NavBarTwo({user, setUser}) {
     navigate("/")
 }
 
-console.log(setUser)
+// console.log(setUser)
   return (
   <div className="container fixed mx-auto ml-32 overflow-hidden">
     <div className="flex items-center justify-between px-4 py-5">
