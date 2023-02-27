@@ -60,7 +60,7 @@ function Browse({user, setUser}) {
                    {filteredSearch.slice(0, 15).map((value, key) => {
                           return (
                             <a
-                              className="w-1/2 px-1 py-1 text-base font-normal text-green-900 outline-none borderrounded-lg focus:border-green-500 shadow-input break-after-all"
+                              className="w-1/2 px-1 py-1 text-base font-normal text-white outline-none borderrounded-lg focus:border-indigo-500 shadow-input break-after-all"
                               href={value.link}
                               target="_blank"
                               onClick={() => {

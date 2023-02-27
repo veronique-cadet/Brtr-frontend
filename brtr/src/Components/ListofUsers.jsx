@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import NavBarTwo from './NavBarTwo'
 import { useLocation } from "react-router-dom";
 import SkillUserCard from './SkillUserCard';
+import Footer from './Footer';
 
 function ListofUsers({setUser}) {
  const skill = useLocation();
@@ -64,7 +65,9 @@ console.log(filteredSkills)
    {userCard}
     </div>
   </div>
-</section> </div>
+
+</section> 
+  <Footer /></div>
 )
 }
 
