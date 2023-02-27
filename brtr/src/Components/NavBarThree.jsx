@@ -17,12 +17,12 @@ function NavBarThree({user, setUser}) {
 
 // console.log(setUser)
   return (
-  <div className="container fixed mx-auto ml-32 overflow-hidden">
+  <div className="container fixed mx-auto overflow-hidden">
     <div className="flex items-center justify-between px-4 py-5">
       <div className="w-auto">
         <div className="flex flex-wrap items-center">
           <div className="flex w-auto mr-14">
-          <a href="" className="flex">
+          <a href="" className="flex ml-32">
               <img src="./logo.png" alt="" className="h-14"/><p className="mt-1 text-4xl font-bold ">artr</p></a>
           </div>
         </div>
@@ -30,8 +30,8 @@ function NavBarThree({user, setUser}) {
       <div className="w-auto">
       <div className="flex flex-wrap items-center">
         <div className="hidden w-auto lg:block">
-          <ul className="flex items-center">
-<Link to="/Browse"><li className="text-xl textmedium black font-n mr-9 hover:text-amber-700"> Browse
+          <ul className="flex items-center mr-16">
+<Link to="/Browse"><li className="text-xl text-black font-n mr-9 hover:text-amber-700"> Browse
             </li></Link>
             <Link to="/barters">
             <li className="text-xl font-normal text-black mr-9 hover:text-amber-700"> Bartrs
