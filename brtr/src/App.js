@@ -8,6 +8,8 @@ import SignUp  from "./Components/SignUp";
 import LogIn from "./Components/LogIn.jsx"
 import UserProfiles from './Components/UserProfiles';
 import BarterPage from './Components/BarterPage';
+import ListofUsers from './Components/ListofUsers';
+import YourProfile from './Components/YourProfile';
 
 
 
@@ -34,7 +36,9 @@ function App() {
         <Route path="/login" element={<LogIn user={user} setUser={setUser}/>} />
         <Route path="/signup" element={<SignUp user={user} setUser={setUser} />} />
         <Route path="/barters" element={<BarterPage setUser={setUser}/>} />
-        <Route path="/yourprofile" element={<UserProfiles setUser={setUser}/>} />
+        <Route path="/userprofile" element={<UserProfiles user={user} setUser={setUser}/>} />
+        <Route path="/yourprofile" element={<YourProfile setUser={setUser}/>} />
+        <Route path="/skillsearchlist" element={<ListofUsers setUser={setUser}/>} />
       </Routes>
       
     </div>

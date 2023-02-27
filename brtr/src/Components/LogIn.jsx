@@ -29,15 +29,15 @@ function LogIn({user, setUser}) {
     }
 
   return (
-    <section className="py-16 xl:pb-56 overflow-hidden bg-white h-screen" ><div className="container px-4 mx-auto">
-    <div className="text-center max-w-md mx-auto">
+    <section className="h-screen py-16 overflow-auto bg-white xl:pb-56" ><div className="container px-4 mx-auto">
+    <div className="max-w-md mx-auto text-center">
     <Link to="/">
-      <a className="mb-36 flex justify-center" href="#">
-        <img src="https://static.shuffle.dev/uploads/files/11/1123476d9be8468fa957a4f3118397d3cb484572/image-720-1.png" alt="" className="h-14"/><p className="text-4xl font-bold mt-1">artr</p>
+      <a className="flex justify-center mb-36" href="#">
+        <img src="https://static.shuffle.dev/uploads/files/11/1123476d9be8468fa957a4f3118397d3cb484572/image-720-1.png" alt="" className="h-14"/><p className="mt-1 text-4xl font-bold">artr</p>
       </a>
       </Link>
-      <h2 className="mb-4 text-6xl md:text-7xl text-center font-bold font-heading tracking-px-n leading-tight">Welcome Back</h2>
-      <p className="mb-12 font-medium text-lg text-gray-600 leading-normal">Trade Talents, Expand Expertise </p>
+      <h2 className="mb-4 text-6xl font-bold leading-tight text-center md:text-7xl font-heading tracking-px-n">Welcome Back</h2>
+      <p className="mb-12 text-lg font-medium leading-normal text-gray-600">Trade Talents, Expand Expertise </p>
       <form>
         <label className="block mb-5">
           <input 
@@ -48,7 +48,7 @@ function LogIn({user, setUser}) {
           onChange={(e) => setEmail(e.target.value)}
           /></label>
         <label className="relative block mb-5">
-          <div className="absolute right-4 top-1/2 transform -translate-y-1/2"><a className="text-sm text-indigo-600 hover:text-indigo-700 font-medium" href="#">Forgot Password?</a></div>
+          <div className="absolute transform -translate-y-1/2 right-4 top-1/2"><a className="text-sm font-medium text-indigo-600 hover:text-indigo-700" href="#">Forgot Password?</a></div>
           <input 
           className="px-4 pr-36 py-3.5 w-full text-gray-500 font-medium placeholder-gray-500 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" 
           type="password" 
@@ -57,7 +57,7 @@ function LogIn({user, setUser}) {
           onChange={(e) => setPassword(e.target.value)}
           /></label>
         <button 
-        className="mb-8 py-4 px-9 w-full text-white font-semibold border border-indigo-700 rounded-xl shadow-4xl focus:ring focus:ring-indigo-300 bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200" type="button"
+        className="w-full py-4 mb-8 font-semibold text-white transition duration-200 ease-in-out bg-indigo-600 border border-indigo-700 px-9 rounded-xl shadow-4xl focus:ring focus:ring-indigo-300 hover:bg-indigo-700" type="button"
         onClick={logIn}
         >Sign In</button>
         <p className="font-medium">

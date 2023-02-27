@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from "react-router-dom";
 
 
-function NavBarTwo({user, setUser}) {
+function NavBarThree({user, setUser}) {
   const navigate = useNavigate()
 
   function handleDelete(e){
@@ -17,7 +17,7 @@ function NavBarTwo({user, setUser}) {
 
 // console.log(setUser)
   return (
-  <div className="container mx-auto ml-32 overflow-hidden">
+  <div className="container fixed mx-auto ml-32 overflow-hidden">
     <div className="flex items-center justify-between px-4 py-5">
       <div className="w-auto">
         <div className="flex flex-wrap items-center">
@@ -30,8 +30,8 @@ function NavBarTwo({user, setUser}) {
       <div className="w-auto">
       <div className="flex flex-wrap items-center">
         <div className="hidden w-auto lg:block">
-          <ul className="flex items-center mr-16">
-<Link to="/Browse"><li className="text-xl font-normal text-black mr-9 hover:text-amber-700"> Browse
+          <ul className="flex items-center">
+<Link to="/Browse"><li className="text-xl textmedium black font-n mr-9 hover:text-amber-700"> Browse
             </li></Link>
             <Link to="/barters">
             <li className="text-xl font-normal text-black mr-9 hover:text-amber-700"> Bartrs
@@ -65,4 +65,4 @@ function NavBarTwo({user, setUser}) {
   )
 }
 
-export default NavBarTwo
+export default NavBarThree
