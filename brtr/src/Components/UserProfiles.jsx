@@ -88,7 +88,7 @@ const [isClicked, setIsClicked] = useState(true)
     <div className="w-full h-64 mx-2 md:w-9/12">
       {/* <!-- Profile tab -->
       <!-- About Section --> */}
-      <div className="p-3 bg-white rounded-sm shadow-xl hover:shadow">
+      <div className="p-3 bg-white rounded-sm shadow-xl">
         <div className="flex items-center space-x-2 font-semibold leading-8 text-gray-900">
           <span clas="text-green-500">
             <svg className="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></span>
@@ -337,27 +337,45 @@ const [isClicked, setIsClicked] = useState(true)
        {/* Reviews End */}
       {/* <!-- End of profile tab --> */}
     </div>
-    <div className="absolute z-40 w-5/6 ml-2 mr-auto bg-black h-5/6 rounded-xl bg-opacity-90">
+  <div className="absolute z-40 w-3/5 ml-auto mr-auto bg-black h-3/5 rounded-xl bg-opacity-90">
       <div onClick={()=> setIsClicked(!isClicked)} className="flex justify-end mt-2 mr-5"><img className="h-16 hover:bg-indigo-100 hover:-translate-x-2 center"src="./x.png"/></div>
-      <h4 class="mb-6 text-3xl text-white font-bold font-heading leading-snug">h4. Lorem, ipsum dolor.</h4>
-      <h5 class="mb-6 text-xl text-white font-bold font-heading leading-normal">h5. Lorem, ipsum dolor.</h5>
-      <div class="mb-4">
-  <label class="block mb-2 text-white font-semibold leading-normal">Label for text</label>
-  <input class="px-4 py-3.5 w-full text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" type="text" placeholder="Write a text"/>
+      <div className="text-center">
+      <h4 className="mb-6 text-3xl font-bold leading-snug text-white font-heading">Barter Proposition for {userProfile?.user?.first_name}</h4>
+      <h5 className="mb-6 text-xl font-bold leading-normal text-white font-heading"></h5>
+      </div>
+     <div className= "flex justify-center">
+      <div className="mb-4">
+  <label className="block mb-2 font-semibold leading-normal text-white">Label for text</label>
+<select className="px-4 py-3.5 w-full text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
 </div>
-<div class="mb-4">
-  <label class="block mb-2 text-white font-semibold leading-normal">Label for text</label>
-  <input class="px-4 py-3.5 w-full text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" type="text" placeholder="Write a text"/>
+<div className="mb-4 ml-5">
+  <label className="block mb-2 font-semibold leading-normal text-white">Label for text</label>
+  <input className="px-4 py-3.5 w-full text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" type="number"/>
 </div>
-<div class="mb-4">
-  <label class="block mb-2 text-white font-semibold leading-normal">Label for text</label>
-  <input class="px-4 py-3.5 w-full text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" type="text" placeholder="Write a text"/>
 </div>
-<div class="mb-4">
-  <label class="block mb-2 text-white font-semibold leading-normal">Label for text</label>
-  <input class="px-4 py-3.5 w-full text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" type="text" placeholder="Write a text"/>
+<div className= "flex justify-center">
+<div className="mb-4">
+<label className="block mb-2 font-semibold leading-normal text-white">Label for text</label>
+<select className="px-4 py-3.5 w-full text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
 </div>
-<button onClick={()=>setIsClicked(!isClicked)} className="inline-block px-6 py-3 ml-6 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600">Propose Bartr</button>
+<div className="mb-4 ml-5">
+  <label className="block mb-2 font-semibold leading-normal text-white">Label for text</label>
+  <input className="px-4 py-3.5 w-full text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" type="number"/>
+</div>
+</div>
+<div className="flex justify-center mt-5">
+<button onClick={()=>setIsClicked(!isClicked)} className="inline-block px-6 py-3 ml-auto mr-auto text-white rounded shadow bg-amber-500 hover:bg-indigo-600">Propose Bartr</button>
+</div>
     </div>
   </div>
 </div> }
