@@ -17,7 +17,7 @@ function NavBarThree({user, setUser}) {
 
 // console.log(setUser)
   return (
-  <div className="container fixed mx-auto overflow-hidden">
+  <div className= "contained mx-auto bg-transparent">
     <div className="flex items-center justify-between px-4 py-5">
       <div className="w-auto">
         <div className="flex flex-wrap items-center">

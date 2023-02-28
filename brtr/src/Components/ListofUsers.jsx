@@ -55,8 +55,10 @@ const userCard = filteredSkills.map((skill) => {
 console.log(filteredSkills)
 
   return (
-<div className="">
+
+<div>
 <NavBarTwo setUser={setUser}/>
+<div className="h-screen">
 <h2 class="ml-36 mt-14 text-5xl font-bold leading-tight text-transparent transition duration-500 ease-in-out font-heading md:text-6xl bg-gradient-to-r bg-clip-text from-indigo-500 via-orange-500 to-indigo-500 animate-text hover:-translate-y-4">Skilled Professionals for {currentSkill.name} </h2>
 <p class=" ml-36 mt-5 mb-20 text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea sit eaque totam aliquid veritatis assumenda temporibus harum unde!</p>
 <section className="py-4 bg-coolGray-50">
@@ -67,6 +69,7 @@ console.log(filteredSkills)
   </div>
 
 </section> 
+</div>
   <Footer /></div>
 )
 }

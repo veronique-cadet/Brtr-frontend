@@ -4,10 +4,12 @@ import { useLocation } from "react-router-dom";
 import Footer from './Footer';
 import Reviews from './Reviews';
 
-function UserProfiles({user, setUser}) {
+function UserProfiles({user, setUser, yourBarters, setYourBarters}) {
 
 const [userProfile, setUserProfile] = useState({})
 const [isClicked, setIsClicked] = useState(true)
+const [skills, setSkills] = useState([])
+const [userSkill, setUserSkill] = useState("")
 
   const skill = useLocation();
   const { from } = skill.state?.from;
@@ -23,7 +25,40 @@ const [isClicked, setIsClicked] = useState(true)
       });
     }, []);
 
-  console.log(userProfile)
+   const handleSubmit = () => {
+      fetch("/barters", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newProposedBarter),
+      })
+        .then((response) => response.json())
+        .then(() => {
+          setYourBarters([...yourBarters, newProposedBarter]);
+          console.log(newProposedBarter)
+        });
+    };
+  
+    const newProposedBarter = {
+      proposer_id: user?.id,
+      recipient_id: userProfile?.user?.id,
+      recipient_skill_id: userProfile?.id,
+      proposer_skill_id: parseInt(userSkill),
+    };
+
+
+ 
+const userSkills = user?.user_skills.map((u_skill)=>{return <option value={u_skill.id}>{u_skill.name}</option>})
+console.log(userSkills)
+
+// console.log(userProfile?.user.user_skills)
+
+// const proposedUserSkills = userProfile?.user?.user_skills.map((u_skill)=>{return <option>{u_skill?.name}</option>})
+// console.log(proposedUserSkills)
+
+
+  
 
    {/* <h1>{userProfile?.user?.first_name}</h1>
   <h1>{userProfile?.user?.bio}</h1>
@@ -38,7 +73,7 @@ const [isClicked, setIsClicked] = useState(true)
     <div>
  <NavBarTwo setUser={setUser} />
 {isClicked ? 
-<div className="container p-5 mx-auto my-5 overflow-auto ">
+<div className="container p-5 mx-auto my-10 overflow-auto h-screen">
   <div className="md:flex no-wrap md:-mx-2 ">
     {/* <!-- Left Side --> */}
     <div className="w-full md:w-3/12 md:mx-2">
@@ -193,7 +228,7 @@ const [isClicked, setIsClicked] = useState(true)
 // start of second //
 // start of second //
 // start of second //
-<div className="container p-5 mx-auto my-5 overflow-auto">
+<div className="container p-5 mx-auto my-10 overflow-auto h-screen">
   <div className="md:flex no-wrap md:-mx-2 ">
     {/* <!-- Left Side --> */}
     <div className="w-full md:w-3/12 md:mx-2">
@@ -337,7 +372,7 @@ const [isClicked, setIsClicked] = useState(true)
        {/* Reviews End */}
       {/* <!-- End of profile tab --> */}
     </div>
-  <div className="absolute z-40 w-3/5 ml-auto mr-auto bg-black h-3/5 rounded-xl bg-opacity-90">
+  <div className= "ml-56 absolute z-40 w-3/5  bg-black h-3/5 rounded-xl bg-opacity-90">
       <div onClick={()=> setIsClicked(!isClicked)} className="flex justify-end mt-2 mr-5"><img className="h-16 hover:bg-indigo-100 hover:-translate-x-2 center"src="./x.png"/></div>
       <div className="text-center">
       <h4 className="mb-6 text-3xl font-bold leading-snug text-white font-heading">Barter Proposition for {userProfile?.user?.first_name}</h4>
@@ -346,26 +381,25 @@ const [isClicked, setIsClicked] = useState(true)
      <div className= "flex justify-center">
       <div className="mb-4">
   <label className="block mb-2 font-semibold leading-normal text-white">Label for text</label>
-<select className="px-4 py-3.5 w-full text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
+<select className="px-4 py-3.5 w-96 text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300">
+  <option value="volvo">{userProfile?.skill?.name}</option>
 </select>
 </div>
 <div className="mb-4 ml-5">
   <label className="block mb-2 font-semibold leading-normal text-white">Label for text</label>
-  <input className="px-4 py-3.5 w-full text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" type="number"/>
+  <input className="px-4 py-3.5 text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" type="number"/>
 </div>
 </div>
 <div className= "flex justify-center">
 <div className="mb-4">
 <label className="block mb-2 font-semibold leading-normal text-white">Label for text</label>
-<select className="px-4 py-3.5 w-full text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
+<select 
+value={userSkill} onChange={(e)=>{
+  setUserSkill(e.target.value)
+console.log(e.target.value)
+}}
+className="px-4 py-3.5 w-96 text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300">
+  {userSkills}
 </select>
 </div>
 <div className="mb-4 ml-5">
@@ -374,7 +408,9 @@ const [isClicked, setIsClicked] = useState(true)
 </div>
 </div>
 <div className="flex justify-center mt-5">
-<button onClick={()=>setIsClicked(!isClicked)} className="inline-block px-6 py-3 ml-auto mr-auto text-white rounded shadow bg-amber-500 hover:bg-indigo-600">Propose Bartr</button>
+<button onClick={()=>{
+   handleSubmit()
+  setIsClicked(!isClicked)}} className="inline-block px-6 py-3 ml-auto mr-auto text-white rounded shadow bg-amber-500 hover:bg-indigo-600">Propose Bartr</button>
 </div>
     </div>
   </div>

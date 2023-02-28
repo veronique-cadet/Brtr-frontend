@@ -16,6 +16,7 @@ import YourProfile from './Components/YourProfile';
 function App() {
 
   const [user, setUser] = useState(null);
+  const [yourBarters, setYourBarters] = useState([])
 
  
   useEffect(() =>{
@@ -35,8 +36,8 @@ function App() {
         <Route path="/messages" element={<Messages setUser={setUser}/>} />
         <Route path="/login" element={<LogIn user={user} setUser={setUser}/>} />
         <Route path="/signup" element={<SignUp user={user} setUser={setUser} />} />
-        <Route path="/barters" element={<BarterPage setUser={setUser}/>} />
-        <Route path="/userprofile" element={<UserProfiles user={user} setUser={setUser}/>} />
+        <Route path="/barters" element={<BarterPage setUser={setUser} yourBarters={yourBarters} setYourBarters={setYourBarters}/>} />
+        <Route path="/userprofile" element={<UserProfiles user={user} setUser={setUser} yourBarters={yourBarters} setYourBarters={setYourBarters}/>} />
         <Route path="/yourprofile" element={<YourProfile setUser={setUser}/>} />
         <Route path="/skillsearchlist" element={<ListofUsers setUser={setUser}/>} />
       </Routes>
