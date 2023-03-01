@@ -40,11 +40,11 @@ function Browse({user, setUser}) {
   return (
 <div className="bg-transparent">
 <NavBarThree setUser={setUser} />
-  <section className="h-screen w-screen relative bg-transparent">
+  <section className="h-screen relative bg-transparent">
   <video className=" absolute h-screen w-screen object-cover -z-1" muted autoPlay={"autopnpmlay"} preload="auto" loop>
       <source src="./video.mp4" type="video/mp4" />
   </video>
-  <div className="ml-112 container ">
+  <div className=" flex justify-center align-middle">
     <div className="z-10  absolute px-20 py-16 mt-64 bg-black bg-opacity-80 rounded-3xl" style={{backdropFilter: "blur(37px)"}}>
       <h1 className="mt-2 mb-10 text-5xl font-bold leading-tight text-transparent transition duration-500 ease-in-out font-heading md:text-6xl bg-gradient-to-r bg-clip-text from-white via-orange-500 to-white animate-text hover:-translate-y-4" >{user?.first_name}, Start Bartering Today!</h1>
       <div className="flex">

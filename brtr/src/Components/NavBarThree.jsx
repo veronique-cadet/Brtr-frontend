@@ -17,12 +17,12 @@ function NavBarThree({user, setUser}) {
 
 // console.log(setUser)
   return (
-  <div className= "contained mx-auto bg-transparent">
+  <div className= "container mx-auto z-10 fixed">
     <div className="flex items-center justify-between px-4 py-5">
       <div className="w-auto">
         <div className="flex flex-wrap items-center">
           <div className="flex w-auto mr-14">
-          <a href="" className="flex ml-32">
+          <a href="" className="flex ">
               <img src="./logo.png" alt="" className="h-14"/><p className="mt-1 text-4xl font-bold ">artr</p></a>
           </div>
         </div>
