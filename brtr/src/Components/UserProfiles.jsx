@@ -10,6 +10,9 @@ const [userProfile, setUserProfile] = useState({})
 const [isClicked, setIsClicked] = useState(true)
 const [skills, setSkills] = useState([])
 const [userSkill, setUserSkill] = useState("")
+const [proposerHours, setProposerHours] = useState("")
+const [recipientHours, setRecipientHours] = useState("")
+const [barterClicked, setBarterClicked] = useState(true)
 
   const skill = useLocation();
   const { from } = skill.state?.from;
@@ -45,6 +48,9 @@ const [userSkill, setUserSkill] = useState("")
       recipient_id: userProfile?.user?.id,
       recipient_skill_id: userProfile?.id,
       proposer_skill_id: parseInt(userSkill),
+      agreed: false,
+      proposer_hours: proposerHours,
+      recipient_hours: recipientHours
     };
 
 
@@ -70,7 +76,7 @@ console.log(userSkills)
   </button> */}
 
   return (
-    <div>
+    <div className="bg-slate-100">
  <NavBarTwo setUser={setUser} />
 {isClicked ? 
 <div className="container p-5 mx-auto my-10 overflow-auto h-screen">
@@ -78,7 +84,7 @@ console.log(userSkills)
     {/* <!-- Left Side --> */}
     <div className="w-full md:w-3/12 md:mx-2">
       {/* <!-- Profile Card --> */}
-      <div className="p-3 bg-white border-t-4 border-indigo-400 shadow-xl hover:shadow">
+      <div className="p-3 bg-white border-t-4 border-indigo-400  rounded-3xl  hover:shadow-xl">
         <div className="overflow-hidden image">
           <img className="w-full h-auto mx-auto" src="https://cdn.britannica.com/10/172210-050-24612D72/Cyndi-Lauper-Tony-Award.jpg?w=400&amp;h=300&amp;c=crop" alt=""/></div>
         <h1 className="my-1 text-xl font-bold leading-8 text-gray-900">{userProfile?.user?.first_name}</h1>
@@ -96,7 +102,7 @@ console.log(userSkills)
       {/* <!-- End of profile card --> */}
       <div className="my-4"></div>
       {/* <!-- Friends card --> */}
-      <div className="p-3 bg-white shadow-xl hover:shadow">
+      <div className="p-3 bg-white rounded-3xl hover:shadow">
         <div className="flex items-center space-x-3 text-xl font-semibold leading-8 text-gray-900">
           <span className="text-green-500">
             <svg className="h-5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
@@ -123,7 +129,7 @@ console.log(userSkills)
     <div className="w-full h-64 mx-2 md:w-9/12">
       {/* <!-- Profile tab -->
       <!-- About Section --> */}
-      <div className="p-3 bg-white rounded-sm shadow-xl">
+      <div className="p-3 bg-white rounded-3xl hover:shadow-xl">
         <div className="flex items-center space-x-2 font-semibold leading-8 text-gray-900">
           <span clas="text-green-500">
             <svg className="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></span>
@@ -171,7 +177,7 @@ console.log(userSkills)
       <div className="my-4"></div>
 
       {/* <!-- Experience and education --> */}
-      <div className="p-3 bg-white rounded-sm shadow-xl hover:shadow">
+      <div className="p-3 bg-white rounded-3xl shadow-xl hover:shadow-xl">
 
         <div className="grid grid-cols-2">
           <div>
@@ -380,19 +386,21 @@ console.log(userSkills)
       </div>
      <div className= "flex justify-center">
       <div className="mb-4">
-  <label className="block mb-2 font-semibold leading-normal text-white">Label for text</label>
+  <label className="block mb-2 font-semibold leading-normal text-white">{userProfile?.user?.first_name}'s Skill</label>
 <select className="px-4 py-3.5 w-96 text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300">
   <option value="volvo">{userProfile?.skill?.name}</option>
 </select>
 </div>
 <div className="mb-4 ml-5">
-  <label className="block mb-2 font-semibold leading-normal text-white">Label for text</label>
-  <input className="px-4 py-3.5 text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" type="number"/>
+  <label className="block mb-2 font-semibold leading-normal text-white">Hours</label>
+  <input 
+  value={recipientHours} onChange={(e) => setRecipientHours(e.target.valueAsNumber)} 
+  className="px-4 py-3.5 text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" type="number"/>
 </div>
 </div>
 <div className= "flex justify-center">
 <div className="mb-4">
-<label className="block mb-2 font-semibold leading-normal text-white">Label for text</label>
+<label className="block mb-2 font-semibold leading-normal text-white">{user?.first_name}'s Skill</label>
 <select 
 value={userSkill} onChange={(e)=>{
   setUserSkill(e.target.value)
@@ -403,14 +411,19 @@ className="px-4 py-3.5 w-96 text-gray-400 font-medium placeholder-gray-400 bg-wh
 </select>
 </div>
 <div className="mb-4 ml-5">
-  <label className="block mb-2 font-semibold leading-normal text-white">Label for text</label>
-  <input className="px-4 py-3.5 w-full text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" type="number"/>
+  <label className="block mb-2 font-semibold leading-normal text-white">Hours</label>
+  <input 
+  value={proposerHours} onChange={(e) => setProposerHours(e.target.valueAsNumber)}
+  className="px-4 py-3.5 w-full text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" type="number"/>
 </div>
 </div>
 <div className="flex justify-center mt-5">
-<button onClick={()=>{
+{ barterClicked ? <button onClick={()=>{
    handleSubmit()
-  setIsClicked(!isClicked)}} className="inline-block px-6 py-3 ml-auto mr-auto text-white rounded shadow bg-amber-500 hover:bg-indigo-600">Propose Bartr</button>
+   setBarterClicked(!barterClicked)}} className="inline-block px-6 py-3 ml-auto mr-auto text-white rounded shadow bg-amber-500 hover:bg-indigo-600">Propose Bartr</button>
+  :<button onClick={()=>{
+   handleSubmit()
+  setBarterClicked(!barterClicked)}} className="inline-block px-6 py-3 ml-auto mr-auto text-white rounded shadow bg-amber-500 hover:bg-indigo-600">Proposal Sent!</button>}
 </div>
     </div>
   </div>

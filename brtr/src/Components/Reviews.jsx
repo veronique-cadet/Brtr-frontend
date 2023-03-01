@@ -2,7 +2,7 @@ import React from 'react'
 
 function Reviews() {
   return (
-    <div className="my-4 bg-white shadow-xl hover:shadow" ><article>
+    <div className="my-4 bg-white rounded-3xl hover:shadow-xl" ><article>
     <div className="flex items-center mt-8 mb-3 space-x-2 overflow-scroll font-semibold leading-8 text-gray-900 ">
             <span clas="text-green-500">
               <svg className="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></span>
