@@ -17,7 +17,7 @@ function NavBarThree({user, setUser}) {
 
 // console.log(setUser)
   return (
-  <div className= "container mx-auto z-10 fixed">
+  <div className= "ml-48 container  mx-auto z-10 fixed">
     <div className="flex items-center justify-between px-4 py-5">
       <div className="w-auto">
         <div className="flex flex-wrap items-center">
