@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 function BarterCardProposed({barter}) {
 
     console.log(barter.recipient_skill)
+
+    const skill = barter?.recipient_skill
   return (
   <div>
     <div className= "mx-auto mt-5 p-10 h-full w-4/6 hover:bg-slate-200 bg-opacity-70 rounded-xl transition ease-in-out duration-200 bg-slate-100">
@@ -21,9 +23,10 @@ function BarterCardProposed({barter}) {
      <p className="text-xl flex justify-center mb-8 text-gray-300">Your Bartr was sent and must be reviewed by {barter?.recipient?.first_name}</p> 
  
      < div className ="flex justify-center">
-     <Link to="/userprofiles" state={{ from: barter }}>
+     <Link to="/userprofile" state={{ from: skill }}>
      <button className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">View {barter?.recipient?.first_name} Profile</button></Link>
-     <button className=" ml-7 inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">Make Another Bartr</button>
+     <Link to="/browse" >
+     <button className=" ml-7 inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">Make Another Bartr</button></Link>
      </div>
     </div>
   </div>
