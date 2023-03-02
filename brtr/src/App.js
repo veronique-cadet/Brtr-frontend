@@ -20,7 +20,10 @@ function App() {
 
   const [user, setUser] = useState(null);
   const [yourBarters, setYourBarters] = useState([])
-
+  const [skills, setSkills] = useState([]);
+  const [skill, setSkill] = useState([])
+  const [searchTerm, setSearchedTerm] = useState("");
+  const [filteredSearch, setFilteredSearch] = useState([]);
  
   useEffect(() =>{
     fetch('/me')
@@ -31,11 +34,39 @@ function App() {
     });
 },[]);
 
+useEffect(() => {
+  fetch("/skills")
+    .then((res) => res.json())
+    .then((data) => {
+      setSkills(data);
+      console.log(data);
+    });
+}, []);
+
+const handleFilter = (event) => {
+  const searchWord = event.target.value;
+  setSearchedTerm(searchWord);
+  const newFilter = skills.filter((skill) => {
+    return skill.name.toLowerCase().includes(searchTerm.toLowerCase());
+    console.log(skill.name);
+  });
+  if (searchWord === "") {
+    setFilteredSearch([]);
+  } else {
+    setFilteredSearch(newFilter);
+  }
+  // console.log(searchWord)
+};
+
+
+
+
+
   return (
     <div >
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/browse" element={<Browse user={user} setUser={setUser} />} />
+        <Route path="/browse" element={<Browse user={user} setUser={setUser} skill={skill} setSkill={setSkill} handleFilter={handleFilter} searchTerm={searchTerm} setSearchedTerm={setSearchedTerm} filteredSearch={filteredSearch} setFilteredSearch={setFilteredSearch}/>} />
         <Route path="/messages" element={<Messages setUser={setUser}/>} />
         <Route path="/login" element={<LogIn user={user} setUser={setUser}/>} />
         <Route path="/signup" element={<SignUp user={user} setUser={setUser} />} />
