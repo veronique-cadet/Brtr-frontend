@@ -30,7 +30,7 @@ const filteredBarters = yourBarters.filter((barter) => {
     console.log(filteredBarters)
   
 const barterCard = filteredBarters.map((barter) => {
-return <BarterCardReceived id={barter.id} setYourBarters={setYourBarters} yourBarters={yourBarters} key={barter.id} barter={barter}/> })
+return <BarterCardReceived user={user} id={barter.id} setYourBarters={setYourBarters} yourBarters={yourBarters} key={barter.id} barter={barter}/> })
 
 
 

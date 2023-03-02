@@ -1,6 +1,6 @@
 import React from 'react'
 
-function BarterCardReceived({yourBarters, barter, setYourBarters, id}) {
+function BarterCardReceived({user, yourBarters, barter, setYourBarters, id}) {
 
   const handleDelete = (id) => {
     fetch(`/barters/${id}`, {
@@ -13,6 +13,31 @@ function BarterCardReceived({yourBarters, barter, setYourBarters, id}) {
       // });
       const updatedbarters = yourBarters.filter(barter => barter.id !== id)
       setYourBarters(updatedbarters);
+  };
+
+  const filteredBarters = yourBarters.filter((barter) => {
+    if ((barter.agreed === false) && (barter.recipient_id === user?.id)) {
+      return true;
+    }
+    return false;
+  });
+
+  const handleAgreement = () => {
+    const agreementValue = {
+      agreed: true
+    };
+
+    fetch(`/barters/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(agreementValue),
+    })
+      .then((response) => response.json())
+      .then(() => {
+        setYourBarters(agreementValue)
+      });
   };
  
   return (
@@ -31,9 +56,9 @@ function BarterCardReceived({yourBarters, barter, setYourBarters, id}) {
      </div>
      < div className ="flex justify-center">
      <button className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">View Profile</button>
-     <button className=" ml-7 inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">Accept</button>
+     <button onClick={handleAgreement} className=" ml-7 inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">Accept</button>
      <button 
-     onClick={()=>  handleDelete(id)}
+     onClick={()=>  handleDelete(id)} 
      className=" ml-7 inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">Decline</button>
      </div>
     </div>
