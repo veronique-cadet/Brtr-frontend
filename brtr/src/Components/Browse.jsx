@@ -3,12 +3,36 @@ import { Link } from "react-router-dom";
 import Footer from './Footer';
 import NavBarTwo from './NavBarTwo';
 
-function Browse({user, setUser, skill, setSkill, handleFilter, searchTerm, setSearchedTerm, filteredSearch, setFilteredSearch}) {
+function Browse({user, setUser}) {
 
-  
+  const [searchTerm, setSearchedTerm] = useState("");
+  const [filteredSearch, setFilteredSearch] = useState([]);
+  const [skills, setSkills] = useState([]);
+  const [skill, setSkill] = useState([])
 
+  useEffect(() => {
+    fetch("/skills")
+      .then((res) => res.json())
+      .then((data) => {
+        setSkills(data);
+        console.log(data);
+      });
+  }, []);
 
-
+  const handleFilter = (event) => {
+    const searchWord = event.target.value;
+    setSearchedTerm(searchWord);
+    const newFilter = skills.filter((skill) => {
+      return skill.name.toLowerCase().includes(searchTerm.toLowerCase());
+      console.log(skill.name);
+    });
+    if (searchWord === "") {
+      setFilteredSearch([]);
+    } else {
+      setFilteredSearch(newFilter);
+    }
+    // console.log(searchWord)
+  };
 
 
 

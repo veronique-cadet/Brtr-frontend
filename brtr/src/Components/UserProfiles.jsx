@@ -4,9 +4,9 @@ import { useLocation } from "react-router-dom";
 import Footer from './Footer';
 import Reviews from './Reviews';
 
-function UserProfiles({user, setUser, yourBarters, setYourBarters, userProfile, setUserProfile}) {
+function UserProfiles({user, setUser, yourBarters, setYourBarters}) {
 
-
+const [userProfile, setUserProfile] = useState({})
 const [isClicked, setIsClicked] = useState(true)
 const [skills, setSkills] = useState([])
 const [userSkill, setUserSkill] = useState("")
@@ -27,8 +27,6 @@ const [barterClicked, setBarterClicked] = useState(true)
         console.log(data);
       });
     }, []);
-
-    console.log(userProfile)
 
    const handleSubmit = () => {
       fetch("/barters", {
@@ -73,7 +71,6 @@ console.log(userSkills)
   <h1>{userProfile?.user?.city}</h1>
   <h1>{userProfile?.user?.state}</h1>
   <h1>{userProfile?.user?.rating}</h1>
-
   <button classNameName="flex-wrap justify-center w-20 px-4 py-2 text-sm font-medium bg-indigo-200 border rounded-md first-letter:lex text-black-500 hover:text-black-600 border-black-200 hover:border-black-300 shadow-button"><p>Make a Barter</p>
   </button> */}
 
