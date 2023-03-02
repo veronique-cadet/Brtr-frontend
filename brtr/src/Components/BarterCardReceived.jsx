@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-function BarterCardReceived({user, yourBarters, barter, setYourBarters, id}) {
+function BarterCardReceived({user, yourBarters, barter, setYourBarters, id, userProfile, setUserProfile}) {
 
   const handleDelete = (id) => {
     fetch(`/barters/${id}`, {
@@ -45,7 +45,8 @@ function BarterCardReceived({user, yourBarters, barter, setYourBarters, id}) {
         setYourBarters(updatedbarters);
       });
   };
- 
+ const skill = barter?.proposer_skill
+
   return (
   <div>
     <div className= "mx-auto mt-5 p-10 h-full w-4/6 hover:bg-slate-200 bg-opacity-70 rounded-xl transition ease-in-out duration-200 bg-slate-100">
@@ -61,7 +62,7 @@ function BarterCardReceived({user, yourBarters, barter, setYourBarters, id}) {
      <p className="text-2xl">of {barter?.proposer_skill?.name} lessons</p> 
      </div>
      < div className ="flex justify-center">
-     <Link to="/userprofiles" state={{ from: barter }}>
+     <Link to="/userprofile" state={{ from: skill }}>
      <button className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">View Profile</button></Link>
      <button onClick={handleAgreement} className=" ml-7 inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">Accept</button>
      <button 

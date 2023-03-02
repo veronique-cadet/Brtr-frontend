@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Footer from './Footer';
 import BarterCardReceived from './BarterCardReceived';
 
-function BarterReceived({setUser, yourBarters, setYourBarters, user}) {
+function BarterReceived({setUser, yourBarters, setYourBarters, user, userProfile, setUserProfile}) {
 
   useEffect(() => {
     fetch("/barters")
@@ -30,7 +30,7 @@ const filteredBarters = yourBarters.filter((barter) => {
     console.log(filteredBarters)
   
 const barterCard = filteredBarters.map((barter) => {
-return <BarterCardReceived user={user} id={barter.id} setYourBarters={setYourBarters} yourBarters={yourBarters} key={barter.id} barter={barter}/> })
+return <BarterCardReceived userProfile={userProfile} setUserProfile={setUserProfile} user={user} id={barter.id} setYourBarters={setYourBarters} yourBarters={yourBarters} key={barter.id} barter={barter}/> })
 
 
 
