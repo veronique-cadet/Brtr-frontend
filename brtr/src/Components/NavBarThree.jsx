@@ -33,7 +33,7 @@ function NavBarThree({user, setUser}) {
           <ul className="flex items-center mr-16">
 <Link to="/Browse"><li className="text-xl text-black font-n mr-9 hover:text-amber-700"> Browse
             </li></Link>
-            <Link to="/barters">
+            <Link to="/receivedbarters">
             <li className="text-xl font-normal text-black mr-9 hover:text-amber-700"> Bartrs
             </li></Link>
             <Link to="/Messages">
@@ -56,7 +56,7 @@ function NavBarThree({user, setUser}) {
         </div>
         <div className="w-auto lg:hidden">
             <a href="#">
-              <svg className="text-indigo-600 navbar-burger" width="51" height="51" viewbox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="56" height="56" rx="28" fill="currentColor"></rect><path d="M37 32H19M37 24H19" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+              <svg className="text-indigo-600 navbar-burger" width="51" height="51" viewbox="0 0 56 56" fill="none" ><rect width="56" height="56" rx="28" fill="currentColor"></rect><path d="M37 32H19M37 24H19" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
           </div>
         </div>
       </div>

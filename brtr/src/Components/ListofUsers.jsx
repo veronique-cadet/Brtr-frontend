@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import SkillUserCard from './SkillUserCard';
 import Footer from './Footer';
 
-function ListofUsers({setUser}) {
+function ListofUsers({setUser, user}) {
  const skill = useLocation();
  const { from } = skill.state?.from;
  console.log(skill.state?.from.name);
@@ -33,14 +33,20 @@ fetch("/user_skills")
           });
       }, []);
 
-// const skillUsers =  currentSkill.users.map((skillUser)=>{
-//     return <SkillUserCard key={skillUser.id} skillUser={skillUser} />
-//   })
+
+// const filteredSkills = userSkills.filter((uSkill) => {
+//     if (currentSkill.id) return currentSkill.id === uSkill.skill.id;
+//     else return uSkill;
+// })
 
 const filteredSkills = userSkills.filter((uSkill) => {
-    if (currentSkill.id) return currentSkill.id === uSkill.skill.id;
-    else return uSkill;
-})
+  if ((currentSkill.id === uSkill.skill.id) && (uSkill.user.id !== user?.id)) {
+    return true;
+  }
+  return false;
+});
+
+
 
 const userCard = filteredSkills.map((skill) => {
     return (

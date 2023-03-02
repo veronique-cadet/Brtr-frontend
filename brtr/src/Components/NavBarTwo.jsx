@@ -33,7 +33,7 @@ function NavBarTwo({user, setUser}) {
           <ul className="flex items-center mr-16">
 <Link to="/Browse"><li className="text-xl font-normal text-black mr-9 hover:text-amber-700"> Browse
             </li></Link>
-            <Link to="/barters">
+            <Link to="/receivedbarters">
             <li className="text-xl font-normal text-black mr-9 hover:text-amber-700"> Bartrs
             </li></Link>
             <Link to="/Messages">
