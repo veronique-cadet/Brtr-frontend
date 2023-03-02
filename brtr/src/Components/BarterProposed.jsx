@@ -15,9 +15,17 @@ function BarterProposed({setUser, yourBarters, setYourBarters, user}) {
       });
   }, []);
 
-  const filteredBarters = yourBarters.filter((barter) => {
-    if (user) return user?.id === barter?.proposer_id;
-    else return barter})
+  // const filteredBarters = yourBarters.filter((barter) => {
+  //   if (user) return user?.id === barter?.proposer_id;
+  //   else return barter})
+
+  
+const filteredBarters = yourBarters.filter((barter) => {
+  if ((barter.agreed === false) && (barter.proposer_id === user?.id)) {
+    return true;
+  }
+  return false;
+});
 
     console.log(filteredBarters)
   

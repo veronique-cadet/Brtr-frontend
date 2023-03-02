@@ -27,7 +27,7 @@ function BarterAgreed({setUser, yourBarters, setYourBarters, user}) {
     console.log(filteredBarters)
   
 const barterCard = filteredBarters.map((barter) => {
-return <BarterCardAgreed key= {barter.id} barter={barter}/> })
+return <BarterCardAgreed key= {barter.id} barter={barter} user={user}/> })
 
   
 

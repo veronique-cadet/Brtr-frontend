@@ -12,6 +12,7 @@ import BarterAgreed from './Components/BarterAgreed';
 import BarterProposed from './Components/BarterProposed';
 import ListofUsers from './Components/ListofUsers';
 import YourProfile from './Components/YourProfile';
+import UserProfileTwo from './Components/UserProfileTwo';
 
 
 
@@ -44,6 +45,7 @@ function App() {
         <Route path="/skillsearchlist" element={<ListofUsers setUser={setUser} user={user}/>} />
         <Route path="/agreedbarters" element={<BarterAgreed user={user} setUser={setUser} yourBarters={yourBarters} setYourBarters={setYourBarters}/>} />
         <Route path="/proposedbarters" element={<BarterProposed user={user} setUser={setUser} yourBarters={yourBarters} setYourBarters={setYourBarters}/>} />
+        <Route path="/userprofiles" element={<UserProfileTwo user={user} setUser={setUser} yourBarters={yourBarters} setYourBarters={setYourBarters} />} />
       </Routes>
       
     </div>

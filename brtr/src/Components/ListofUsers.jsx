@@ -65,9 +65,10 @@ console.log(filteredSkills)
 <div className="">
 <NavBarTwo setUser={setUser}/>
 <div className="h-screen">
-  <div className=" border-b-2 ">
-<h2 class="px-4 container mx-auto mt-14 text-5xl font-bold leading-tight text-transparent transition duration-500 ease-in-out font-heading md:text-6xl bg-gradient-to-r bg-clip-text from-black via-black to-black animate-text hover:-translate-y-4 first-letter:leading-none">Skilled Professionals for </h2>
-<h2 class=" px-4 container mx-auto mb-10 text-3xl font-bold leading-tight text-transparent transition duration-500 ease-in-out font-heading md:text-4xl bg-gradient-to-r bg-clip-text from-indigo-500 via-orange-500 to-indigo-500 animate-text hover:-translate-y-4 first-letter:leading-none">{currentSkill.name} </h2>
+<div className="container px-4 mx-auto mt-24">
+  <p className="mb-6 text-sm text-indigo-600 text-center font-bold uppercase tracking-px">Skilled Professionals For</p>
+    <h2 className="mb-10 text-5xl md:text-7xl xl:text-10xl text-center font-bold font-heading tracking-px-n leading-none">{currentSkill?.name}</h2> 
+     <div className=" bottom-0 left-0 w-full h-0.5 bg-neutral-100"></div> 
 
 </div>
 <section className="py-4 ">
