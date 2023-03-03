@@ -17,6 +17,29 @@ function EditProfile({user, setUser}) {
 
   console.log(user?.first_name)
 
+  const editProfile ={
+  first_name: first,
+  last_name: last,
+  email: email,
+  password: password,
+  age: age,
+  picture: picture,
+  bio: bio,
+  city: city,
+  state: state,
+  }
+
+ const handleEdit = (user) => {
+    fetch(`/users/${user}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(editProfile),
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json))
+  };
 
   return (
     <div className="bg-slate-100">
@@ -37,7 +60,7 @@ function EditProfile({user, setUser}) {
                 </button></Link>
               </div>
               <div className="w-full md:w-auto p-1.5">
-                <button className="flex flex-wrap justify-center w-full px-4 py-2 bg-indigo-500 hover:bg-amber-600 font-medium text-sm text-white border  rounded-md shadow-button">
+                <button onClick={()=> handleEdit()}className="flex flex-wrap justify-center w-full px-4 py-2 bg-indigo-500 hover:bg-amber-600 font-medium text-sm text-white border  rounded-md shadow-button">
                   <p>Save</p>
                 </button>
               </div>

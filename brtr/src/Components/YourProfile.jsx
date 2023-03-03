@@ -5,7 +5,13 @@ import Footer from './Footer'
 import { Link } from "react-router-dom"
 
 
+
+
 function YourProfile({user, setUser}) {
+
+  const userSkills = user?.user_skills.map((u_skill)=>{return <h1 className="text-center bg-gray-100 mb-2 p-2 hover:bg-indigo-200 hover:shadow-2xl  transition duration-200">{u_skill.name}</h1>})
+  console.log(userSkills)
+
   return (
   <div className="bg-slate-100">
     <NavBarTwo setUser={setUser} />
@@ -21,11 +27,11 @@ function YourProfile({user, setUser}) {
            <h3 className="leading-6 text-gray-600 font-lg text-semibold">{}</h3>
            <p className="text-sm leading-6 text-gray-500 hover:text-gray-600">{user?.bio}</p>
            <ul className="px-3 py-2 mt-3 text-gray-600 bg-gray-100 divide-y rounded shadow-sm hover:text-gray-700 hover:shadow"><li className="flex items-center py-3">
-             <span contenteditable="false">Rating</span>
+             <span >Rating</span>
              <span className="ml-auto"><span className="px-2 py-1 text-sm text-white bg-indigo-500 rounded">{user?.rating}/5</span></span>
              </li>
              <li className="flex items-center py-3">
-               <span contenteditable="false">Bartrs</span>
+               <span >Bartrs</span>
                <span className="ml-auto">10 Bartrs</span>
              </li>
            </ul></div>
@@ -33,11 +39,12 @@ function YourProfile({user, setUser}) {
          <div className="my-4"></div>
          {/* <!-- Friends card --> */}
          <div className="p-3 bg-white rounded-3xl hover:shadow">
-           <div className="flex items-center space-x-3 text-xl font-semibold leading-8 text-gray-900">
+           <div className="flex justify-center items-center space-x-3 text-xl font-semibold leading-8 text-gray-900">
              <span className="text-green-500">
                <svg className="h-5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
              <span>Your Skills</span>
            </div>
+           <div className="flex flex-col">{userSkills}</div>
            <div className="grid grid-cols-3">
             
            </div>
