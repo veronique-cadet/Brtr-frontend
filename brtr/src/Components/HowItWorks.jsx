@@ -14,9 +14,9 @@ function HowItWorks() {
       </div>
       <div className="flex flex-wrap -m-3">
         <div className="w-full md:w-1/3 p-3">
-          <a className="flex justify-center md:block h-full" href="#">
+          <a className="flex justify-center md:block h-full" href="">
             <div className="relative h-full rounded-3xl overflow-hidden">
-              <img className="h-full md:w-full object-cover transform hover:scale-105 transition ease-in-out duration-1000" src="https://images.unsplash.com/photo-1615339725569-80172615f345?crop=entropy&amp;cs=tinysrgb&amp;fm=jpg&amp;ixid=MnwzMzIzMzB8MHwxfHNlYXJjaHwxN3x8cGFpbnRpbmd8ZW58MHx8fHwxNjc3MTIwMDU3&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1920" alt=""/>
+              <img className="h-full md:w-full object-cover transform hover:scale-105 transition ease-in-out duration-1000 " src="https://images.unsplash.com/photo-1615339725569-80172615f345?crop=entropy&amp;cs=tinysrgb&amp;fm=jpg&amp;ixid=MnwzMzIzMzB8MHwxfHNlYXJjaHwxN3x8cGFpbnRpbmd8ZW58MHx8fHwxNjc3MTIwMDU3&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1920" alt=""/>
               <div className="absolute bottom-0 left-0 w-full px-11 pb-10">
                 <div className="px-8 py-4 bg-white bg-opacity-10 rounded-xl shadow-5xl" style={{ webkitBackdropFilter: "blur(5px)", backdropFilter: "blur(5px)"}}>
                   <h3 className="text-lg text-white text-center font-semibold">Everyone has a skill! Share yours on Bartr!</h3>
