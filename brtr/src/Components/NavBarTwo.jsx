@@ -39,6 +39,9 @@ function NavBarTwo({user, setUser}) {
             <Link to="/Messages">
             <li className="text-xl font-normal text-black mr-9 hover:text-amber-700"> Messages
             </li></Link>
+            <Link to="/Messages">
+            <li className="text-xl font-normal text-black mr-9 hover:text-amber-700">Calendar
+            </li></Link>
             <Link to="/yourprofile">
             <li className="text-xl font-normal text-black mr-9 hover:text-amber-700"> Profile
             </li> </Link>

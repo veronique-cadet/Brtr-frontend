@@ -85,7 +85,7 @@ console.log(userSkills)
       {/* <!-- Profile Card --> */}
       <div className="p-3 bg-white border-t-4 border-indigo-400  rounded-3xl  hover:shadow-xl">
         <div className="overflow-hidden image">
-          <img className="w-full h-auto mx-auto" src="https://cdn.britannica.com/10/172210-050-24612D72/Cyndi-Lauper-Tony-Award.jpg?w=400&amp;h=300&amp;c=crop" alt=""/></div>
+          <img className="w-full h-96 mx-auto rounded-xl" src={userProfile?.user?.picture}/></div>
         <h1 className="my-1 text-xl font-bold leading-8 text-gray-900">{userProfile?.user?.first_name}</h1>
         <h3 className="leading-6 text-gray-600 font-lg text-semibold">{userProfile?.skill?.name}</h3>
         <p className="text-sm leading-6 text-gray-500 hover:text-gray-600">{userProfile?.user?.bio}</p>
@@ -108,18 +108,10 @@ console.log(userSkills)
           <span>Similar Profiles</span>
         </div>
         <div className="grid grid-cols-3">
-          <div className="my-2 text-center">
-            <img className="w-16 h-16 mx-auto rounded-full" src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg" alt=""/><a href="#" className="text-main-color">Kojstantin</a>
-          </div>
-          <div className="my-2 text-center">
-            <img className="w-16 h-16 mx-auto rounded-full" src="https://avatars2.githubusercontent.com/u/24622175?s=60&amp;v=4" alt=""/><a href="#" className="text-main-color">James</a>
-          </div>
-          <div className="my-2 text-center">
-            <img className="w-16 h-16 mx-auto rounded-full" src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg" alt=""/><a href="#" className="text-main-color">Natie</a>
-          </div>
-          <div className="my-2 text-center">
-            <img className="w-16 h-16 mx-auto rounded-full" src="https://bucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com/public/images/f04b52da-12f2-449f-b90c-5e4d5e2b1469_361x361.png" alt=""/><a href="#" className="text-main-color">Casey</a>
-          </div>
+        
+         
+        
+          
         </div>
       </div>
       {/* <!-- End of friends card --> */}
@@ -240,7 +232,7 @@ console.log(userSkills)
       {/* <!-- Profile Card --> */}
       <div className="p-3 bg-white border-t-4 border-indigo-400">
         <div className="overflow-hidden image">
-          <img className="w-full h-auto mx-auto" src="https://cdn.britannica.com/10/172210-050-24612D72/Cyndi-Lauper-Tony-Award.jpg?w=400&amp;h=300&amp;c=crop" alt=""/></div>
+          <img className="w-full h-96 mx-auto rounded-xl " src={userProfile?.user?.picture}/></div>
         <h1 className="my-1 text-xl font-bold leading-8 text-gray-900">{userProfile?.user?.first_name}</h1>
         <h3 className="leading-6 text-gray-600 font-lg text-semibold">{userProfile?.skill?.name}</h3>
         <p className="text-sm leading-6 text-gray-500 hover:text-gray-600">{userProfile?.user?.bio}</p>
@@ -263,18 +255,7 @@ console.log(userSkills)
           <span>Similar Profiles</span>
         </div>
         <div className="grid grid-cols-3">
-          <div className="my-2 text-center">
-            <img className="w-16 h-16 mx-auto rounded-full" src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg" alt=""/><a href="#" className="text-main-color">Kojstantin</a>
-          </div>
-          <div className="my-2 text-center">
-            <img className="w-16 h-16 mx-auto rounded-full" src="https://avatars2.githubusercontent.com/u/24622175?s=60&amp;v=4" alt=""/><a href="#" className="text-main-color">James</a>
-          </div>
-          <div className="my-2 text-center">
-            <img className="w-16 h-16 mx-auto rounded-full" src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg" alt=""/><a href="#" className="text-main-color">Natie</a>
-          </div>
-          <div className="my-2 text-center">
-            <img className="w-16 h-16 mx-auto rounded-full" src="https://bucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com/public/images/f04b52da-12f2-449f-b90c-5e4d5e2b1469_361x361.png" alt=""/><a href="#" className="text-main-color">Casey</a>
-          </div>
+        
         </div>
       </div>
       {/* <!-- End of friends card --> */}

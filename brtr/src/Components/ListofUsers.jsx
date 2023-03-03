@@ -64,8 +64,8 @@ console.log(filteredSkills)
 
 <div className="">
 <NavBarTwo setUser={setUser}/>
-<div className="h-screen">
-<div className="container px-4 mx-auto mt-24">
+<div className="h-screen overflow-auto">
+<div className="container px-4 mx-auto mt-20">
   <p className="mb-6 text-sm text-indigo-600 text-center font-bold uppercase tracking-px">Skilled Professionals For</p>
     <h2 className="mb-10 text-5xl md:text-7xl xl:text-10xl text-center font-bold font-heading tracking-px-n leading-none">{currentSkill?.name}</h2> 
      <div className=" bottom-0 left-0 w-full h-0.5 bg-neutral-100"></div> 
@@ -73,9 +73,12 @@ console.log(filteredSkills)
 </div>
 <section className="py-4 ">
   <div className="container px-4 mx-auto">
-    <div className="flex flex-wrap -m-3  pt-4  shadow-3xl">
+    {filteredSkills ? <div className="flex flex-wrap -m-3  pt-4  shadow-3xl">
    {userCard}
-    </div>
+    </div> : <div className="flex flex-wrap -m-3  pt-4  shadow-3xl">
+    <h2 className="mb-10 text-5xl md:text-7xl xl:text-10xl text-center font-bold font-heading tracking-px-n leading-none">Loading</h2> 
+    </div>}
+    
   </div>
 
 </section> 
