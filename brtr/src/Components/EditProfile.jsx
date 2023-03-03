@@ -1,7 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 import NavBarTwo from './NavBarTwo'
 
 function EditProfile({user, setUser}) {
+
+  const [first, setFirst] = useState(user?.first_name)
+  const [last, setLast] = useState(user?.last_name)
+  const [email, setEmail] = useState(user?.email)
+  const [password, setPassword] = useState("")
+  const [age, setAge] = useState(user?.age)
+  const [picture, setPicture] = useState(user?.age)
+  const [bio, setBio] = useState(user?.bio)
+  const [city, setCity] = useState(user?.city)
+  const [state, setState] = useState(user?.state)
+
   return (
     <div className="bg-slate-100">
       <NavBarTwo setUser={setUser}/>
@@ -16,7 +27,7 @@ function EditProfile({user, setUser}) {
           <div className="w-full md:w-auto p-2">
             <div className="flex flex-wrap justify-between -m-1.5">
               <div className="w-full md:w-auto p-1.5">
-                <button className="flex flex-wrap justify-center w-full px-4 py-2 font-medium text-sm text-slate-500 hover:text-slate-600 border border-slate-200 hover:border-slate-300 bg-white rounded-md shadow-button">
+                <button className="flex flex-wrap justify-center w-full px-4 py-2 font-medium text-sm text-slate-500 hover:text-slate-600 border hover:bg-amber-500 bg-white rounded-md shadow-button">
                   <p>Cancel</p>
                 </button>
               </div>
@@ -36,9 +47,18 @@ function EditProfile({user, setUser}) {
               <p className="text-sm text-slate-800 font-semibold">Name</p>
             </div>
             <div className="w-full md:w-1/3 p-3">
-              <input className="w-full px-4 py-2.5 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="text" placeholder="John"/></div>
+              <input 
+              className="w-full px-4 py-2.5 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" 
+              type="text" 
+              placeholder="John"
+              value={first} onChange={(e) => setFirst(e.target.value)}
+              /></div>
             <div className="w-full md:w-1/3 p-3">
-              <input className="w-full px-4 py-2.5 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="text" placeholder="Doe"/></div>
+              <input 
+              className="w-full px-4 py-2.5 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" 
+              type="text" placeholder="Doe"
+              value={last} onChange={(e) => setLast(e.target.value)}
+              /></div>
           </div>
         </div>
       </div>
@@ -49,7 +69,20 @@ function EditProfile({user, setUser}) {
               <p className="text-sm text-slate-800 font-semibold">Email address</p>
             </div>
             <div className="w-full md:flex-1 p-3">
-              <input className="w-full px-4 py-2.5 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="text" placeholder="johndoe@flex.co"/></div>
+              <input className="w-full px-4 py-2.5 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="text" placeholder="johndoe@flex.co"
+              value={email} onChange={(e) => setEmail(e.target.value)}
+              /></div>
+          </div>
+        </div>
+      </div>
+      <div className="py-6 border-b border-slate-100">
+        <div className="w-full md:w-9/12">
+          <div className="flex flex-wrap -m-3">
+            <div className="w-full md:w-1/3 p-3">
+              <p className="text-sm text-slate-800 font-semibold">Password</p>
+            </div>
+            <div className="w-full md:flex-1 p-3">
+              <input className="w-full px-4 py-2.5 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="number" placeholder="johndoe@flex.co"/></div>
           </div>
         </div>
       </div>

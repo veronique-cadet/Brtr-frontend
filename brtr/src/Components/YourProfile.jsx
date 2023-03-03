@@ -86,10 +86,12 @@ function YourProfile({user, setUser}) {
              </div>
            </div>
            <div className="flex justify-center mt-6 mb-6">
-           <Link to="/editprofile">
+          
            <button className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-2">Add Skill</button>
-           </Link>
+           
+           <Link to="/editprofile">
            <button className="ml-6 inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-2">Edit Profile</button>
+           </Link>
            </div>
          </div>
          {/* <!-- End of about section --> */}
