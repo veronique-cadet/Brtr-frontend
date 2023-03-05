@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function SkillCaraouselCard({skill}) {
   return (
     <div className=" p-8 md:w-96">
-      <div className="transition duration-200 bg-slate-100 border rounded-md border-coolGray-100 shadow-dashboard hover:bg-white hover:shadow-2xl">
+      <div className=" transition duration-500 ease-in-out font-heading bg-gradient-to-r bg-clip-border from-indigo-200 via-orange-200 to-indigo-200 animate-text hover:-translate-y-4 border rounded-md border-coolGray-100 shadow-dashboard hover:bg-white hover:shadow-2xl">
         <div className="flex flex-wrap items-center justify-center p-10 pb-4 -m-2 ">
           <div className="w-full p-2 lg:w-auto">
             <div className="items-center m-2">

@@ -274,7 +274,7 @@ const handleSubmit = () => {
   </div>
   </div>
 </section>
-{/* barters listed */}
+
   </div>
 </section>
 
