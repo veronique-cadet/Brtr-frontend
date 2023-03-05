@@ -105,9 +105,56 @@ const handleSubmit = () => {
   </div>
 </section>
 
+
+
+<Footer/></div> : 
+
+
+// SECOND PART
+// SECOND 
+// SECOND PART
+// SECOND PART
+// SECOND PART
+// SECOND PART
+// SECOND PART
+// SECOND PART
+// SECOND PART
+// SECOND PART
+// SECOND PART
+
+<div className="h-screen"><NavBarTwo setUser={setUser} />
+  <section className="pt-24 pb-36 bg-white overflow-auto h-screen">
+  <div className="container px-4 mx-auto">
+    <p className="mb-6 text-sm text-indigo-600 text-center font-bold uppercase tracking-px">{user?.first_name} {user?.last_name}</p>
+    <h2 className="mb- text-6xl md:text-8xl xl:text-10xl text-center font-bold font-heading tracking-px-n leading-none">Your Skills</h2>
+
+    {/* //nav for barters// */}
+    <section className="py-4 overflow-hidden ">
+  <div className="container px-4 mx-auto">
+    <div className="relative flex justify-center">
+    <div className="relative z-10 inline-flex flex-wrap items-center -m-5">
+      <button className="pt-5 pb-10 f group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500 " onClick={()=> {
+      setIsClicked(!isClicked)}} >Add New Skill</button>
+      <Link to="/yourprofile">
+      <button className=" pt-5 ml-7 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent  bg-clip-text hover:bg-gradient-to-r from-amber-500 font-bold">Back to Profile</button></Link>
+  </div>
+    <div className="mt-10 absolute bottom-0 left-0 w-full h-0.5 bg-neutral-100"></div>
+    </div>
+  </div>
+</section>
+
+{/* barters listed */}
+    <div className="flex flex-wrap -m-1.5 mb-10">
+      <div className="w-full p-1.5">
+     
+      </div>
+    </div>
+  </div>
+</section>
+
 {/* form starts here  */}
 {/* form starts here  */}
-{/* form starts here  */}
+{/* form starts here  */}/
 {/* form starts here  */}
 {/* form starts here  */}{/* form starts here  */}
 {/* form starts here  */}
@@ -192,53 +239,6 @@ const handleSubmit = () => {
       </div>
     </div>
   </div>
-  </div>
-</section>
-
-
-
-<Footer/></div> : 
-
-
-// SECOND PART
-// SECOND 
-// SECOND PART
-// SECOND PART
-// SECOND PART
-// SECOND PART
-// SECOND PART
-// SECOND PART
-// SECOND PART
-// SECOND PART
-// SECOND PART
-
-<div className="h-screen"><NavBarTwo setUser={setUser} />
-  <section className="pt-24 pb-36 bg-white overflow-auto h-screen">
-  <div className="container px-4 mx-auto">
-    <p className="mb-6 text-sm text-indigo-600 text-center font-bold uppercase tracking-px">{user?.first_name} {user?.last_name}</p>
-    <h2 className="mb- text-6xl md:text-8xl xl:text-10xl text-center font-bold font-heading tracking-px-n leading-none">Your Skills</h2>
-
-    {/* //nav for barters// */}
-    <section className="py-4 overflow-hidden ">
-  <div className="container px-4 mx-auto">
-    <div className="relative flex justify-center">
-    <div className="relative z-10 inline-flex flex-wrap items-center -m-5">
-      <button className="pt-5 pb-10 f group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500 " onClick={()=> {
-      setIsClicked(!isClicked)}} >Add New Skill</button>
-      <Link to="/yourprofile">
-      <button className=" pt-5 ml-7 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent  bg-clip-text hover:bg-gradient-to-r from-amber-500 font-bold">Back to Profile</button></Link>
-  </div>
-    <div className="mt-10 absolute bottom-0 left-0 w-full h-0.5 bg-neutral-100"></div>
-    </div>
-  </div>
-</section>
-
-{/* barters listed */}
-    <div className="flex flex-wrap -m-1.5 mb-10">
-      <div className="w-full p-1.5">
-     
-      </div>
-    </div>
   </div>
 </section>
 
