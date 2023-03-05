@@ -96,7 +96,7 @@ const handleSubmit = () => {
   </div>
 </section>
 
-{/* barters listed */}
+
     <div className="flex flex-wrap -m-1.5 mb-10">
       <div className="w-full p-1.5">
       {userSkillCard}
@@ -105,6 +105,13 @@ const handleSubmit = () => {
   </div>
 </section>
 
+{/* form starts here  */}
+{/* form starts here  */}
+{/* form starts here  */}
+{/* form starts here  */}
+{/* form starts here  */}{/* form starts here  */}
+{/* form starts here  */}
+{/* form starts here  */}
 {/* form starts here  */}
 
 
