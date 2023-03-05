@@ -28,9 +28,11 @@ function EditProfile({user, setUser}) {
   city: city,
   state: state,
   }
+ const id = user?.id
 
- const handleEdit = (user) => {
-    fetch(`/users/${user}`, {
+
+ const handleEdit = (id) => {
+    fetch(`/users/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +40,9 @@ function EditProfile({user, setUser}) {
       body: JSON.stringify(editProfile),
     })
       .then((response) => response.json())
-      .then((json) => console.log(json))
+      .then((json) => {
+        setUser(json)
+        console.log(json)})
   };
 
   return (
@@ -60,7 +64,7 @@ function EditProfile({user, setUser}) {
                 </button></Link>
               </div>
               <div className="w-full md:w-auto p-1.5">
-                <button onClick={()=> handleEdit()}className="flex flex-wrap justify-center w-full px-4 py-2 bg-indigo-500 hover:bg-amber-600 font-medium text-sm text-white border  rounded-md shadow-button">
+                <button onClick={handleEdit}className="flex flex-wrap justify-center w-full px-4 py-2 bg-indigo-500 hover:bg-amber-600 font-medium text-sm text-white border  rounded-md shadow-button">
                   <p>Save</p>
                 </button>
               </div>
@@ -121,7 +125,7 @@ function EditProfile({user, setUser}) {
               <p className="text-sm text-slate-800 font-semibold">Age</p>
             </div>
             <div className="w-full md:flex-1 p-3">
-              <input className="w-full px-4 py-2.5 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="number" value={age} onChange={(e) => setAge(e.target.value)}/></div>
+              <input className="w-full px-4 py-2.5 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="number" value={age} onChange={(e) => setAge(e.target.valueAsNumber)}/></div>
           </div>
         </div>
       </div>

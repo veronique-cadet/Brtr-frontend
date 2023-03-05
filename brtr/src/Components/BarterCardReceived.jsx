@@ -49,7 +49,7 @@ function BarterCardReceived({user, yourBarters, barter, setYourBarters, id, user
 
   return (
   <div>
-    <div className= "mx-auto mt-5 p-10 h-full w-4/6 hover:bg-slate-200 bg-opacity-70 rounded-xl transition ease-in-out duration-200 bg-slate-100">
+    <div className= "mx-auto mt-5 p-10 h-full w-4/6 hover:bg-slate-200 bg-opacity-70 rounded-xl transition ease-in-out duration-200 bg-slate-100 hover:shadow-xl">
      
      <div className ="flex justify-center mb-5">
      <p className="text-2xl">{barter?.proposer?.first_name} is requesting&nbsp;</p>
