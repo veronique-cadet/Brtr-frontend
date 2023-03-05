@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function YourSkillsCard({userSkill, id, setUserSkills, userSkills, filteredSkills}) {
+function YourSkillsCard({userSkill, id, setUserSkills, userSkills, filteredSkills, newFetch}) {
 
 const [isClicked, setIsClicked] = useState(true)
 const [years, setYears] = useState(userSkill?.years_exp)
@@ -39,7 +39,8 @@ const [url, setUrl] = useState(userSkill?.proof_url)
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
-        setUserSkills([...filteredSkills, editUserSkill]);
+        setUserSkills([...filteredSkills, editUserSkill])
+        newFetch()
       });
     }
     

@@ -3,6 +3,7 @@ import NavBarTwo from './NavBarTwo'
 import { useLocation } from "react-router-dom";
 import Footer from './Footer';
 import Reviews from './Reviews';
+import OtherSkilledUsers from './OtherSkilledUsers';
 
 function UserProfiles({user, setUser, yourBarters, setYourBarters}) {
 
@@ -13,6 +14,7 @@ const [userSkill, setUserSkill] = useState("")
 const [proposerHours, setProposerHours] = useState("")
 const [recipientHours, setRecipientHours] = useState("")
 const [barterClicked, setBarterClicked] = useState(true)
+const [otherUsers, setOtherUsers] = useState([])
 
   const skill = useLocation();
   const { from } = skill.state?.from;
@@ -58,21 +60,44 @@ const [barterClicked, setBarterClicked] = useState(true)
 const userSkills = user?.user_skills.map((u_skill)=>{return <option key={u_skill.id} value={u_skill.id}>{u_skill.name}</option>})
 console.log(userSkills)
 
-// console.log(userProfile?.user.user_skills)
+useEffect(() => {
+  fetch("/user_skills")
+    .then((res) => res.json())
+    .then((data) => {
+      setOtherUsers(data);
+      console.log(data);
+            });
+        }, []);
 
-// const proposedUserSkills = userProfile?.user?.user_skills.map((u_skill)=>{return <option>{u_skill?.name}</option>})
-// console.log(proposedUserSkills)
+const filteredOtherUsers = otherUsers.filter((otherUser) => {
+  if ((otherUser.skill.id === userProfile.skill.id) && (otherUser.user.id !== user?.id) && (otherUser.user.id !== userProfile?.user?.id) ) {
+    return true;
+     }
+    return false;
+    });
+  
+  console.log(filteredOtherUsers)
 
+    const userCard = filteredOtherUsers.slice(0, 6)
+    .map((skilledOtherUser) => {
+      return (
+        <OtherSkilledUsers 
+        skilledOtherUser={skilledOtherUser}
+          key={skilledOtherUser.id}
+          id={skilledOtherUser.id}
+          setUserProfile={setUserProfile}
+        />
+      );
+    })
 
+    console.log(userCard)
+
+  //   const userOtherSkills = userProfile?.ski.map((ski)=>{return <h1 key={ski?.id} ski={ski} className="text-center bg-gray-100 mb-2 p-2 hover:bg-indigo-200 hover:shadow-2xl  transition duration-200">{ski}</h1>})
+
+  // console.log(userOtherSkills)
   
 
-   {/* <h1>{userProfile?.user?.first_name}</h1>
-  <h1>{userProfile?.user?.bio}</h1>
-  <h1>{userProfile?.user?.city}</h1>
-  <h1>{userProfile?.user?.state}</h1>
-  <h1>{userProfile?.user?.rating}</h1>
-  <button classNameName="flex-wrap justify-center w-20 px-4 py-2 text-sm font-medium bg-indigo-200 border rounded-md first-letter:lex text-black-500 hover:text-black-600 border-black-200 hover:border-black-300 shadow-button"><p>Make a Barter</p>
-  </button> */}
+
 
   return (
     <div className="bg-slate-100">
@@ -86,10 +111,10 @@ console.log(userSkills)
       <div className="p-3 bg-white border-t-4 border-indigo-400  rounded-3xl  hover:shadow-xl">
         <div className="overflow-hidden image">
           <img className="w-full h-96 mx-auto rounded-xl" src={userProfile?.user?.picture}/></div>
-        <h1 className="my-1 text-xl font-bold leading-8 text-gray-900">{userProfile?.user?.first_name}</h1>
-        <h3 className="leading-6 text-gray-600 font-lg text-semibold">{userProfile?.skill?.name}</h3>
-        <p className="text-sm leading-6 text-gray-500 hover:text-gray-600">{userProfile?.user?.bio}</p>
-        <ul className="px-3 py-2 mt-3 text-gray-600 bg-gray-100 divide-y rounded shadow-sm hover:text-gray-700 hover:shadow"><li className="flex items-center py-3">
+        <h1 className="my-1 text-xl font-bold leading-8 text-slate-900">{userProfile?.user?.first_name}</h1>
+        <h3 className="leading-6 text-indigo-700 font-lg font-bold text-semibold mb-2">{userProfile?.skill?.name}</h3>
+        <p className="text-medium leading-6 text-slate-500 hover:text-slate-600">{userProfile?.user?.bio}</p>
+        <ul className="px-3 py-2 mt-3 text-slate-600 bg-slate-100 divide-y rounded shadow-sm hover:text-slate-700 hover:shadow"><li className="flex items-center py-3">
           <span contenteditable="false">Rating</span>
           <span className="ml-auto"><span className="px-2 py-1 text-sm text-white bg-indigo-500 rounded">{userProfile?.user?.rating}/5</span></span>
           </li>
@@ -101,18 +126,15 @@ console.log(userSkills)
       {/* <!-- End of profile card --> */}
       <div className="my-4"></div>
       {/* <!-- Friends card --> */}
-      <div className="p-3 bg-white rounded-3xl hover:shadow">
-        <div className="flex items-center space-x-3 text-xl font-semibold leading-8 text-gray-900">
+      <div className="p-3 bg-white hover:shadow">
+        <div className="flex items-center space-x-3 text-xl font-semibold leading-8 text-slate-900">
           <span className="text-green-500">
             <svg className="h-5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
           <span>Similar Profiles</span>
         </div>
-        <div className="grid grid-cols-3">
-        
-         
-        
-          
-        </div>
+        <div class="grid grid-cols-3">
+          {userCard}
+        </div> 
       </div>
       {/* <!-- End of friends card --> */}
     </div>
@@ -121,13 +143,13 @@ console.log(userSkills)
       {/* <!-- Profile tab -->
       <!-- About Section --> */}
       <div className="p-3 bg-white rounded-3xl hover:shadow-xl">
-        <div className="flex items-center space-x-2 font-semibold leading-8 text-gray-900">
+        <div className="flex items-center space-x-2 font-bold leading-8 text-indigo-700">
           <span clas="text-green-500">
-            <svg className="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></span>
-          <span className="tracking-wide">About</span>
+            <svg className="h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></span>
+          <span className="tracking-wide ">About</span>
         </div>
-        <div className="text-gray-700">
-          <div className="grid text-sm md:grid-cols-2">
+        <div className="text-slate-700">
+          <div className="grid text-medium md:grid-cols-2">
             <div className="grid grid-cols-2">
               <div className="px-4 py-2 font-semibold">First Name</div>
               <div className="px-4 py-2">{userProfile?.user?.first_name}</div>
@@ -150,12 +172,6 @@ console.log(userSkills)
                 <a className="text-blue-800" href="mailto:jane@example.com">{userProfile?.user?.email}</a>
               </div>
             </div>
-            <div className="grid grid-cols-2">
-              <div className="px-4 py-2 font-semibold">Social Media</div>
-              <div className="px-4 py-2">
-                <a className="text-blue-800" href="mailto:jane@example.com">{userProfile?.user?.email}</a>
-              </div>
-            </div>
           </div>
         </div>
         <div className="flex justify-center mt-6 mb-6">
@@ -167,48 +183,48 @@ console.log(userSkills)
 
       <div className="my-4"></div>
 
-      {/* <!-- Experience and education --> */}
-      <div className="p-3 bg-white rounded-3xl shadow-xl hover:shadow-xl">
-
-        <div className="grid grid-cols-2">
-          <div>
-            <div className="flex items-center mb-3 space-x-2 font-semibold leading-8 text-gray-900">
-              <span clas="text-green-500">
-                <svg className="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></span>
-              <span className="tracking-wide">Experience</span>
-            </div>
-            <ul className="space-y-2 list-inside"><li>
-              <div className="text-indigo-500">Years of Experience</div>
-              <div className="text-xs text-gray-500">March 2020 - Now</div>
-              </li>
-              <li>
-                <div className="text-indigo-500">Proof of Experience</div>
-                <div className="text-xs text-gray-500">March 2020 - Now</div>
-              </li>
-              <li>
-                <div className="text-indigo-500">Images or Video</div>
-                <div className="text-xs text-gray-500">March 2020 - Now</div>
-              </li>
-             
-            </ul></div>
-          <div>
-            <div className="flex items-center mb-3 space-x-2 font-semibold leading-8 text-gray-900">
-              <span clas="text-green-500">
-                <svg className="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z"></path><path fill="#fff" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path></svg></span>
-              <span className="tracking-wide">Education</span>
-            </div>
-            <ul className="space-y-2 list-inside"><li>
-              <div className="text-indigo-500">Education</div>
-              <div className="text-xs text-gray-500">March 2020 - Now</div>
-              </li>
-              {/* <li>
-                <div className="text-indigo-500">Bachelors Degreen in LPU</div>
-                <div className="text-xs text-gray-500">March 2020 - Now</div>
-              </li> */}
-            </ul></div>
+      {/* <!-- User Skill Info --> */}
+      <div className="p-3 bg-white rounded-3xl hover:shadow-xl">
+        <div className="flex items-center space-x-2 font-bold leading-8 text-indigo-700">
+          <span clas="text-green-500">
+            <svg className="h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></span>
+          <span className="tracking-wide">Skill Information</span>
         </div>
-        {/* <!-- End of Experience and education grid --> */}
+        <div className="text-slate-700">
+          <div className="grid text-medium md:grid-cols-2">
+            <div className="grid grid-cols-2">
+              <div className="px-4 py-2 font-semibold">Years of Experience</div>
+              <div className="px-4 py-2">{userProfile?.years_exp === 1 ? userProfile?.years_exp + ' year' : userProfile?.years_exp + ' years'}</div>
+            </div>
+            <div className="grid grid-cols-2">
+              <div className="px-4 py-2 font-semibold">Professional Link</div>
+              <div className="px-4 py-2">{userProfile?.proof_url}</div>
+            </div>
+            <div className="grid grid-cols-2">
+              <div className="px-4 py-2 font-semibold">Skill Bio</div>
+              <div className="px-4 py-2">{userProfile?.proof_des}</div>
+            </div>
+          </div>
+        </div>
+        
       </div>
+        
+      {/* <!-- End --> */}
+
+{/* <!-- Other Skills --> */}
+        <div className="p-3 bg-white rounded-3xl hover:shadow-xl mt-5">
+        <div className="flex items-center space-x-2 font-bold leading-8 text-indigo-700">
+          <span clas="text-green-500">
+            <svg className="h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></span>
+          <span className="tracking-wide">Other Skills</span>
+        </div>
+        <div className="text-slate-700">
+         {/* {userOtherSkills} */}
+        </div>
+        
+      </div>
+
+
       {/* Reviews Start */}
    <Reviews />
        {/* Reviews End */}
@@ -233,10 +249,10 @@ console.log(userSkills)
       <div className="p-3 bg-white border-t-4 border-indigo-400">
         <div className="overflow-hidden image">
           <img className="w-full h-96 mx-auto rounded-xl " src={userProfile?.user?.picture}/></div>
-        <h1 className="my-1 text-xl font-bold leading-8 text-gray-900">{userProfile?.user?.first_name}</h1>
-        <h3 className="leading-6 text-gray-600 font-lg text-semibold">{userProfile?.skill?.name}</h3>
-        <p className="text-sm leading-6 text-gray-500 hover:text-gray-600">{userProfile?.user?.bio}</p>
-        <ul className="px-3 py-2 mt-3 text-gray-600 bg-gray-100 divide-y rounded shadow-xl hover:text-gray-700 hover:shadow-xl"><li className="flex items-center py-3">
+        <h1 className="my-1 text-xl font-bold leading-8 text-slate-900">{userProfile?.user?.first_name}</h1>
+        <h3 className="leading-6 text-slate-600 font-lg text-semibold">{userProfile?.skill?.name}</h3>
+        <p className="text-sm leading-6 text-slate-500 hover:text-slate-600">{userProfile?.user?.bio}</p>
+        <ul className="px-3 py-2 mt-3 text-slate-600 bg-slate-100 divide-y rounded shadow-xl hover:text-slate-700 hover:shadow-xl"><li className="flex items-center py-3">
           <span contenteditable="false">Rating</span>
           <span className="ml-auto"><span className="px-2 py-1 text-sm text-white bg-indigo-500 rounded">{userProfile?.user?.rating}/5</span></span>
           </li>
@@ -249,14 +265,14 @@ console.log(userSkills)
       <div className="my-4"></div>
       {/* <!-- Friends card --> */}
       <div className="p-3 bg-white hover:shadow">
-        <div className="flex items-center space-x-3 text-xl font-semibold leading-8 text-gray-900">
+        <div className="flex items-center space-x-3 text-xl font-semibold leading-8 text-slate-900">
           <span className="text-green-500">
             <svg className="h-5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg></span>
           <span>Similar Profiles</span>
         </div>
-        <div className="grid grid-cols-3">
-        
-        </div>
+        <div class="grid grid-cols-3">
+          {userCard}
+        </div> 
       </div>
       {/* <!-- End of friends card --> */}
     </div>
@@ -265,12 +281,12 @@ console.log(userSkills)
       {/* <!-- Profile tab -->
       <!-- About Section --> */}
       <div className="p-3 bg-white rounded-sm shadow-sm hover:shadow">
-        <div className="flex items-center space-x-2 font-semibold leading-8 text-gray-900">
+        <div className="flex items-center space-x-2 font-semibold leading-8 text-slate-900">
           <span clas="text-green-500">
             <svg className="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></span>
           <span className="tracking-wide">About</span>
         </div>
-        <div className="text-gray-700">
+        <div className="text-slate-700">
           <div className="grid text-sm md:grid-cols-2">
             <div className="grid grid-cols-2">
               <div className="px-4 py-2 font-semibold">First Name</div>
@@ -294,12 +310,6 @@ console.log(userSkills)
                 <a className="text-blue-800" href="mailto:jane@example.com">{userProfile?.user?.email}</a>
               </div>
             </div>
-            <div className="grid grid-cols-2">
-              <div className="px-4 py-2 font-semibold">Social Media</div>
-              <div className="px-4 py-2">
-                <a className="text-blue-800" href="mailto:jane@example.com">{userProfile?.user?.email}</a>
-              </div>
-            </div>
           </div>
         </div>
         <div className="flex justify-center mt-6 mb-6">
@@ -316,38 +326,38 @@ console.log(userSkills)
 
         <div className="grid grid-cols-2">
           <div>
-            <div className="flex items-center mb-3 space-x-2 font-semibold leading-8 text-gray-900">
+            <div className="flex items-center mb-3 space-x-2 font-semibold leading-8 text-slate-900">
               <span clas="text-green-500">
                 <svg className="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></span>
               <span className="tracking-wide">Experience</span>
             </div>
             <ul className="space-y-2 list-inside"><li>
               <div className="text-indigo-500">Years of Experience</div>
-              <div className="text-xs text-gray-500">March 2020 - Now</div>
+              <div className="text-xs text-slate-500">March 2020 - Now</div>
               </li>
               <li>
                 <div className="text-indigo-500">Proof of Experience</div>
-                <div className="text-xs text-gray-500">March 2020 - Now</div>
+                <div className="text-xs text-slate-500">March 2020 - Now</div>
               </li>
               <li>
                 <div className="text-indigo-500">Images or Video</div>
-                <div className="text-xs text-gray-500">March 2020 - Now</div>
+                <div className="text-xs text-slate-500">March 2020 - Now</div>
               </li>
              
             </ul></div>
           <div>
-            <div className="flex items-center mb-3 space-x-2 font-semibold leading-8 text-gray-900">
+            <div className="flex items-center mb-3 space-x-2 font-semibold leading-8 text-slate-900">
               <span clas="text-green-500">
                 <svg className="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z"></path><path fill="#fff" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path></svg></span>
               <span className="tracking-wide">Education</span>
             </div>
             <ul className="space-y-2 list-inside"><li>
               <div className="text-indigo-500">Education</div>
-              <div className="text-xs text-gray-500">March 2020 - Now</div>
+              <div className="text-xs text-slate-500">March 2020 - Now</div>
               </li>
               {/* <li>
                 <div className="text-indigo-500">Bachelors Degreen in LPU</div>
-                <div className="text-xs text-gray-500">March 2020 - Now</div>
+                <div className="text-xs text-slate-500">March 2020 - Now</div>
               </li> */}
             </ul></div>
         </div>
@@ -367,7 +377,7 @@ console.log(userSkills)
      <div className= "flex justify-center">
       <div className="mb-4">
   <label className="block mb-2 font-semibold leading-normal text-white">{userProfile?.user?.first_name}'s Skill</label>
-<select className="px-4 py-3.5 w-96 text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300">
+<select className="px-4 py-3.5 w-96 text-slate-400 font-medium placeholder-slate-400 bg-white outline-none border border-slate-300 rounded-lg focus:ring focus:ring-indigo-300">
   <option value="volvo">{userProfile?.skill?.name}</option>
 </select>
 </div>
@@ -375,7 +385,7 @@ console.log(userSkills)
   <label className="block mb-2 font-semibold leading-normal text-white">Hours</label>
   <input 
   value={recipientHours} onChange={(e) => setRecipientHours(e.target.valueAsNumber)} 
-  className="px-4 py-3.5 text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" type="number"/>
+  className="px-4 py-3.5 text-slate-400 font-medium placeholder-slate-400 bg-white outline-none border border-slate-300 rounded-lg focus:ring focus:ring-indigo-300" type="number"/>
 </div>
 </div>
 <div className= "flex justify-center">
@@ -386,7 +396,7 @@ value={userSkill} onChange={(e)=>{
   setUserSkill(e.target.value)
 console.log(e.target.value)
 }}
-className="px-4 py-3.5 w-96 text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300">
+className="px-4 py-3.5 w-96 text-slate-400 font-medium placeholder-slate-400 bg-white outline-none border border-slate-300 rounded-lg focus:ring focus:ring-indigo-300">
   {userSkills}
 </select>
 </div>
@@ -394,7 +404,7 @@ className="px-4 py-3.5 w-96 text-gray-400 font-medium placeholder-gray-400 bg-wh
   <label className="block mb-2 font-semibold leading-normal text-white">Hours</label>
   <input 
   value={proposerHours} onChange={(e) => setProposerHours(e.target.valueAsNumber)}
-  className="px-4 py-3.5 w-full text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300" type="number"/>
+  className="px-4 py-3.5 w-full text-slate-400 font-medium placeholder-slate-400 bg-white outline-none border border-slate-300 rounded-lg focus:ring focus:ring-indigo-300" type="number"/>
 </div>
 </div>
 <div className="flex justify-center mt-5">

@@ -30,6 +30,14 @@ function EditProfile({user, setUser}) {
   }
  const id = user?.id
 
+ const newUserFetch = () =>{
+  fetch('/me')
+  .then((r) => {
+      if (r.ok) {
+          r.json().then((user) => setUser(user))
+      }
+  });
+ }
 
  const handleEdit = (id) => {
     fetch(`/users/${id}`, {
@@ -42,7 +50,9 @@ function EditProfile({user, setUser}) {
       .then((response) => response.json())
       .then((json) => {
         setUser(json)
-        console.log(json)})
+        console.log(json)
+        newUserFetch()
+      })
   };
 
   return (
@@ -145,7 +155,7 @@ function EditProfile({user, setUser}) {
                 <span>&nbsp;or drag and drop</span>
                 </p>
                 <p className="text-xs text-slate-500 font-medium">PNG, JPG, GIF or up to 10MB</p>
-                <input className="absolute top-0 left-0 w-full h-full opacity-0"  value={picture} onChange={(e) => setPicture(e.target.value)}type="file"/></div>
+                <input className="absolute top-0 left-0 w-full h-full opacity-0"  value={picture} onChange={(e) => setPicture(e.target.value)} type="file"/></div>
             </div>
           </div>
         </div>
