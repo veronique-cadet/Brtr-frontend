@@ -55,7 +55,7 @@ const [barterClicked, setBarterClicked] = useState(true)
 
 
  
-const userSkills = user?.user_skills.map((u_skill)=>{return <option value={u_skill.id}>{u_skill.name}</option>})
+const userSkills = user?.user_skills.map((u_skill)=>{return <option key={u_skill.id} value={u_skill.id}>{u_skill.name}</option>})
 console.log(userSkills)
 
 // console.log(userProfile?.user.user_skills)

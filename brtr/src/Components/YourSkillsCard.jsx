@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function YourSkillsCard({userSkill, id, setUserSkills, userSkills}) {
+function YourSkillsCard({userSkill, id, setUserSkills, userSkills, filteredSkills}) {
 
 const [isClicked, setIsClicked] = useState(true)
 const [years, setYears] = useState(userSkill?.years_exp)
@@ -28,24 +28,20 @@ const [url, setUrl] = useState(userSkill?.proof_url)
     years_exp: years
     }
 
-    // handleChange = () =>{
-    //   fetch(`/barters/${id}`, {
-    //   method: "PATCH",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(editUserSkill),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log(data)
-    //     const updatedSkills = userSkills.map(userSkill =>{
-    //     if (userSkill.id === data.id) return {...userSkill, editUserSkill}
-    //     else return userSkill
-    //     })
-    //     setUserSkills(updatedSkills);
-    //   });
-    // }
+    const handleChange = () =>{
+      fetch(`/user_skills/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(editUserSkill),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        setUserSkills([...filteredSkills, editUserSkill]);
+      });
+    }
     
 
 
@@ -72,15 +68,17 @@ const [url, setUrl] = useState(userSkill?.proof_url)
      <div className="flex justify-evenly"><div className='flex '><p className='text-xl font-bold text-indigo-500'>Skill:&nbsp;</p><p className='text-xl'>{userSkill?.name}</p>
      </div>
      <div className='flex '><p className='text-xl font-bold text-indigo-500'>Years of Experience:&nbsp;</p>  
-     <input className="w-full px-1 py-1 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="text" value={years} onChange={(e) => setYears(e.target.valueAsNumber)}/></div>
-     <div className='flex'><p className='text-xl font-bold text-indigo-500'>Skill Proof:&nbsp;</p> <input className="w-full px-1 py-1 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="number" value={proof} onChange={(e) => setProof(e.target.value)}/></div></div>
-     <div className='flex-col justify-center mt-5 '><p className=' flex justify-center text-xl font-bold text-indigo-500'>Skill Description:&nbsp;</p> <textarea className="block w-full h-64 p-6 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input resize-none"  value={proof} onChange={(e) => setProof(e.target.value)}></textarea></div>
+     <input className="w-full px-1 py-1 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="number" value={years} onChange={(e) => setYears(e.target.valueAsNumber)}/></div>
+     <div className='flex'><p className='text-xl font-bold text-indigo-500'>Skill Proof:&nbsp;</p> <input className="w-full px-1 py-1 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="text" value={url} onChange={(e) => setUrl(e.target.value)}/></div></div>
+     <div className='flex-col justify-center mt-5 '><p className=' flex justify-center text-xl font-bold text-indigo-500 mb-2'>Skill Description:&nbsp;</p> <textarea className="block w-full h-64 p-6 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input resize-none"  value={proof} onChange={(e) => setProof(e.target.value)}></textarea></div>
    </div>
 
      < div className ="flex justify-center">
-     <button onClick={()=> setIsClicked(!isClicked)} className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">Update Skill</button>
-     <button onClick={()=> handleDelete(id)}className=" ml-7 inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">Delete Skill</button>
-    
+     <button onClick={()=> {
+      handleChange()
+      setIsClicked(!isClicked)}} className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">Update Skill</button>
+    <button onClick={()=> {
+      setIsClicked(!isClicked)}} className=" ml-7 inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">Cancel</button>
      </div>
   </div>}
 </div>
