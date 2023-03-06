@@ -1,7 +1,7 @@
 
 
 import dayjs from "dayjs";
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import cn from "./cn";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import NavBarTwo from "./NavBarTwo";
@@ -74,9 +74,35 @@ export default function Calendar({setUser, user}) {
 	const currentDate = dayjs();
 	const [today, setToday] = useState(currentDate);
 	const [selectDate, setSelectDate] = useState(currentDate);
+
+	const [calendars, setCalendars] = useState([])
+
+
+
+	useEffect(() => {
+		fetch("/calendars")
+		  .then((response) => response.json())
+		  .then((data) => {
+			setCalendars(data);
+			console.log(data);
+		  });
+	  }, []);
+
+
+	  const filteredCalendar = calendars.filter((calendar) => {
+		if ((user?.id === calendar?.scheduling_user?.id) || (user?.id === calendar?.recipient_user?.id)) {
+		  return true;
+		}
+		return false;
+	  });
+
+
+
+
+
 	return (
       <div>
-       <div className="h-screen w-screen">
+       <div className="h-screen w-screen mb-15">
         <NavBarTwo setUser={setUser}/>
     <p className="mb-6 pt-24 text-sm text-indigo-600 text-center font-bold uppercase tracking-px">{user?.first_name} {user?.last_name}</p>
     <h2 className="mb- text-6xl md:text-8xl xl:text-10xl text-center font-bold font-heading tracking-px-n leading-none">Your Calendar</h2>
@@ -86,9 +112,14 @@ export default function Calendar({setUser, user}) {
   <div className="container px-4 mx-auto">
     <div className="relative flex justify-center">
       <div className="relative z-10 inline-flex flex-wrap items-center -m-5">
-      <button className="pt-5 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500 " >Schedule a Bartr</button>
-      <Link to="/yourprofile">
-      <button className=" pt-5 ml-7 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500">Scheduled Barters</button></Link>
+	  <Link to="/calendar">
+      <button className=" ml-7 pt-5  pb-10 group relative flex-col items-center text-lg text-amber-500  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500">Calendar</button></Link>
+      <Link to="/calendaragreedbarters">
+      <button className=" ml-7 pt-5  pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500">Agreed Bartrs</button></Link>
+	  <Link to="/calendarscheduledbarters">
+      <button className=" pt-5 ml-7 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500">Scheduled Bartrs</button></Link>
+	  <Link to="/calendarscheduling">
+	    <button className=" ml-7 pt-5 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500 " >Schedule a Bartr</button></Link>
   </div>
       <div className="absolute mt-10 bottom-0 left-0 w-full h-0.5 bg-neutral-100"></div>
     </div>

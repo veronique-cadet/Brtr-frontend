@@ -45,13 +45,13 @@ return <BarterCardAgreed key= {barter.id} barter={barter} user={user}/> })
   <div className="container px-4 mx-auto">
     <div className="relative flex justify-center">
     <ul className="relative z-10 inline-flex flex-wrap items-center -m-5">
-      <Link to="/receivedbarters"> <li className="p-5"><a className="group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-medium bg-clip-text hover:bg-gradient-to-r from-amber-500 " href=""><span className="inline-block pb-5">Recieved Barters</span>
+      <Link to="/receivedbarters"> <li className="p-5"><a className="group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-medium bg-clip-text hover:bg-gradient-to-r from-amber-500 " href=""><span className="inline-block pb-5">Recieved Bartrs</span>
           <div className="h-0.5 bg-transparent hover:bg-gradient-to-r from-indigo-500"></div></a></li></Link>
           <Link to="/proposedbarters">
-        <li className="p-5"><a className="group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-medium bg-clip-text hover:bg-gradient-to-r from-amber-500 " href=""><span className="inline-block pb-5">Proposed Barters</span>
+        <li className="p-5"><a className="group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-medium bg-clip-text hover:bg-gradient-to-r from-amber-500 " href=""><span className="inline-block pb-5">Proposed Bartrs</span>
           <div className="h-0.5 bg-transparent hover:bg-gradient-purple-left"></div></a></li></Link>
           <Link to="/agreedbarters">
-        <li className="p-5"><a className="group relative flex-col items-center text-lg text-amber-500  hover:text-transparent font-medium bg-clip-text hover:bg-gradient-to-r from-amber-500 " href=""><span className="inline-block pb-5">Agreed Barters</span>
+        <li className="p-5"><a className="group relative flex-col items-center text-lg text-amber-500  hover:text-transparent font-medium bg-clip-text hover:bg-gradient-to-r from-amber-500 " href=""><span className="inline-block pb-5">Agreed Bartrs</span>
           <div className="h-0.5 bg-transparenhover:bg-gradient-purple-left"></div></a></li></Link>
       </ul>
       <div className="absolute bottom-0 left-0 w-full h-0.5 bg-neutral-100"></div>

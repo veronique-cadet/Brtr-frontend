@@ -15,7 +15,7 @@ function SkillUserCard({skill}) {
         <h2 className="mt-2 text-lg font-medium text-black-900">{skill.user.first_name}</h2>
         <h3 className="mb-3 text-medium font-medium text-black-400">{skill.skill.name}</h3>
         <div className="flex"> <p className="px-2 py-px mb-6 text-sm font-medium text-indigo-500 bg-indigo-300  rounded-xl shadow-lg">Rating: {skill.user.rating}/5  </p>
-        <p className="px-2 py-px mb-6 text-sm font-medium text-indigo-500 shadow-sm"> 5 Barters </p>
+        <p className="px-2 py-px mb-6 text-sm font-medium text-indigo-500 shadow-sm"> 5 Bartrs </p>
         </div>
        
         <div className="flex flex-wrap justify-between w-full -m-2">
