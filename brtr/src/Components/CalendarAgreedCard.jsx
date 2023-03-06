@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from "react-router-dom"
 
 function CalendarAgreedCard({barter, user}) {
+
+
+  
   return (
     <div>
     <div className= "mx-auto mt-5 p-10 h-full w-4/6 hover:bg-slate-200 bg-opacity-70 rounded-xl transition ease-in-out duration-200 bg-slate-100 hover:shadow-xl">

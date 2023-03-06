@@ -113,7 +113,7 @@ const filteredOtherUsers = otherUsers.filter((otherUser) => {
           <img className="w-full h-96 mx-auto rounded-xl" src={userProfile?.user?.picture}/></div>
         <h1 className="my-1 text-xl font-bold leading-8 text-slate-900">{userProfile?.user?.first_name}</h1>
         <h3 className="leading-6 text-indigo-700 font-lg font-bold text-semibold mb-2">{userProfile?.skill?.name}</h3>
-        <p className="text-medium leading-6 text-slate-500 hover:text-slate-600">{userProfile?.user?.bio}</p>
+        <p className="text-medium font-light leading-6 text-slate-500 hover:text-slate-600">{userProfile?.user?.bio}</p>
         <ul className="px-3 py-2 mt-3 text-slate-600 bg-slate-100 divide-y rounded shadow-sm hover:text-slate-700 hover:shadow"><li className="flex items-center py-3">
           <span contenteditable="false">Rating</span>
           <span className="ml-auto"><span className="px-2 py-1 text-sm text-white bg-indigo-500 rounded">{userProfile?.user?.rating}/5</span></span>
@@ -251,7 +251,7 @@ const filteredOtherUsers = otherUsers.filter((otherUser) => {
           <img className="w-full h-96 mx-auto rounded-xl" src={userProfile?.user?.picture}/></div>
         <h1 className="my-1 text-xl font-bold leading-8 text-slate-900">{userProfile?.user?.first_name}</h1>
         <h3 className="leading-6 text-indigo-700 font-lg font-bold text-semibold mb-2">{userProfile?.skill?.name}</h3>
-        <p className="text-medium leading-6 text-slate-500 hover:text-slate-600">{userProfile?.user?.bio}</p>
+        <p className="text-medium font-light leading-6 text-slate-500 hover:text-slate-600">{userProfile?.user?.bio}</p>
         <ul className="px-3 py-2 mt-3 text-slate-600 bg-slate-100 divide-y rounded shadow-sm hover:text-slate-700 hover:shadow"><li className="flex items-center py-3">
           <span contenteditable="false">Rating</span>
           <span className="ml-auto"><span className="px-2 py-1 text-sm text-white bg-indigo-500 rounded">{userProfile?.user?.rating}/5</span></span>

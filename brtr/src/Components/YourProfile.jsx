@@ -27,7 +27,7 @@ function YourProfile({user, setUser}) {
              <img className="w-full h-96 mx-auto rounded-xl" src={user?.picture}/></div>
            <h1 className="my-1 text-xl font-bold leading-8 text-gray-900">{user?.first_name}</h1>
            <h3 className="leading-6 text-gray-600 font-lg text-semibold">{}</h3>
-           <p className="text-sm leading-6 text-gray-500 hover:text-gray-600">{user?.bio}</p>
+           <p className="text-medium font-light leading-6 text-gray-500 hover:text-gray-600">{user?.bio}</p>
            <ul className="px-3 py-2 mt-3 text-gray-600 bg-gray-100 divide-y rounded shadow-sm hover:text-gray-700 hover:shadow"><li className="flex items-center py-3">
              <span >Rating</span>
              <span className="ml-auto"><span className="px-2 py-1 text-sm text-white bg-indigo-500 rounded">{user?.rating}/5</span></span>
@@ -58,13 +58,13 @@ function YourProfile({user, setUser}) {
          {/* <!-- Profile tab -->
          <!-- About Section --> */}
          <div className="p-3 bg-white rounded-3xl hover:shadow-xl">
-           <div className="flex items-center space-x-2 font-semibold leading-8 text-gray-900">
+         <div className="flex items-center space-x-2 font-bold leading-8 text-indigo-700">
              <span clas="text-green-500">
                <svg className="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></span>
              <span className="tracking-wide">About</span>
            </div>
            <div className="text-gray-700">
-             <div className="grid text-sm md:grid-cols-2">
+             <div className="grid text-medium md:grid-cols-2">
                <div className="grid grid-cols-2">
                  <div className="px-4 py-2 font-semibold">First Name</div>
                  <div className="px-4 py-2">{user?.first_name}</div>

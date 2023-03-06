@@ -117,9 +117,11 @@ export default function Calendar({setUser, user}) {
       <Link to="/calendaragreedbarters">
       <button className=" ml-7 pt-5  pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500">Agreed Bartrs</button></Link>
 	  <Link to="/calendarscheduledbarters">
-      <button className=" pt-5 ml-7 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500">Scheduled Bartrs</button></Link>
+      <button className=" pt-5 ml-7 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500">Scheduled Lessons</button></Link>
+	  <Link to="/complete">
+	    <button className=" ml-7 pt-5 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500 " >Completed Lessons</button></Link>
 	  <Link to="/calendarscheduling">
-	    <button className=" ml-7 pt-5 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500 " >Schedule a Bartr</button></Link>
+	    <button className=" ml-7 pt-5 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500 " >Schedule a Lesson</button></Link>
   </div>
       <div className="absolute mt-10 bottom-0 left-0 w-full h-0.5 bg-neutral-100"></div>
     </div>

@@ -18,6 +18,7 @@ import Calendar from './Components/Calendar';
 import CalendarAgreed from './Components/CalendarAgreed'
 import CalendarScheduled from './Components/CalendarScheduled'
 import CalendarCreate from './Components/CalendarCreate'
+import CalendarComplete from './Components/CalendarComplete';
 
 
 function App() {
@@ -57,7 +58,7 @@ function App() {
         <Route path="/calendarscheduling" element={<CalendarCreate user={user} setUser={setUser} yourBarters={yourBarters} setYourBarters={setYourBarters}/>} />
         <Route path="/calendaragreedbarters" element={<CalendarAgreed user={user} setUser={setUser} yourBarters={yourBarters} setYourBarters={setYourBarters}/>} />
         <Route path="/calendarscheduledbarters" element={<CalendarScheduled user={user} setUser={setUser}/>} />
-        
+        <Route path="/complete" element={<CalendarComplete user={user} setUser={setUser}/>} />
       </Routes>
       
     </div>

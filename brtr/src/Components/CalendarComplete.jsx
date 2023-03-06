@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react'
 import { Link } from "react-router-dom"
 import NavBarTwo from './NavBarTwo'
 import Footer from './Footer'
-import CalendarCardScheduled from './CalendarCardScheduled'
+import CalCompleteCard from './CalCompleteCard'
 
-function CalendarScheduled({setUser, user}) {
+function CalendarComplete({user, setUser}) {
 
   const [calendars, setCalendars] = useState([])
 
@@ -19,7 +19,7 @@ function CalendarScheduled({setUser, user}) {
 
 
 	  const filteredCalendar = calendars.filter((calendar) => {
-		if (((user?.id === calendar?.scheduling_user_id) || (user?.id === calendar?.recipient_user_id)) && (calendar?.complete === false)) {
+		if (((user?.id === calendar?.scheduling_user_id) || (user?.id === calendar?.recipient_user_id)) && (calendar?.complete === true)) {
 		  return true;
 		}
 		return false;
@@ -27,9 +27,7 @@ function CalendarScheduled({setUser, user}) {
 
   console.log(filteredCalendar)
     const scheduledCard = filteredCalendar.map((calendar) => {
-      return <CalendarCardScheduled key= {calendar.id} id={calendar.id} calendar={calendar} user={user} calendars={calendars} setCalendars={setCalendars}/> })
-
-
+      return <CalCompleteCard key= {calendar.id} id={calendar.id} calendar={calendar} user={user} calendars={calendars} setCalendars={setCalendars}/> })
 
   return (
     <div><NavBarTwo setUser={setUser} />
@@ -48,9 +46,9 @@ function CalendarScheduled({setUser, user}) {
      <Link to="/calendaragreedbarters">
      <button className=" ml-7 pt-5  pb-10 group relative flex-col items-center text-lg  text-indigo-600 hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500">Agreed Bartrs</button></Link>
    <Link to="/calendarscheduledbarters">
-     <button className=" pt-5 ml-7 pb-10 group relative flex-col items-center text-lg  text-amber-500  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500">Scheduled Lessons</button></Link>
+     <button className=" pt-5 ml-7 pb-10 group relative flex-col items-center text-lg   text-indigo-600   hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500">Scheduled Lessons</button></Link>
      <Link to="/complete">
-        <button className=" ml-7 pt-5 pb-10 group relative flex-col items-center text-lg  text-indigo-600 hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500 " >Completed Lessons</button></Link>
+        <button className=" ml-7 pt-5 pb-10 group relative flex-col items-center text-lg  text-amber-500 hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500 " >Completed Lessons</button></Link>
    <Link to="/calendarscheduling">
      <button className=" ml-7 pt-5 pb-10 group relative flex-col items-center text-lg  text-indigo-600 hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500 " >Schedule a Lesson</button></Link>
   
@@ -60,10 +58,11 @@ function CalendarScheduled({setUser, user}) {
  </div>
 </section>
   
-  {/* barters listed */}
       <div className="flex flex-wrap -m-1.5 mb-10">
         <div className="w-full p-1.5">
-   {scheduledCard}
+
+{scheduledCard}
+
         </div>
       </div>
     </div>
@@ -71,4 +70,4 @@ function CalendarScheduled({setUser, user}) {
   )
 }
 
-export default CalendarScheduled
+export default CalendarComplete
