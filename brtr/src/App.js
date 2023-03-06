@@ -14,6 +14,7 @@ import ListofUsers from './Components/ListofUsers';
 import YourProfile from './Components/YourProfile';
 import EditProfile from './Components/EditProfile';
 import YourSkills from './Components/YourSkills';
+import Calendar from './Components/Calendar';
 
 
 
@@ -51,6 +52,7 @@ function App() {
         <Route path="/proposedbarters" element={<BarterProposed user={user} setUser={setUser} yourBarters={yourBarters} setYourBarters={setYourBarters}/>} />
         <Route path="/editprofile" element={<EditProfile user={user} setUser={setUser}/>} />
         <Route path="/yourskills" element={<YourSkills user={user} setUser={setUser}/>} />
+        <Route path="/calendar" element={<Calendar user={user} setUser={setUser}/>} />
       </Routes>
       
     </div>

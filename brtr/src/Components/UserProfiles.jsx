@@ -370,7 +370,7 @@ const filteredOtherUsers = otherUsers.filter((otherUser) => {
     </div>
   <div className= "mt-15 ml-56 absolute z-40 w-3/5  bg-indigo-100 h-3/6 rounded-xl shadow-dashboard transition duration-500 ease-in-out font-heading bg-gradient-to-r bg-clip-border from-indigo-500 via-orange-500 to-indigo-500 animate-text hover:-translate-y-4 "> 
       <div onClick={()=> setIsClicked(!isClicked)} className="flex justify-end mt-2 mr-5"><img className="h-16 hover:animate-spin "src="./x.png"/></div>
-      <div className="text-center mt-8">
+      <div className="text-center mt-2">
       <h4 className="font-bold mb-5 flex justify-center text-3xl text-white drop-shawdow-xl">Barter Proposition for {userProfile?.user?.first_name}</h4>
       <h5 className="mb-6 text-xl font-bold leading-normal text-white font-heading"></h5>
       </div>
