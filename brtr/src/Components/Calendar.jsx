@@ -76,7 +76,7 @@ export default function Calendar({setUser, user}) {
 	const [selectDate, setSelectDate] = useState(currentDate);
 	return (
       <div>
-       <div className="h-screen w-screen mb-15">
+       <div className="h-screen w-screen">
         <NavBarTwo setUser={setUser}/>
     <p className="mb-6 pt-24 text-sm text-indigo-600 text-center font-bold uppercase tracking-px">{user?.first_name} {user?.last_name}</p>
     <h2 className="mb- text-6xl md:text-8xl xl:text-10xl text-center font-bold font-heading tracking-px-n leading-none">Your Calendar</h2>

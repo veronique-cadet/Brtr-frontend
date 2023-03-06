@@ -64,7 +64,7 @@ function Browse({user, setUser}) {
                    {filteredSearch.slice(0, 15).map((value, key) => {
                           return (
                             <a
-                              className="w-1/2 px-1 py-1 text-base font-bold text-amber-500 outline-none borderrounded-lg hover:text-indigo-600 shadow-input break-after-all"
+                              className="w-1/2 px-1 py-1 text-base font-bold text-amber-500 outline-no  rounded-lg hover:text-indigo-600 shadow-input break-after-all"
                               href={value.link}
                               target="_blank"
                               onClick={() => {
@@ -82,7 +82,8 @@ function Browse({user, setUser}) {
         
     </div>
   </div>
-  <h1 className="mt-16 text-center text-4xl font-bold  transition duration-500 ease-in-out  md:text-4xl lg:text-4xl font-heading  bg-gradient-to-r bg-clip-text text-slate-700">Here Are Some Skills You Can Learn!</h1>
+  <h1 className="mt-16 text-center text-3xl font-normal text-slate-900 transition duration-500 ease-in-out  md:text-3xl lg:text-3xl font-heading  bg-gradient-to-r bg-clip-text text-blac">Here Are Some Skills You Can Learn!</h1>
+  <div className=" mt-5 bottom-0 left-0 w-2/6 h-0.5 bg-neutral-100 mx-auto"></div>
 <SkillCaraousel skills={skills} />
 </section>
 
