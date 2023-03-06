@@ -1,9 +1,122 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from "react-router-dom"
 import NavBarTwo from './NavBarTwo'
 import Footer from './Footer'
+import DatePicker from "react-datepicker"
 
-function CalendarCreate({setUser, user}) {
+function CalendarCreate({setUser, user, yourBarters, setYourBarters,}) {
+
+  const [calendars, setCalendars] = useState([])
+
+
+  useEffect(() => {
+		fetch("/calendars")
+		  .then((response) => response.json())
+		  .then((data) => {
+			setCalendars(data);
+			console.log(data);
+		  });
+	  }, []);
+
+  const userSkills = user?.user_skills.map((u_skill)=>{return <option key={u_skill.id} value={u_skill.id}>{u_skill.name}</option>})
+console.log(userSkills)
+
+useEffect(() => {
+  fetch("/barters")
+    .then((response) => response.json())
+    .then((data) => {
+      setYourBarters(data);
+      console.log(data);
+    });
+}, []);
+
+const filteredBarters = yourBarters.filter((barter) => {
+  if ((barter.agreed === true) && 
+      ((barter.proposer_id === user?.id) || (barter.recipient_id === user?.id))) {
+    return true;
+  }
+  return false;
+});
+  
+
+
+const barterId = filteredBarters.map((b) => {
+  let otherUser;
+  if (b.recipient_id === user.id) {
+    otherUser = b.proposer.first_name;
+  } else if (b.proposer_id === user.id) {
+    otherUser = b.recipient.first_name;
+  }
+  if (otherUser) {
+    return (
+      <option key={b.id} value={b.id}>
+       You and {otherUser} - {b.proposer_skill.name} and {b.recipient_skill.name}
+      </option>
+    );
+  }
+});
+
+console.log(filteredBarters)
+
+const recipient = filteredBarters.map((u) => {
+  let otherUser;
+  let value;
+  if (u.recipient_id === user.id) {
+    otherUser = u.proposer.first_name;
+    value = u.proposer_id;
+  } else if (u.proposer_id === user.id) {
+    otherUser = u.recipient.first_name;
+    value = u.recipient_id;
+  }
+  if (otherUser) {
+    return (
+      <option key={u.id} value={value}>
+        {otherUser}
+      </option>
+    );
+  }
+});
+
+
+const [calSkill, setCalSkill] = useState("")
+const [recId, setRecId] = useState("")
+const [time, setTime] = useState("")
+const [hours, setHours] = useState("")
+const [bId, setBId] = useState("")
+const [date, setDate] = useState("");
+
+console.log(recId)
+console.log(bId)
+console.log(calSkill)
+
+const newCalendar = {
+ user_skill_id: parseInt(calSkill),
+ scheduling_user_id: user?.id,
+ recipient_user_id: parseInt(recId),
+ complete: false,
+ hours: hours,
+ barter_id: parseInt(bId)
+}
+
+const handleSubmit = () => {
+  fetch("/calendars", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newCalendar),
+  })
+    .then((response) => response.json())
+    .then(() => {
+      setCalendars([...calendars, newCalendar]);
+      console.log(newCalendar)
+    });
+};
+
+
+
+
+
   return (
     <div><NavBarTwo setUser={setUser} />
     <section className="pt-24 pb-36 bg-white overflow-auto h-screen">
@@ -52,7 +165,7 @@ function CalendarCreate({setUser, user}) {
             <div className="w-full md:w-auto p-1.5">
               
               <button 
-             
+             onClick={handleSubmit}
               className="flex flex-wrap justify-center w-full px-4 py-2 bg-amber-500 hover:bg-indigo-500 font-medium text-sm text-white border rounded-md shadow-button"><p>Schedule Brtr!</p> </button>
               
             </div>
@@ -69,8 +182,23 @@ function CalendarCreate({setUser, user}) {
           <div className="w-full md:flex-1 p-3">
             <div className="relative">
               <select 
-              
-              className=" w-full py-2.5 px-4 text-slate-900 text-base font-normal bg-white border outline-none border-slate-200 focus:border-amber-500 rounded-lg shadow-input"></select></div>
+              onChange={(e)=> setCalSkill(e.target.value)}
+              className=" w-full py-2.5 px-4 text-slate-900 text-base font-normal bg-white border outline-none border-slate-200 focus:border-amber-500 rounded-lg shadow-input">{userSkills}</select></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="py-6 border-b border-slate-100">
+      <div className="w-full md:w-9/12">
+        <div className="flex flex-wrap -m-3">
+          <div className="w-full md:w-1/3 p-3">
+            <p className="text-sm text-slate-800 font-semibold">Bartr</p>
+          </div>
+          <div className="w-full md:flex-1 p-3">
+            <div className="relative">
+              <select 
+              onChange={(e)=> setBId(e.target.value)}
+              className=" w-full py-2.5 px-4 text-slate-900 text-base font-normal bg-white border outline-none border-slate-200 focus:border-amber-500 rounded-lg shadow-input">{barterId}</select></div>
           </div>
         </div>
       </div>
@@ -84,8 +212,8 @@ function CalendarCreate({setUser, user}) {
           <div className="w-full md:flex-1 p-3">
             <div className="relative">
               <select 
-              
-              className=" w-full py-2.5 px-4 text-slate-900 text-base font-normal bg-white border outline-none border-slate-200 focus:border-amber-500 rounded-lg shadow-input"></select></div>
+              onChange={(e)=> setRecId(e.target.value)}
+              className=" w-full py-2.5 px-4 text-slate-900 text-base font-normal bg-white border outline-none border-slate-200 focus:border-amber-500 rounded-lg shadow-input">{recipient}</select></div>
           </div>
         </div>
       </div>
@@ -99,12 +227,13 @@ function CalendarCreate({setUser, user}) {
             <p className="text-sm text-slate-800 font-semibold" >Date</p>
           </div>
           <div className="w-full md:flex-1 p-3">
-            <input 
-            
-            className="w-full px-4 py-2.5 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="date"/></div>
+          <input 
+            value={date} onChange={(e)=> setDate(e.target.valueAsNumber)}
+            className="w-full px-4 py-2.5 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="date"/>
+          </div>
         </div>
       </div>
-    </div>
+    </div> 
 
     <div className="py-6 border-b border-slate-100">
       <div className="w-full md:w-9/12">
@@ -114,7 +243,7 @@ function CalendarCreate({setUser, user}) {
           </div>
           <div className="w-full md:flex-1 p-3">
             <input 
-            
+            value={time} onChange={(e)=> setTime(e.target.valueAsNumber)}
             className="w-full px-4 py-2.5 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="time"/></div>
         </div>
       </div>
@@ -128,7 +257,7 @@ function CalendarCreate({setUser, user}) {
           </div>
           <div className="w-full md:flex-1 p-3">
             <input
-            
+             value={hours} onChange={(e)=> setHours(e.target.valueAsNumber)}
             className="w-full px-4 py-2.5 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="number" /></div>
         </div>
       </div>

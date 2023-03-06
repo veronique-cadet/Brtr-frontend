@@ -54,7 +54,7 @@ function App() {
         <Route path="/editprofile" element={<EditProfile user={user} setUser={setUser}/>} />
         <Route path="/yourskills" element={<YourSkills user={user} setUser={setUser}/>} />
         <Route path="/calendar" element={<Calendar user={user} setUser={setUser}/>} />
-        <Route path="/calendarscheduling" element={<CalendarCreate user={user} setUser={setUser}/>} />
+        <Route path="/calendarscheduling" element={<CalendarCreate user={user} setUser={setUser} yourBarters={yourBarters} setYourBarters={setYourBarters}/>} />
         <Route path="/calendaragreedbarters" element={<CalendarAgreed user={user} setUser={setUser} yourBarters={yourBarters} setYourBarters={setYourBarters}/>} />
         <Route path="/calendarscheduledbarters" element={<CalendarScheduled user={user} setUser={setUser}/>} />
         

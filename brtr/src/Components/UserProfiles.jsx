@@ -378,7 +378,7 @@ const filteredOtherUsers = otherUsers.filter((otherUser) => {
       <div className="mb-4">
   <label className="block mb-2 font-semibold leading-normal text-white">{userProfile?.user?.first_name}'s Skill</label>
 <select className="px-4 py-3.5 w-96 text-slate-400 font-medium placeholder-slate-400 bg-white outline-none border border-slate-300 rounded-lg focus:ring focus:ring-indigo-300">
-  <option value="volvo">{userProfile?.skill?.name}</option>
+  <option >{userProfile?.skill?.name}</option>
 </select>
 </div>
 <div className="mb-4 ml-5">
