@@ -72,7 +72,7 @@ export default function Calendar({setUser, user}) {
 	const currentDate = dayjs();
 	const [today, setToday] = useState(currentDate);
 	const [selectDate, setSelectDate] = useState(currentDate);
-
+    const [displayCalendar, setDisplayCalendar] = useState({})
 	const [calendars, setCalendars] = useState([])
 
 
@@ -86,16 +86,22 @@ export default function Calendar({setUser, user}) {
 		  });
 	  }, []);
 
+	//   dayjs(calendar?.date).format('dddd MMMM DD, YYYY')
 
 	  const filteredCalendar = calendars.filter((calendar) => {
 		if ((user?.id === calendar?.scheduling_user?.id) || (user?.id === calendar?.recipient_user?.id)) {
 		  return true;
 		}
 		return false;
-	  });
+	  })
+
+	  
 
 
-	
+
+
+
+console.log(selectDate)	
 
 	  
 
@@ -189,7 +195,12 @@ export default function Calendar({setUser, user}) {
 												date.toDate().toDateString()
 												? "bg-indigo-500 text-white"
 												: "",
-											"h-10 w-10 rounded-full grid place-content-center hover:bg-indigo-500 hover:animate-pulse hover:text-white transition-all cursor-pointer select-none"
+											"h-10 w-10 rounded-full grid place-content-center hover:bg-indigo-500 hover:animate-pulse hover:text-white transition-all cursor-pointer select-none",
+											
+											// {filteredCalendar.map((calendar)=>{
+											// 	const cal = dayjs(calendar?.date)
+											// 	console.log(cal)
+											//   })}
 											
 									
 											
