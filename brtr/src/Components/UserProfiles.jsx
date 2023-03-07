@@ -100,7 +100,16 @@ function UserProfiles({ user, setUser, yourBarters, setYourBarters }) {
 
   //   const userOtherSkills = userProfile.ski.map((ski)=>{return <h1 key={ski?.id} ski={ski} className="text-center bg-gray-100 mb-2 p-2 hover:bg-indigo-200 hover:shadow-2xl  transition duration-200">{ski}</h1>})
 
-  // console.log(userOtherSkills)
+
+
+ const barterProposedAmount = userProfile?.proposed_barters?.length
+ const barterRecievedAmount = userProfile?.recieved_barters?.length
+
+//  const pTrue = (userProfile?.proposed_barters?.agreed === true).length
+//  const bTrue = (userProfile?.received_barters?.agreed === true).length
+ const barterAmount = barterProposedAmount + barterRecievedAmount
+
+ console.log(barterAmount)
 
   return (
     <div className="bg-slate-100">
@@ -138,7 +147,7 @@ function UserProfiles({ user, setUser, yourBarters, setYourBarters }) {
                   </li>
                   <li className="flex items-center py-3">
                     <span contenteditable="false">Bartrs</span>
-                    <span className="ml-auto">10 Bartrs</span>
+                    <span className="ml-auto">{barterAmount} Bartrs</span>
                   </li>
                 </ul>
               </div>
@@ -230,12 +239,12 @@ function UserProfiles({ user, setUser, yourBarters, setYourBarters }) {
                   </div>
                 </div>
                 <div className="flex justify-center mt-6 mb-6">
-                  <button className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-2">
+                  <button className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:scale-125">
                     Message
                   </button>
                   <button
                     onClick={() => setIsClicked(!isClicked)}
-                    className="inline-block px-6 py-3 ml-6 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-2"
+                    className="inline-block px-6 py-3 ml-6 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:scale-125"
                   >
                     Propose Bartr
                   </button>
@@ -365,7 +374,7 @@ function UserProfiles({ user, setUser, yourBarters, setYourBarters }) {
                   </li>
                   <li className="flex items-center py-3">
                     <span contenteditable="false">Bartrs</span>
-                    <span className="ml-auto">10 Bartrs</span>
+                    <span className="ml-auto">{barterAmount} Bartrs</span>
                   </li>
                 </ul>
               </div>
@@ -457,12 +466,12 @@ function UserProfiles({ user, setUser, yourBarters, setYourBarters }) {
                   </div>
                 </div>
                 <div className="flex justify-center mt-6 mb-6">
-                  <button className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-2">
+                  <button className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:scale-125">
                     Message
                   </button>
                   <button
                     onClick={() => setIsClicked(!isClicked)}
-                    className="inline-block px-6 py-3 ml-6 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-2"
+                    className="inline-block px-6 py-3 ml-6 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:scale-125"
                   >
                     Propose Bartr
                   </button>

@@ -14,6 +14,14 @@ function YourProfile({ user, setUser }) {
   });
   console.log(userSkills);
 
+
+  const barterProposedAmount = user?.proposed_barters?.length
+  const barterRecievedAmount = user?.recieved_barters?.length
+  
+  console.log(user?.proposed_barters)
+
+  const barterAmount = barterProposedAmount + barterRecievedAmount
+
   return (
     <div className="bg-slate-100">
       <NavBarTwo setUser={setUser} />
@@ -49,7 +57,7 @@ function YourProfile({ user, setUser }) {
                 </li>
                 <li className="flex items-center py-3">
                   <span>Bartrs</span>
-                  <span className="ml-auto">10 Bartrs</span>
+                  <span className="ml-auto">{barterAmount} Bartrs</span>
                 </li>
               </ul>
             </div>

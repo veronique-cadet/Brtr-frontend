@@ -1,6 +1,34 @@
-import React from "react";
+import React, {useState} from "react";
 
 function ReviewsCard({ review, reviews, user, setReviews, id }) {
+
+  const [helpful, setHelpful] = useState("")
+
+  const handleHelpful = () => {
+    const addHelpful = {
+      agreed: helpful
+    };
+
+    fetch(`/reveiws/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(addHelpful),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        const updatedHelpful = reviews.map(r =>{
+        if (r.id === data.id) return {...r, helpful: data.helpful}
+        else return r
+        })
+        setReviews(updatedHelpful);
+      });
+  };
+
+  console.log(review?.helpful)
+
   return (
     <div className="my-4 p-3 bg-slate-100 rounded-3xl hover:shadow-xl">
       <div className="flex items-center mb-4 space-x-4">
@@ -29,7 +57,11 @@ function ReviewsCard({ review, reviews, user, setReviews, id }) {
         {review?.helpful} people found this helpful
         </p>
         <div className="flex items-center mt-3 space-x-3 divide-x divide-gray-200 ">
-          <button className="bg-gradient-to-r bg-clip-border from-indigo-300 via-orange-300 to-indigo-300 animate-text border shadow-dashboard hover:bg-indigo-500  font-medium rounded-lg text-xs px-2 py-1.5 text-white hover:scale-125 ">
+          <button 
+          onClick={()=>{
+            setHelpful(review?.helpful + 1)
+            handleHelpful()}}
+          className="bg-gradient-to-r bg-clip-border from-indigo-300 via-orange-300 to-indigo-300 animate-text border shadow-dashboard hover:bg-indigo-500  font-medium rounded-lg text-xs px-2 py-1.5 text-white hover:scale-125 ">
             Helpful
           </button>
         </div>

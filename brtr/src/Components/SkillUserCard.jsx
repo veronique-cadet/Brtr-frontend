@@ -6,7 +6,16 @@ import { Link } from "react-router-dom";
 function SkillUserCard({skill}) {
 
   const[searchedUser, setSearchedUser] = useState({})
-  
+
+
+console.log(skill)
+  const barterProposedAmount = skill?.proposed_barters?.length
+  const barterRecievedAmount = skill?.recieved_barters?.length
+ 
+ //  const pTrue = (userProfile?.proposed_barters?.agreed === true).length
+ //  const bTrue = (userProfile?.received_barters?.agreed === true).length
+  const barterAmount = barterProposedAmount + barterRecievedAmount
+
   return (
     <div className="w-full p-3 md:w-1/2 xl:w-1/4">
     <div className="bg-slate-100 border rounded-md border-black-100 shadow-dashboard hover:bg-white hover:shadow-2xl shadow-xl transition duration-200">
@@ -15,7 +24,7 @@ function SkillUserCard({skill}) {
         <h2 className="mt-2 text-lg font-medium text-black-900">{skill.user.first_name}</h2>
         <h3 className="mb-3 text-medium font-medium text-black-400">{skill.skill.name}</h3>
         <div className="flex"> <p className="px-2 py-px mb-6 text-sm font-medium text-indigo-500 bg-indigo-300  rounded-xl shadow-lg">Rating: {skill.user.rating}/5  </p>
-        <p className="px-2 py-px mb-6 text-sm font-medium text-indigo-500 shadow-sm"> 5 Bartrs </p>
+        <p className="px-2 py-px mb-6 text-sm font-medium text-indigo-500 shadow-sm"> {barterAmount} Bartrs </p>
         </div>
        
         <div className="flex flex-wrap justify-between w-full -m-2">

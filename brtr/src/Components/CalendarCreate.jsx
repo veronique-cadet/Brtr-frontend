@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker"
 function CalendarCreate({setUser, user, yourBarters, setYourBarters,}) {
 
   const [calendars, setCalendars] = useState([])
-
+  const [isClicked, setIsClick] = useState(true)
 
   useEffect(() => {
 		fetch("/calendars")
@@ -165,10 +165,13 @@ const handleSubmit = () => {
           
             </div>
             <div className="w-full md:w-auto p-1.5">
-              
+            {isClicked ?
               <button 
-             onClick={handleSubmit}
-              className="flex flex-wrap justify-center w-full px-4 py-2 bg-amber-500 hover:bg-indigo-500 font-medium text-sm text-white border rounded-md shadow-button"><p>Schedule Brtr!</p> </button>
+              onClick={()=>{
+              setIsClick(!isClicked)
+              handleSubmit()}}
+              className="flex flex-wrap justify-center w-full px-4 py-2 bg-amber-500 hover:bg-indigo-500 font-medium text-sm text-white border rounded-md shadow-button"><p>Schedule Brtr!</p> </button> :  <button 
+               className="flex flex-wrap justify-center w-full px-4 py-2 bg-amber-500 hover:bg-indigo-500 font-medium text-sm text-white border rounded-md shadow-button"><p>Scheduled!</p> </button> }
               
             </div>
           </div>

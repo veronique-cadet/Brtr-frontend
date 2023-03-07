@@ -22,7 +22,7 @@ function Home() {
                   <div className="w-full md:w-auto p-2.5">
                     <div className="block">
                     <Link to="/signup">
-                      <button className="w-full px-6 py-4 font-semibold text-white transition duration-500 ease-in-out bg-indigo-500 border border-indigo-500 rounded-xl focus:ring hover:bg-amber-700 hover:-translate-y-4" type="button">Sign Up for Free!</button></Link>
+                      <button className="w-full px-6 py-4 font-semibold text-white transition duration-500 ease-in-out bg-indigo-500 border border-indigo-500 rounded-xl focus:ring hover:bg-amber-700 hover:scale-110" type="button">Sign Up for Free!</button></Link>
                     </div>
                   </div>
                   <div className="w-full md:w-auto p-2.5">
