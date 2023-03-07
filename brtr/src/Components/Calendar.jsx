@@ -1,5 +1,3 @@
-
-
 import dayjs from "dayjs";
 import React, { useState, useEffect } from "react"
 import cn from "./cn";
@@ -97,7 +95,9 @@ export default function Calendar({setUser, user}) {
 	  });
 
 
+	
 
+	  
 
 
 	return (
@@ -190,6 +190,10 @@ export default function Calendar({setUser, user}) {
 												? "bg-indigo-500 text-white"
 												: "",
 											"h-10 w-10 rounded-full grid place-content-center hover:bg-indigo-500 hover:animate-pulse hover:text-white transition-all cursor-pointer select-none"
+											
+									
+											
+											
 										)}
 										onClick={() => {
 											setSelectDate(date);
@@ -201,6 +205,7 @@ export default function Calendar({setUser, user}) {
 							);
 						}
 					)}
+				
 				</div>
 			</div>
 			<div className="h-96 w-5/6 sm:px-5">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import dayjs from "dayjs";
 
 function CalCompleteCard({ calendar, user, id, calendars, setCalendars }) {
   const [isClicked, setIsClicked] = useState(true);
@@ -16,14 +17,17 @@ function CalCompleteCard({ calendar, user, id, calendars, setCalendars }) {
       });
   }, []);
 
+  const dateFormat = dayjs(calendar?.date).format('dddd MMMM DD, YYYY')
+  const timeFormat = dayjs.unix(calendar?.time).format('h:mm A')
 
   let date = new Date()
+  
 
   const reviewee = calendar?.scheduling_user_id === user?.id
-    ? calendar?.recipient_user?.id
-    : calendar?.scheduled_user_id === user?.id
-    ? calendar?.recipient_user?.id
-    : null
+  ? calendar?.recipient_user?.id
+  : calendar?.recipient_user_id === user?.id
+  ? calendar?.scheduling_user?.id
+  : null 
 
   console.log(reviewee)
   console.log(calendar?.user_skill?.id)
@@ -68,20 +72,20 @@ function CalCompleteCard({ calendar, user, id, calendars, setCalendars }) {
               {calendar?.scheduling_user_id === user?.id
                 ? "You"
                 : calendar?.scheduling_user?.first_name}{" "}
-              scheduled a lesson with&nbsp;
+              completed a lesson with&nbsp;
             </p>
 
-            <p className="text-2xl font-bold">
+            <p className="text-2xl    font-bold">
               {calendar?.recipient_user_id === user?.id
                 ? "You"
                 : calendar?.recipient_user?.first_name}
             </p>
           </div>
-          <div className="flex justify-center mb-2">
-            <p className="text-2xl mb-2 ">{calendar?.date} hey</p>
+          <div className="flex justify-center mb-1">
+            <p className="text-2xl text-indigo-700  ">{dateFormat} </p>
           </div>
-          <p className="font-extrabold mb-5 flex justify-center text-xl text-transparent transition duration-500 ease-in-out font-heading bg-gradient-to-r bg-clip-text from-indigo-500 via-orange-500 to-indigo-500 animate-text hover:-translate-y-4">
-            {calendar?.time} hi
+          <p className="font-extrabold mb-5 flex justify-center text-2xl text-transparent transition duration-500 ease-in-out font-heading bg-gradient-to-r bg-clip-text from-indigo-500 via-orange-500 to-indigo-500 animate-text hover:scale-110">
+            {timeFormat}
           </p>
           <div className="flex justify-center ">
             <p className="text-2xl font-normal">
@@ -123,8 +127,8 @@ function CalCompleteCard({ calendar, user, id, calendars, setCalendars }) {
                   <p className="text-xl">
                     {calendar?.scheduling_user_id === user?.id
                       ? calendar?.recipient_user?.first_name
-                      : calendar?.scheduled_user_id === user?.id
-                      ? calendar?.recipient_user?.first_name
+                      : calendar?.recipient_user_id === user?.id
+                      ? calendar?.scheduling_user?.first_name
                       : null}
                   </p>
                 </p>

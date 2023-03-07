@@ -1,8 +1,14 @@
 import React, {useState} from 'react'
+import dayjs from "dayjs";
 
 function CalendarCardScheduled({calendar, user, id, calendars, setCalendars}) {
 
 console.log(calendar?.user_skill?.name)
+
+
+const dateFormat = dayjs(calendar?.date).format('dddd MMMM DD, YYYY')
+const timeFormat = dayjs.unix(calendar?.time).format('h:mm A')
+console.log(calendar?.time)
 
 const handleDelete = (id) => {
   fetch(`/calendars/${id}`, {
@@ -51,12 +57,12 @@ const[isComplete, setIsComplete] = useState(true)
      <p className="text-2xl font-bold" >{calendar?.recipient_user_id === user?.id ?  "You" : calendar?.recipient_user?.first_name}
 </p> 
      </div>
-     <div className="flex justify-center mb-2">
-     <p className="text-2xl mb-2 ">{calendar?.date} hey</p> 
+     <div className="flex justify-center mb-1">
+     <p className="text-2xl text-indigo-700 ">{dateFormat}</p> 
      </div> 
-     <p className ="font-extrabold mb-5 flex justify-center text-xl text-transparent transition duration-500 ease-in-out font-heading bg-gradient-to-r bg-clip-text from-indigo-500 via-orange-500 to-indigo-500 animate-text hover:-translate-y-4">{calendar?.time} hi</p> 
+     <p className ="font-extrabold mb-5 flex justify-center text-2xl text-transparent transition duration-500 ease-in-out font-heading bg-gradient-to-r bg-clip-text from-indigo-500 via-orange-500 to-indigo-500 animate-text hover:scale-110">{timeFormat}</p> 
      <div className ="flex justify-center ">
-     <p className="text-2xl font-normal" >{calendar?.user_skill?.name} Lesson</p> 
+     <p className="text-2xl " >{calendar?.user_skill?.name} Lesson</p> 
      </div>
      <div className ="flex justify-center mb-5">
      <p className="text-indigo-700 text-xl font-bold" >{calendar?.hours === 1 ? calendar?.hours + ' hour' : calendar?.hours+ ' hours'}</p> 

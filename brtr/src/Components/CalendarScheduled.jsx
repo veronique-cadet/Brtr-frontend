@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import NavBarTwo from './NavBarTwo'
 import Footer from './Footer'
 import CalendarCardScheduled from './CalendarCardScheduled'
+import dayjs from "dayjs";
 
 function CalendarScheduled({setUser, user}) {
 
@@ -29,6 +30,7 @@ function CalendarScheduled({setUser, user}) {
     const scheduledCard = filteredCalendar.map((calendar) => {
       return <CalendarCardScheduled key= {calendar.id} id={calendar.id} calendar={calendar} user={user} calendars={calendars} setCalendars={setCalendars}/> })
 
+    
 
 
   return (

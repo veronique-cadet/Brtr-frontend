@@ -51,7 +51,7 @@ function YourProfile({ user, setUser }) {
                   <span>Rating</span>
                   <span className="ml-auto">
                     <span className="px-2 py-1 text-sm text-white bg-indigo-500 rounded">
-                      {user?.rating}/5
+                      {user?.average_rating}/5
                     </span>
                   </span>
                 </li>
