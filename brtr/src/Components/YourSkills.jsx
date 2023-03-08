@@ -80,7 +80,7 @@ const handleSubmit = () => {
     .then(() => {
       setUserSkills([...filteredSkills, newUserSkill]);
       console.log(newUserSkill)
-      newFetch()
+      
     });
 };
 
@@ -104,7 +104,9 @@ const handleSubmit = () => {
       <button className="pt-5 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500 " onClick={()=> {
       setIsClicked(!isClicked)}} >Add New Skill</button>
       <Link to="/yourprofile">
-      <button className=" pt-5 ml-7 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500">Back to Profile</button></Link>
+      <button 
+      onClick={newFetch}
+      className=" pt-5 ml-7 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500">Back to Profile</button></Link>
   </div>
       <div className="absolute mt-10 bottom-0 left-0 w-full h-0.5 bg-neutral-100"></div>
     </div>
@@ -204,7 +206,7 @@ const handleSubmit = () => {
             </div>
             <div className="w-full md:w-auto p-1.5">
               
-              { isSaved ?  <button 
+           <button 
               onClick={()=> {
                 handleSubmit()
                 setIsSaved(!isSaved)
@@ -213,14 +215,7 @@ const handleSubmit = () => {
                 setNewUrl("")
                 setNewSkill("")
               }}
-              className="flex flex-wrap justify-center w-full px-4 py-2 bg-amber-500 hover:bg-indigo-500 font-medium text-sm text-white border rounded-md shadow-button">Add New Skill</button> :
-              <button 
-              onClick={()=> {
-    
-                setIsSaved(!isSaved)
-               
-              }}
-              className="flex flex-wrap justify-center w-full px-4 py-2 bg-amber-500 hover:bg-indigo-500 font-medium text-sm text-white border rounded-md shadow-button">Added New Skill!</button>}
+              className="flex flex-wrap justify-center w-full px-4 py-2 bg-amber-500 hover:bg-indigo-500 font-medium text-sm text-white border rounded-md shadow-button">Add New Skill</button> 
               
             </div>
           </div>
