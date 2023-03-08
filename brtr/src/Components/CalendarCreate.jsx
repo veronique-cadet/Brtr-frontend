@@ -86,6 +86,7 @@ const [hours, setHours] = useState("")
 const [bId, setBId] = useState("")
 const [date, setDate] = useState("");
 
+
 console.log(recId)
 console.log(bId)
 console.log(calSkill)
@@ -115,7 +116,14 @@ const handleSubmit = () => {
     });
 };
 
+// const [selectedDate, setSelectedDate] = useState('');
 
+// function handleDateChange(e) {
+//   const date = e.target.valueAsDate;
+//   const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+//   const formattedDate = date.toLocaleDateString('en-US', options);
+//   setSelectedDate(formattedDate);
+// }
 
 
 
