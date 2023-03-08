@@ -100,9 +100,19 @@ export default function Calendar({ setUser, user }) {
 
   console.log(selectDate);
 
+  const filteredCal = calendars.filter((calendar) => {
+    if (
+      user?.id === calendar?.scheduling_user?.id ||
+      user?.id === calendar?.recipient_user?.id
+    ) {
+      return true;
+    }
+    return false;
+  });
+
   return (
     <div>
-      <div className="h-screen w-screen mb-15">
+      <div className="h-screen w-screen mb-24">
         <NavBarTwo setUser={setUser} />
         <p className="mb-6 pt-24 text-sm text-indigo-600 text-center font-bold uppercase tracking-px">
           {user?.first_name} {user?.last_name}
@@ -199,9 +209,7 @@ export default function Calendar({ setUser, user }) {
                       <h1
                         className={cn(
                           currentMonth ? "" : "text-slate-400",
-                          today
-                            ? "transition duration-500 ease-in-out font-heading bg-gradient-to-r bg-clip-border from-indigo-500 via-orange-500 to-indigo-500 animate-text text-white"
-                            : "",
+                          today ? "bg-amber-500 text-white" : "",
                           filteredCalendar
                             .map((el) => {
                               if (
@@ -209,7 +217,7 @@ export default function Calendar({ setUser, user }) {
                                 date.toDate().toDateString()
                               ) {
                                 console.log("bg-indigo-200");
-                                return "bg-indigo-200";
+                                return "transition duration-500 ease-in-out font-heading bg-gradient-to-r bg-clip-border from-indigo-500 via-orange-500 to-indigo-500 animate-text text-white";
                               }
                               // 	return (
                               // 		el.toDate()
@@ -219,7 +227,7 @@ export default function Calendar({ setUser, user }) {
                               // : ""
                               // 	)
                             })
-                            .join(","),
+                            .join(" "),
 
                           selectDate.toDate().toDateString() ===
                             date.toDate().toDateString()
@@ -243,7 +251,7 @@ export default function Calendar({ setUser, user }) {
             <h1 className=" font-semibold">
               Schedule for {selectDate.toDate().toDateString()}
             </h1>
-            <p className="text-indigo-700">No meetings for today.</p>
+            <p className="text-indigo-700">No meetings for today."</p>
           </div>
         </div>
       </div>

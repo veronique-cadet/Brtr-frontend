@@ -98,7 +98,6 @@ function UserProfiles({ user, setUser, yourBarters, setYourBarters }) {
 
   console.log(userCard);
 
-  // const userOtherSkills = userProfile?.user?.user_skills.map((ski)=>{return <h1 key={ski?.id} ski={ski} className="text-center bg-gray-100 mb-2 p-2 hover:bg-indigo-200 hover:shadow-2xl  transition duration-200">{ski}</h1>});
 
 
 
@@ -110,7 +109,7 @@ function UserProfiles({ user, setUser, yourBarters, setYourBarters }) {
 //  const bTrue = (userProfile?.received_barters?.agreed === true).length
  const barterAmount = barterProposedAmount + barterRecievedAmount
 
-console.log(userProfile?.user)
+console.log(userProfile?.ski)
  console.log(barterAmount)
 
   return (
@@ -324,7 +323,8 @@ console.log(userProfile?.user)
                   </span>
                   <span className="tracking-wide">Other Skills</span>
                 </div>
-                <div className="text-slate-700">help</div>
+            
+                <div className="text-slate-700"></div>
 
               </div>
 

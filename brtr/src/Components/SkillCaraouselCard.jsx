@@ -9,7 +9,7 @@ function SkillCaraouselCard({skill}) {
           <div className="w-full p-2 lg:w-auto">
             <div className="items-center m-2">
               <div className="w-auto">
-                <h2 className="text-xl font-medium text-indigo-800">
+                <h2 className="text-xl font- text-indigo-800">
                   {skill?.name}
                 </h2>
               </div>

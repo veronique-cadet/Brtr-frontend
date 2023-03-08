@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import NavBarTwo from './NavBarTwo'
 import Footer from './Footer'
 import DatePicker from "react-datepicker"
+import dayjs from "dayjs";
 
 function CalendarCreate({setUser, user, yourBarters, setYourBarters,}) {
 
@@ -95,6 +96,7 @@ const newCalendar = {
  recipient_user_id: parseInt(recId),
  complete: false,
  hours: hours,
+ date: date,
  barter_id: parseInt(bId)
 }
 
@@ -157,11 +159,9 @@ const handleSubmit = () => {
         <div className="w-full md:w-auto p-2">
           <div className="flex flex-wrap justify-between -m-1.5">
             <div className="w-full md:w-auto p-1.5">
-            
-              <button 
-               className="flex flex-wrap justify-center w-full px-4 py-2 font-bold text-sm text-slate-500 hover:bg-indigo-500 hover:text-white  bg-white rounded-md shadow-button">
-                <p>Cancel</p>
-              </button>
+            <Link to="/calendar">
+              <button className="flex flex-wrap justify-center w-full px-4 py-2 font-bold text-sm text-slate-500 hover:bg-indigo-500 hover:text-white  bg-white rounded-md shadow-button">Cancel</button>
+              </Link>
           
             </div>
             <div className="w-full md:w-auto p-1.5">
@@ -233,7 +233,7 @@ const handleSubmit = () => {
           </div>
           <div className="w-full md:flex-1 p-3">
           <input 
-            value={date} onChange={(e)=> setDate(e.target.valueAsNumber)}
+            value={date} onClick={(e)=> setDate(e.target.valueAsDate)}
             className="w-full px-4 py-2.5 text-base text-slate-900 font-normal outline-none focus:border-amber-500 border border-slate-200 rounded-lg shadow-input" type="date"/>
           </div>
         </div>

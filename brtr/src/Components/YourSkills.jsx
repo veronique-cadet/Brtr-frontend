@@ -15,13 +15,14 @@ const [newSkill, setNewSkill] = useState("")
 const [skills, setSkills] = useState([])
 const [isClicked, setIsClicked] = useState(true)
 const [isSaved, setIsSaved] = useState(true)
-
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
   fetch("/user_skills")
     .then((response) => response.json())
     .then((data) => {
       setUserSkills(data);
+      setIsLoading(false)
       console.log(data);
     });
 }, []);
@@ -79,6 +80,7 @@ const handleSubmit = () => {
     .then(() => {
       setUserSkills([...filteredSkills, newUserSkill]);
       console.log(newUserSkill)
+      newFetch()
     });
 };
 
@@ -108,13 +110,21 @@ const handleSubmit = () => {
     </div>
   </div>
 </section>
-
-
-    <div className="flex flex-wrap -m-1.5 mb-10">
+{isLoading ? (
+           
+      <div className="flex justify-center">
+      <img className="mt-10" src="./giphy.gif" />
+      </div>
+    
+            ) : (
+             <div className="flex flex-wrap -m-1.5 mb-10">
       <div className="w-full p-1.5">
       {userSkillCard}
       </div>
     </div>
+            )}
+
+    
   </div>
 </section>
 
@@ -151,7 +161,8 @@ const handleSubmit = () => {
       newFetch()
       } } >Back to Your Skills</button></Link>
       <Link to="/yourprofile">
-      <button className=" pt-5 ml-7 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent  bg-clip-text hover:bg-gradient-to-r from-amber-500 font-bold">Back to Profile</button></Link>
+      <button onClick={newFetch()}
+      className=" pt-5 ml-7 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent  bg-clip-text hover:bg-gradient-to-r from-amber-500 font-bold">Back to Profile</button></Link>
   </div>
     <div className="mt-10 absolute bottom-0 left-0 w-full h-0.5 bg-neutral-100"></div>
     </div>
@@ -193,7 +204,7 @@ const handleSubmit = () => {
             </div>
             <div className="w-full md:w-auto p-1.5">
               
-              <button 
+              { isSaved ?  <button 
               onClick={()=> {
                 handleSubmit()
                 setIsSaved(!isSaved)
@@ -202,7 +213,14 @@ const handleSubmit = () => {
                 setNewUrl("")
                 setNewSkill("")
               }}
-              className="flex flex-wrap justify-center w-full px-4 py-2 bg-amber-500 hover:bg-indigo-500 font-medium text-sm text-white border rounded-md shadow-button"><p>Add New Skill</p> </button>
+              className="flex flex-wrap justify-center w-full px-4 py-2 bg-amber-500 hover:bg-indigo-500 font-medium text-sm text-white border rounded-md shadow-button">Add New Skill</button> :
+              <button 
+              onClick={()=> {
+    
+                setIsSaved(!isSaved)
+               
+              }}
+              className="flex flex-wrap justify-center w-full px-4 py-2 bg-amber-500 hover:bg-indigo-500 font-medium text-sm text-white border rounded-md shadow-button">Added New Skill!</button>}
               
             </div>
           </div>
