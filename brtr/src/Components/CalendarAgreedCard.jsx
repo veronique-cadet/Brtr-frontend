@@ -26,7 +26,8 @@ function CalendarAgreedCard({barter, user}) {
      </div> 
      < div className ="flex justify-center">
      <button className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">Message {barter?.recipient_id === user?.id ? barter?.proposer?.first_name : barter?.recipient?.first_name}</button>
-     <Link to="/calendarscheduling"><button className=" ml-7 inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">Schedule Your Bartr!</button></Link>
+     <Link to="/calendarscheduling"><button className=" ml-7 inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">Schedule Your Bartr!</button></Link> 
+      
      </div>
     </div>
   </div>

@@ -110,6 +110,18 @@ export default function Calendar({ setUser, user }) {
     return false;
   });
 
+  const filteredEx = calendars
+  .filter((calendar) => {
+    if (
+      user?.id === calendar?.scheduling_user?.id ||
+      user?.id === calendar?.recipient_user?.id
+    ) {
+      return true;
+    }
+    return false;
+  })
+  
+
   return (
     <div>
       <div className="h-screen w-screen mb-24">
