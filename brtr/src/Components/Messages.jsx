@@ -28,8 +28,8 @@ function Messages({ setUser }) {
     if (data.type === "welcome") return;
     if (data.type === "confirm_subscription") return;
 
-    let m = data.post;
-    setMessages([...messages, m])
+    const message = data.message;
+    setMessages([...messages, message])
   };
 
 
@@ -67,6 +67,7 @@ const [message, setMessage] = useState("")
       .then(() => {
         setMessages([...messages, newMessage]) ;
         console.log(newMessage)
+       
       });
   };
 

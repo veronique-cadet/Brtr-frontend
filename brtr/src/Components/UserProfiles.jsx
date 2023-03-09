@@ -98,19 +98,15 @@ function UserProfiles({ user, setUser, yourBarters, setYourBarters }) {
 
   console.log(userCard);
 
+  const barterProposedAmount = userProfile?.proposed_barters?.length;
+  const barterRecievedAmount = userProfile?.recieved_barters?.length;
 
+  //  const pTrue = (userProfile?.proposed_barters?.agreed === true).length
+  //  const bTrue = (userProfile?.received_barters?.agreed === true).length
+  const barterAmount = barterProposedAmount + barterRecievedAmount;
 
-
-
- const barterProposedAmount = userProfile?.proposed_barters?.length
- const barterRecievedAmount = userProfile?.recieved_barters?.length
-
-//  const pTrue = (userProfile?.proposed_barters?.agreed === true).length
-//  const bTrue = (userProfile?.received_barters?.agreed === true).length
- const barterAmount = barterProposedAmount + barterRecievedAmount
-
-console.log(userProfile?.ski)
- console.log(barterAmount)
+  console.log(userProfile?.ski);
+  console.log(barterAmount);
 
   return (
     <div className="bg-slate-100">
@@ -259,8 +255,7 @@ console.log(userProfile?.ski)
               <div className="p-3 bg-white rounded-3xl hover:shadow-xl">
                 <div className="flex items-center space-x-2 font-bold leading-8 text-indigo-700">
                   <span clas="tex-indigo-500">
-                   
-                    <img  className="h-5" src="./skills.png"/>
+                    <img className="h-5" src="./skills.png" />
                   </span>
                   <span className="tracking-wide">Skill Information</span>
                 </div>
@@ -282,18 +277,18 @@ console.log(userProfile?.ski)
                       </div>
                       <div className="px-4 py-2">{userProfile?.proof_url}</div>
                     </div>
-                    <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Skill Bio</div>
-                      <div className="px-4 py-2">{userProfile?.proof_des}</div>
-                    </div>
+                    
                   </div>
+                  <div className="">
+                      <div className="px-4 pt-2  font-semibold">Skill Bio</div>
+                      <div className="pl-4 pr-12 pb-2 font-light">{userProfile?.proof_des}</div>
+                    </div>
                 </div>
               </div>
 
               {/* <!-- End --> */}
 
               {/* <!-- Other Skills --> */}
-              
 
               {/* Reviews Start */}
               <Reviews userProfile={userProfile} />
@@ -455,7 +450,7 @@ console.log(userProfile?.ski)
               <div className="p-3 bg-white rounded-3xl hover:shadow-xl">
                 <div className="flex items-center space-x-2 font-bold leading-8 text-indigo-700">
                   <span clas="text-green-500">
-                  <img  className="h-5" src="./skills.png"/>
+                    <img className="h-5" src="./skills.png" />
                   </span>
                   <span className="tracking-wide">Skill Information</span>
                 </div>
@@ -477,21 +472,20 @@ console.log(userProfile?.ski)
                       </div>
                       <div className="px-4 py-2">{userProfile?.proof_url}</div>
                     </div>
-                    <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Skill Bio</div>
-                      <div className="px-4 py-2">{userProfile?.proof_des}</div>
-                    </div>
                   </div>
+                  <div className="">
+                      <div className="px-4 pt-2  font-semibold">Skill Bio</div>
+                      <div className="pl-4 pr-12 pb-2 font-light">{userProfile?.proof_des}</div>
+                    </div>
                 </div>
               </div>
 
               {/* <!-- End --> */}
 
               {/* <!-- Other Skills --> */}
-             
 
               {/* Reviews Start */}
-              <Reviews userProfile={userProfile}/>
+              <Reviews userProfile={userProfile} />
               {/* Reviews End */}
               {/* <!-- End of profile tab --> */}
             </div>
