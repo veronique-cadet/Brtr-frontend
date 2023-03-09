@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes, useResolvedPath } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Home from './Components/Home';
 import Browse from './Components/Browse';
@@ -43,7 +43,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/browse" element={<Browse user={user} setUser={setUser} />} />
-        <Route path="/messages" element={<Messages setUser={setUser}/>} />
+        <Route path="/messages" element={<Messages setUser={setUser} user={user}/>} />
         <Route path="/login" element={<LogIn user={user} setUser={setUser}/>} />
         <Route path="/signup" element={<SignUp user={user} setUser={setUser} />} />
         <Route path="/receivedbarters" element={<BarterReceived user={user} setUser={setUser} yourBarters={yourBarters} setYourBarters={setYourBarters}/>} />
