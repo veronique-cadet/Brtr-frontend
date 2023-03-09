@@ -114,9 +114,10 @@ const handleSubmit = () => {
 </section>
 {isLoading ? (
            
-      <div className="flex justify-center">
-      <img className="mt-10" src="./giphy.gif" />
-      </div>
+           <div className="flex-col justify-center">
+           <img className="mt-10 mx-auto" src="./loading-buffering.gif" />
+           <img className="mt-10 mx-auto" src="./giphy.gif" />
+         </div>
     
             ) : (
              <div className="flex flex-wrap -m-1.5 mb-10">

@@ -69,8 +69,9 @@ function ListofUsers({ setUser, user }) {
         <section className="py-4 ">
           <div className="container mx-auto">
             {isLoading ? (
-              <div className="flex justify-center ">
-                <img className="mt-10" src="./giphy.gif" />
+              <div className="flex-col justify-center">
+                <img className="mt-10 mx-auto" src="./loading-buffering.gif" />
+                <img className="mt-10 mx-auto" src="./giphy.gif" />
               </div>
             ) : (
               <div className="flex flex-wrap -m-3 pt-4 shadow-3xl">
