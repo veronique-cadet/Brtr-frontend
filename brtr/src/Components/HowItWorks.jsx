@@ -6,10 +6,10 @@ function HowItWorks() {
     <div className="container px-4 mx-auto">
       <div className="mb-20 flex flex-wrap items-end -m-8">
         <div className="w-full md:w-1/2 p-8">
-          <h2 className="text-6xl md:text-7xl font-bold font-heading tracking-px-n leading-tight md:max-w-xl" contenteditable="false">Trade Talents, Expand Expertise </h2>
+          <h2 className="text-6xl md:text-7xl font-bold font-heading tracking-px-n leading-tight md:max-w-xl hover:scale-150" >Trade Talents, Expand Expertise </h2>
         </div>
         <div className="w-full md:w-1/2 p-8">
-          <p className="text-lg text-gray-900 font-medium leading-relaxed md:max-w-lg">Unlock Your Potential - Exchange Skills and Watch Your Capabilities Grow! Learn More, Spend Less - Barter Your Skills and Save!"</p>
+          <p className="text-lg text-gray-900 font-medium leading-relaxed md:max-w-lg">Revolutionize Your Capabilities - Share Your Skills and Unlock Your Potential! Maximize Your Resources, Minimize Your Expenses - Trade Talents and Thrive!</p>
         </div>
       </div>
       <div className="flex flex-wrap -m-3">

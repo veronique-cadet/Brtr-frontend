@@ -157,7 +157,7 @@ console.log(userProfile?.ski)
               {/* <!-- Friends card --> */}
               <div className="p-3 bg-white hover:shadow rounded-3xl">
                 <div className="flex items-center space-x-3 text-xl font-semibold leading-8 text-slate-900">
-                  <span className="text-green-500">
+                  <span className="text-indigo-500">
                     <svg
                       className="h-5 fill-current"
                       xmlns="http://www.w3.org/2000/svg"
@@ -258,20 +258,9 @@ console.log(userProfile?.ski)
               {/* <!-- User Skill Info --> */}
               <div className="p-3 bg-white rounded-3xl hover:shadow-xl">
                 <div className="flex items-center space-x-2 font-bold leading-8 text-indigo-700">
-                  <span clas="text-green-500">
-                    <svg
-                      className="h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      ></path>
-                    </svg>
+                  <span clas="tex-indigo-500">
+                   
+                    <img  className="h-5" src="./skills.png"/>
                   </span>
                   <span className="tracking-wide">Skill Information</span>
                 </div>
@@ -304,29 +293,7 @@ console.log(userProfile?.ski)
               {/* <!-- End --> */}
 
               {/* <!-- Other Skills --> */}
-              <div className="p-3 bg-white rounded-3xl hover:shadow-xl mt-5">
-                <div className="flex items-center space-x-2 font-bold leading-8 text-indigo-700">
-                  <span clas="text-green-500">
-                    <svg
-                      className="h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span className="tracking-wide">Other Skills</span>
-                </div>
-            
-                <div className="text-slate-700"></div>
-
-              </div>
+              
 
               {/* Reviews Start */}
               <Reviews userProfile={userProfile} />
@@ -488,19 +455,7 @@ console.log(userProfile?.ski)
               <div className="p-3 bg-white rounded-3xl hover:shadow-xl">
                 <div className="flex items-center space-x-2 font-bold leading-8 text-indigo-700">
                   <span clas="text-green-500">
-                    <svg
-                      className="h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      ></path>
-                    </svg>
+                  <img  className="h-5" src="./skills.png"/>
                   </span>
                   <span className="tracking-wide">Skill Information</span>
                 </div>
@@ -533,27 +488,7 @@ console.log(userProfile?.ski)
               {/* <!-- End --> */}
 
               {/* <!-- Other Skills --> */}
-              <div className="p-3 bg-white rounded-3xl hover:shadow-xl mt-5">
-                <div className="flex items-center space-x-2 font-bold leading-8 text-indigo-700">
-                  <span clas="text-green-500">
-                    <svg
-                      className="h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span className="tracking-wide">Other Skills</span>
-                </div>
-                <div className="text-slate-700">{/* {userOtherSkills} */}</div>
-              </div>
+             
 
               {/* Reviews Start */}
               <Reviews userProfile={userProfile}/>

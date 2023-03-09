@@ -102,18 +102,8 @@ const handleSignUp =(e)=>{
               </div>
               <button onClick={handleSignUp} className="w-full py-4 mb-6 font-semibold text-white transition duration-200 ease-in-out bg-indigo-600 border border-indigo-700 px-9 rounded-xl focus:ring focus:ring-indigo-300 hover:bg-indigo-700" type="button">Sign Up!</button>
               <div className="flex flex-wrap justify-center -m-2.5">
-                <div className="w-full p-2.5">
-                  <button className="flex items-center justify-center w-full p-4 transition duration-200 ease-in-out bg-white border rounded-lg hover:bg-gray-50">
-                    <img className="mr-3" src="flaro-assets/logos/brands/google.svg" alt=""/>
-                      <span className="font-semibold leading-normal">Sign in with Google</span>
-                  </button>
-                </div>
-                <div className="w-full p-2.5">
-                  <button className="flex items-center justify-center w-full p-4 transition duration-200 ease-in-out bg-white border rounded-lg hover:bg-gray-50">
-                    <img className="mr-3" src="flaro-assets/logos/brands/fb.svg" alt=""/><span className="font-semibold leading-normal">Sign in with Facebook</span>
-                  </button>
-      
-                </div>
+              
+               
               </div>
             </form>
           </div>
@@ -122,10 +112,10 @@ const handleSignUp =(e)=>{
     </div>
   </div>
   <div className="w-full h-screen p-8 md:w-1/2">
-    <div className="flex flex-col justify-center h-screen bg-indigo-600">
+    <div className="flex flex-col justify-center h-screen bg-gradient-to-r bg-clip-border from-indigo-500 via-orange-200 to-indigo-200">
       <div className="h-screen p-16 text-center">
-        <img className="mx-auto transition duration-1000 ease-in-out transform hover:scale-105" src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?crop=entropy&amp;cs=tinysrgb&amp;fm=jpg&amp;ixid=MnwzMzIzMzB8MHwxfHNlYXJjaHwxMXx8cGVvcGxlJTIwb24lMjBjb21wdXRlcnxlbnwwfHx8fDE2NzcyMDI4Njg&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1920" alt=""/><h2 className="mb-5 text-5xl font-semibold leading-tight text-white tracking-px-n" contenteditable="false"></h2>
-        <p className="mx-auto mb-24 text-lg font-medium leading-normal text-white text-opacity-80 md:max-w-md" contenteditable="false"></p>
+        <img className="mx-auto transition duration-1000 ease-in-out transform hover:scale-105" src="" alt=""/><h2 className="mb-5 text-5xl font-semibold leading-tight text-white tracking-px-n" ></h2>
+        <p className="mx-auto mb-24 text-lg font-medium leading-normal text-white text-opacity-80 md:max-w-md" ></p>
         <div className="flex flex-wrap justify-center items-center -m-1.5">
           <div className="w-auto p-1.5"></div>
           <div className="w-auto p-1.5"></div>
