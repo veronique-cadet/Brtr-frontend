@@ -100,7 +100,7 @@ export default function Calendar({ setUser, user }) {
 
   console.log(selectDate);
 
-  const filteredCal = calendars.filter((calendar) => {
+  const filteredEx = calendars.filter((calendar) => {
     if (
       user?.id === calendar?.scheduling_user?.id ||
       user?.id === calendar?.recipient_user?.id
@@ -110,18 +110,66 @@ export default function Calendar({ setUser, user }) {
     return false;
   });
 
-  const filteredEx = calendars
-  .filter((calendar) => {
-    if (
-      user?.id === calendar?.scheduling_user?.id ||
-      user?.id === calendar?.recipient_user?.id
-    ) {
-      return true;
-    }
-    return false;
-  })
-  
+  const filteredCal = filteredEx.filter((cal) => {
+    console.log(cal);
+    console.log(dayjs(cal.date));
+    console.log(selectDate);
 
+    if (dayjs(cal.date).isSame(selectDate, "day")) {
+      return cal;
+    }
+  });
+
+  const calendarShow =
+    filteredCal.length > 0 ? (
+      filteredCal.map((cal) => {
+        console.log("here", cal);
+        return (
+          <div className="mt-3 flex justify-center bg-slate-100 px-2 py-1  hover:bg-slate-200 bg-opacity-70 rounded-xl transition ease-in-out duration-200  hover:shadow-xl">
+            <div className="flex-col">
+              <h1 className="text-indigo-700 font-bold ml-1">
+                {user?.id === cal.scheduling_user_id
+                  ? cal.recipient_user.first_name
+                  : cal.scheduling_user.first_name}
+              </h1>
+              <img
+                className="h-15 w-15 rounded-full"
+                src={
+                  user?.id === cal.scheduling_user_id
+                    ? cal.recipient_user.picture
+                    : cal.scheduling_user.picture
+                }
+              />
+            </div>
+            <div className="flex-col my-auto">
+              <h1 className=" font-bold  text-center">
+                {dayjs.unix(cal?.time).format("h:mm A")}
+              </h1>
+              <h1 className="text-amber-700 font-normal text-center">
+                {cal?.user_skill.name}
+              </h1>
+            </div>
+          </div>
+        );
+      })
+    ) : (
+      <p className="text-indigo-700">No Lessons today!</p>
+    );
+
+  // const calendarShow = filteredEx.filter((cal) => {
+  //   console.log(cal)
+  //   console.log(dayjs(cal.date))
+  //   console.log(selectDate)
+
+  //   if (dayjs(cal.date) === selectDate) {
+  //     return cal
+  //   }
+  // }).map((cal) => {
+  //   console.log("here", cal)
+  //   return <h1>{cal.scheduling_user.first_name}</h1>
+
+  // });
+  console.log(calendarShow);
   return (
     <div>
       <div className="h-screen w-screen mb-24">
@@ -263,7 +311,7 @@ export default function Calendar({ setUser, user }) {
             <h1 className=" font-semibold">
               Schedule for {selectDate.toDate().toDateString()}
             </h1>
-            <p className="text-indigo-700">No meetings for today."</p>
+            {calendarShow}
           </div>
         </div>
       </div>
