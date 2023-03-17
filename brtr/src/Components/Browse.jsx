@@ -36,10 +36,11 @@ function Browse({ user, setUser }) {
 
   return (
     <div className="bg-slate-100">
+      <NavBarTwo setUser={setUser} />
       <section className="h-screen relative bg-transparent mb-20">
-        <NavBarTwo setUser={setUser} />
+        
 
-        <div className="container px-4 mx-auto mt-24">
+        <div className="container px-4 mx-auto mt-24 ">
           <p className="mb-6 text-sm text-indigo-600 text-center font-bold uppercase tracking-px">
             {" "}
             Search For Skilled Professionals to Bartr With

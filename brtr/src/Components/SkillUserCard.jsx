@@ -29,9 +29,11 @@ console.log(skill)
        
         <div className="flex flex-wrap justify-between w-full -m-2">
           <div className="w-full p-2 md:w-1/2">
+          {/* <Link to="/messages" state={{ from: skill }}> */}
             <button className="flex-wrap justify-center w-full px-4 py-2 text-sm font-medium bg-indigo-300 border rounded-md first-letter:lex text-black-500 hover:text-black-600 border-black-200 hover:border-black-300 shadow-button hover:bg-amber-500">
               <p>Message</p>
             </button>
+            {/* </Link> */}
           </div>
           <div className="w-full p-2 md:w-1/2">
           <Link to="/userprofile" state={{ from: skill }}>

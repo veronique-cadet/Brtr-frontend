@@ -104,7 +104,7 @@ const handleSubmit = () => {
       <button className="pt-5 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500 " onClick={()=> {
       setIsClicked(!isClicked)}} >Add New Skill</button>
       <Link to="/yourprofile">
-      <button 
+      <button cd 
       className=" pt-5 ml-7 pb-10 group relative flex-col items-center text-lg text-indigo-600  hover:text-transparent font-bold bg-clip-text hover:bg-gradient-to-r from-amber-500">Back to Profile</button></Link>
   </div>
       <div className="absolute mt-10 bottom-0 left-0 w-full h-0.5 bg-neutral-100"></div>

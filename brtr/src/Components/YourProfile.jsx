@@ -63,7 +63,7 @@ function YourProfile({ user, setUser }) {
             {/* <!-- End of profile card --> */}
             <div className="my-4"></div>
             {/* <!-- Friends card --> */}
-            <div className="p-3 bg-white rounded-3xl hover:shadow">
+            <div className="p-3 bg-white rounded-3xl hover:shadow-xl">
               <div className="flex justify-center items-center space-x-3 text-xl font-semibold leading-8 text-gray-900">
                 <span className="text-green-500">
                   <img className="h-5" src="./skills2.png" />

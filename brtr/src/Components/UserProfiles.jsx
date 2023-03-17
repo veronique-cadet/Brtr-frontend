@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import Footer from "./Footer";
 import Reviews from "./Reviews";
 import OtherSkilledUsers from "./OtherSkilledUsers";
+import { Link } from "react-router-dom";
 
 function UserProfiles({ user, setUser, yourBarters, setYourBarters }) {
   const [userProfile, setUserProfile] = useState({});
@@ -236,9 +237,11 @@ function UserProfiles({ user, setUser, yourBarters, setYourBarters }) {
                   </div>
                 </div>
                 <div className="flex justify-center mt-6 mb-6">
+                {/* <Link to="/messages" state={{ from: skill }}> */}
                   <button className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:scale-125">
                     Message
                   </button>
+                  {/* </Link> */}
                   <button
                     onClick={() => setIsClicked(!isClicked)}
                     className="inline-block px-6 py-3 ml-6 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:scale-125"
