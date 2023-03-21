@@ -70,6 +70,7 @@ function Messages({ setUser, user }) {
     message: message,
     messanger_id: user?.id,
     messangee_id: 2,
+    chat_id: 1
   };
 
   const handleSubmit = () => {
@@ -98,6 +99,7 @@ function Messages({ setUser, user }) {
       });
   }, []);
 
+
   const filteredChat = chats.filter((chat) => {
     if (user.id === chat.chatee_id || user.id === chat.chater_id) {
       return true;
@@ -105,66 +107,69 @@ function Messages({ setUser, user }) {
     return false;
   });
 
+
+  const showMessages = messages.map((m) => (
+    <div className="max-h-96 " key={m?.id}>
+      <div className="flex mb-7">
+        <img className="h-13 w-13 rounded-full" src={m?.messanger?.picture} />
+        <div>
+          <div className="flex items-center ">
+            <p className="text-indigo-700 font-bold text-xl ml-5">
+              {m?.messanger?.first_name}
+            </p>
+            <p className=" text-sm ml-2 text-slate-700">
+              {dayjs(m?.created_at).format("MMM-DD h:mm A")}
+            </p>
+          </div>
+          <p className="ml-5">{m?.message}</p>
+        </div>
+      </div>
+    </div>
+  ));
+
   const chatList = filteredChat.map((chat) => {
-    return <ChatCard chat={chat} key={chat.id} id={chat.id} />;
+    return <ChatCard chat={chat} key={chat.id} id={chat.id} messages={messages} setMessages={setMessages}  showMessages={showMessages}/>;
   });
 
   return (
     <div className="h-screen ">
       <NavBarTwo setUser={setUser} />
-      <section className="pt-1 pb-10 h-screen container p-5 mx-auto my-10 ">
+      <section className="pt-1 pb-10 h-screen container p-5 mx-auto mb-10 ">
         {/* <div className="container px-4 mx-auto">
           <p className="mb-6 text-sm text-indigo-600 text-center font-bold uppercase tracking-px">
             {user?.first_name} {user?.last_name}
           </p>
         </div>  */}
 
-        <div className="flex mt-5  w-full h-full  border-2 border-slate-200 rounded-tl-3xl rounded-tr-3xl">
-          <div className="bg-white w-2/6  border-r-2 border-slate-200 rounded-tl-3xl mt-5">
-            <div className=" border-b-2  h-15 w-full border-slate-200  ">
-              <h1 className="  text-2xl text-center font-light text-indigo-700 w-full ">
+        <div className="flex mt-5  w-full h-full  border-2 border-slate-200 ">
+          <div className="bg-white w-2/6  border-r-2 border-slate-200 rounded-tl-3xl pt-5 ">
+            <div className=" flex  justify-center items-center border-b-2  h-15 w-full border-slate-200 bg-slat pb-5">
+              <h1 className="  text-2xl font-light text-slate-700  ">
                 Messages
               </h1>
+              <img className=" h-12 w-12 " src="./messages.png" />
             </div>
             {chatList}
           </div>
           <div className="bg-white  pb-5 w-full   rounded-tr-3xl mt-5 ">
             <div className="border-b-2  h-15 w-full border-slate-200 rounded-tr-3xl ">
-              <h1 className="text-center text-indigo-700 font-bold">
-                Messages
+              <h1 className="text-2xl font-light text-slate-700 text-center">
+                Message
               </h1>
-              <p className="text-center text-indigo-700">Guid: {guid}</p>
+
+              {/* <p className="text-center text-indigo-700">Guid: {guid}</p> */}
             </div>
             <div className=" py-10 px-64  h-5/6 overflow-scroll">
-              {messages.map((m) => (
-                <div className="max-h-96 " key={m?.id}>
-                  <div className="flex mb-7">
-                    <img
-                      className="h-13 w-13 rounded-full"
-                      src={m?.messanger?.picture}
-                    />
-                    <div>
-                      <div className="flex items-center ">
-                        <p className="text-indigo-700 font-bold text-xl ml-5">
-                          {m?.messanger?.first_name}
-                        </p>
-                        <p className=" text-sm ml-2 text-slate-700">
-                          {dayjs(m?.created_at).format("MMM-DD h:mm A")}
-                        </p>
-                      </div>
-                      <p className="ml-5">{m?.message}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+              {showMessages}
             </div>
             <div className="">
               <form
-                className="flex justify-center "
+                className="flex justify-center mt-5"
                 onSubmit={(e) => {
                   e.preventDefault();
                   handleSubmit();
                   fetchMessages();
+                 
                 }}
               >
                 <input
@@ -175,7 +180,7 @@ function Messages({ setUser, user }) {
                   name="message"
                 />
                 <button
-                  className="ml-3 inline-block px-6  leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1"
+                  className="ml-3 inline-block px-6  leading-none text-white rounded shadow bg-indigo-500 hover:bg-amber-500 hover:-translate-y-1"
                   type="submit"
                 >
                   Send
