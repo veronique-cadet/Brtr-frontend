@@ -3,6 +3,8 @@ import NavBarTwo from "./NavBarTwo";
 import Footer from "./Footer";
 import { useLocation } from "react-router-dom";
 import dayjs from "dayjs";
+import ChatCard from "./ChatCard";
+import { flushSync } from "react-dom";
 
 const ws = new WebSocket("ws://localhost:3000/cable");
 
@@ -85,26 +87,49 @@ function Messages({ setUser, user }) {
       });
   };
 
+  const [chats, setChats] = useState([]);
+
+  useEffect(() => {
+    fetch("/chats")
+      .then((res) => res.json())
+      .then((data) => {
+        setChats(data);
+        console.log(data);
+      });
+  }, []);
+
+  const filteredChat = chats.filter((chat) => {
+    if (user.id === chat.chatee_id || user.id === chat.chater_id) {
+      return true;
+    }
+    return false;
+  });
+
+  const chatList = filteredChat.map((chat) => {
+    return <ChatCard chat={chat} key={chat.id} id={chat.id} />;
+  });
+
   return (
     <div className="h-screen ">
       <NavBarTwo setUser={setUser} />
-      <section className="pt-3 pb-10 h-screen container p-5 mx-auto my-10 ">
+      <section className="pt-1 pb-10 h-screen container p-5 mx-auto my-10 ">
         {/* <div className="container px-4 mx-auto">
           <p className="mb-6 text-sm text-indigo-600 text-center font-bold uppercase tracking-px">
             {user?.first_name} {user?.last_name}
           </p>
         </div>  */}
 
-        <div className="flex mt-5  w-full h-full  border-2 border-slate-100 rounded-tl-3xl rounded-tr-3xl">
-          <div className="bg-white w-2/6  border-r-2 border-slate-100 rounded-tl-3xl">
-            <div className=" border-b-2  h-10 w-full border-slate-100  ">
-              <h1 className="  text-2xl text-center font-normal text-indigo-700 w-full ">
+        <div className="flex mt-5  w-full h-full  border-2 border-slate-200 rounded-tl-3xl rounded-tr-3xl">
+          <div className="bg-white w-2/6  border-r-2 border-slate-200 rounded-tl-3xl mt-5">
+            <div className=" border-b-2  h-15 w-full border-slate-200  ">
+              <h1 className="  text-2xl text-center font-light text-indigo-700 w-full ">
                 Messages
               </h1>
             </div>
+            {chatList}
           </div>
-          <div className="bg-white  pb-5 w-full h-full  rounded-tr-3xl ">
-            <div className="border-b-2  h-10 w-full border-slate-100 rounded-tr-3xl ">
+          <div className="bg-white  pb-5 w-full   rounded-tr-3xl mt-5 ">
+            <div className="border-b-2  h-15 w-full border-slate-200 rounded-tr-3xl ">
               <h1 className="text-center text-indigo-700 font-bold">
                 Messages
               </h1>
