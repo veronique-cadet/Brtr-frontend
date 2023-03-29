@@ -3,27 +3,12 @@ import NavBarTwo from "./NavBarTwo";
 import Footer from "./Footer";
 import { useLocation } from "react-router-dom";
 import dayjs from "dayjs";
-import ChatCard from "./ChatCard";
 import { flushSync } from "react-dom";
 
 const ws = new WebSocket("ws://localhost:3000/cable");
 
 function Messages({ setUser, user }) {
-  // const skill = useLocation();
-  // const { from } = skill.state?.from;
-  // const id = skill.state?.from.id;
-  // console.log(id);
 
-  // const [userProfile, setUserProfile] = useState({});
-
-  // useEffect(() => {
-  //   fetch(`/user_skills/${id}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setUserProfile(data);
-  //       console.log(data);
-  //     });
-  // }, []);
 
   const [messages, setMessages] = useState([]);
   const [guid, setGuid] = useState("");
@@ -64,31 +49,11 @@ function Messages({ setUser, user }) {
     fetchMessages();
   }, []);
 
-  const [message, setMessage] = useState("");
-
-  const newMessage = {
-    message: message,
-    messanger_id: user?.id,
-    messangee_id: 2,
-    chat_id: 1
-  };
-
-  const handleSubmit = () => {
-    fetch("/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newMessage),
-    })
-      .then((response) => response.json())
-      .then(() => {
-        setMessages([...messages, newMessage]);
-        console.log(newMessage);
-      });
-  };
+ 
 
   const [chats, setChats] = useState([]);
+
+ 
 
   useEffect(() => {
     fetch("/chats")
@@ -96,8 +61,24 @@ function Messages({ setUser, user }) {
       .then((data) => {
         setChats(data);
         console.log(data);
+        
+        const sortedChats = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        
+        const mostRecentChat = sortedChats[0];
+        setSelectedChat(mostRecentChat);
+  
+        fetch(`/chats/${mostRecentChat.id}`)
+          .then(response => response.json())
+          .then(data => {
+            setSelectedChat(data);
+            console.log(data);
+          })
+          .catch(error => {
+            console.log('Error retrieving messages:', error);
+          });
       });
   }, []);
+  
 
 
   const filteredChat = chats.filter((chat) => {
@@ -108,7 +89,61 @@ function Messages({ setUser, user }) {
   });
 
 
-  const showMessages = messages.map((m) => (
+
+
+  const [selectedChat, setSelectedChat] = useState({}); 
+
+  const handleClick = (id) => {
+    fetch(`/chats/${id}`)
+      .then(response => response.json())
+      .then(data => {
+        setMessages(data)
+        setSelectedChat(data)
+        console.log(data)
+      })
+      .catch(error => {
+        console.log('Error retrieving messages:', error);
+      });
+  }
+
+
+
+  const chatList = filteredChat.map((chat) => {
+    const lastMessage = chat.messages[chat.messages.length - 1];
+    const lastMessageContent = lastMessage ? lastMessage.message : "No messages yet";
+    const lastMessageDate = lastMessage ? dayjs(lastMessage.created_at).format("MMM-DD h:mm A") : "";
+    const senderName = lastMessage.messanger?.user?.first_name
+    console.log(lastMessage)
+    return (
+      <div
+        key={chat.id}
+        className="h-28 max-h-28 w-11/12 min-h-28 mb-4 flex mx-auto mt-1 rounded-lg bg-slate-100 hover:shadow-xl hover:bg-slate-200"
+        onClick={() => handleClick(chat.id)}
+      >
+        <div className="flex ml-3 mt-6">
+          <img
+            className="h-16 w-16 rounded-full mx-auto"
+            src={chat?.chatee?.picture}
+            alt="user picture"
+          />
+          <div>
+            <h1 className="text-xl text-indigo-700 ml-5 font-light">{chat?.chatee?.first_name}</h1>
+            <div className="flex">
+              <p className="text-gray-500 text-sm ml-5">{senderName}</p>
+              <p className="text-gray-500 text-sm ml-5">{lastMessageContent}</p>
+            </div>
+            <p className="text-gray-500 text-sm ml-5">{lastMessageDate}</p>
+          </div>
+        </div>
+      </div>
+    );
+  });
+  
+
+  
+  
+
+   const showMessages = selectedChat?.messages?.map((m) => (
     <div className="max-h-96 " key={m?.id}>
       <div className="flex mb-7">
         <img className="h-13 w-13 rounded-full" src={m?.messanger?.picture} />
@@ -127,9 +162,45 @@ function Messages({ setUser, user }) {
     </div>
   ));
 
-  const chatList = filteredChat.map((chat) => {
-    return <ChatCard chat={chat} key={chat.id} id={chat.id} messages={messages} setMessages={setMessages}  showMessages={showMessages}/>;
-  });
+  const [message, setMessage] = useState("");
+
+  const newMessage = {
+    message: message,
+    messanger_id: user?.id,
+    messangee_id:  user?.id === selectedChat?.chater_id 
+    ? selectedChat?.chatee_id 
+    : selectedChat?.chater_id,
+    chat_id: selectedChat?.id
+  };
+
+  const handleSubmit = () => {
+    fetch("/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newMessage),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      setSelectedChat({
+        ...selectedChat,
+        messages: [...selectedChat.messages, data],
+      });
+      setMessage("");
+      console.log(newMessage);
+  
+      fetch("/chats")
+        .then((res) => res.json())
+        .then((data) => {
+          setChats(data);
+          console.log(data);
+        })
+    });
+  };
+  
+
+
 
   return (
     <div className="h-screen ">
@@ -168,8 +239,6 @@ function Messages({ setUser, user }) {
                 onSubmit={(e) => {
                   e.preventDefault();
                   handleSubmit();
-                  fetchMessages();
-                 
                 }}
               >
                 <input

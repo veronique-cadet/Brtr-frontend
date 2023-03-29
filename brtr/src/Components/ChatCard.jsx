@@ -1,6 +1,6 @@
 import React from "react";
 
-function ChatCard({ chat, messages, setMessages,showMessages, id}) {
+function ChatCard({ chat,id }) {
 
 //   const [chat, setChat] = useState({});
 
