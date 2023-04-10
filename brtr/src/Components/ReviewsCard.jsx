@@ -107,9 +107,9 @@ function ReviewsCard({ review, reviews, user, setReviews, id }) {
       <div className="mb-">
         <p className="text-indigo-700">Reviewed on {dateFormat}</p>
       </div>
-      <p className="mb-2 overflow-scroll font-light text-gray-500 ">
-        {" "}
-        {review?.comment}{" "}
+      <p className="mb-2  font-light text-gray-500 ">
+  
+        {review?.comment}
       </p>
       <aside>
         <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">

@@ -129,7 +129,7 @@ function Messages({ setUser, user }) {
           <div>
             <h1 className="text-xl text-indigo-700 ml-5 font-light">{chat?.chatee?.first_name}</h1>
             <div className="flex">
-              <p className="text-gray-500 text-sm ml-5">{senderName}</p>
+              
               <p className="text-gray-500 text-sm ml-5">{lastMessageContent}</p>
             </div>
             <p className="text-gray-500 text-sm ml-5">{lastMessageDate}</p>
@@ -144,7 +144,7 @@ function Messages({ setUser, user }) {
   
 
    const showMessages = selectedChat?.messages?.map((m) => (
-    <div className="max-h-96 " key={m?.id}>
+    <div className="max-h-96  " key={m?.id}>
       <div className="flex mb-7">
         <img className="h-13 w-13 rounded-full" src={m?.messanger?.picture} />
         <div>
