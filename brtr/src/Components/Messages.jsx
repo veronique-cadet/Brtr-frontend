@@ -27,7 +27,7 @@ function Messages({ setUser, user }) {
       })
     );
   };
-
+// websocket
   ws.onmessage = (e) => {
     const data = JSON.parse(e.data);
     if (data.type === "ping") return;
