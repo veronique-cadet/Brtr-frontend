@@ -35,11 +35,9 @@ function Browse({ user, setUser }) {
   };
 
   return (
-    <div className="bg-slate-100">
+    <div className="bg-[url('/public/hero2.jpeg')] bg-cover">
       <NavBarTwo setUser={setUser} />
-      <section className="h-screen relative bg-transparent mb-20">
-        
-
+      <section className="h-screen relative mb-20 ">
         <div className="container px-4 mx-auto mt-24 ">
           <p className="mb-6 text-sm text-indigo-600 text-center font-bold uppercase tracking-px">
             {" "}
