@@ -5,11 +5,11 @@ function SkillCaraouselCard({ skill }) {
   return (
     <div className=" p-8 md:w-96">
       <div className=" transition duration-500 ease-in-out font-heading bg-gradient-to-r bg-clip-border bg-slate-200 animate-text hover:scale-125 border rounded-xl border-coolGray-100 shadow-dashboard hover:bg-indigo-100 hover:shadow-2xl bg-opacity-90">
-        <div className="flex flex-wrap items-center justify-center p-10 pb-4 -m-2 ">
+        <div className="flex items-center justify-center p-10 pb-4 -m-2 ">
           <div className="w-full p-2 lg:w-auto">
             <div className="items-center m-2">
               <div className="w-auto">
-                <h2 className="text-2xl font-bold text-indigo-800">{skill?.name}</h2>
+                <h2 className="text-center text-2xl font-bold text-transparent transition duration-500 ease-in-out first-letter:leading-none font-heading  bg-gradient-to-r bg-clip-text from-indigo-500 via-orange-500 to-indigo-500 animate-text ">{skill?.name}</h2>
               </div>
             </div>
           </div>
