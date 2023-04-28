@@ -88,7 +88,7 @@ function Browse({ user, setUser }) {
             )}
           </div>
         </div>
-        <h1 className="mt-16 text-center text-4xl text-indigo-700 transition duration-500 ease-in-out  md:text-4xl lg:text-4xl font-heading  bg-gradient-to-r bg-clip-text font-bold hover:scale-110 animate-bounce">
+        <h1 className="mt-14 mb-6 text-xl text-black text-center font-bold uppercase tracking-px hover:scale-125 ">
           Here Are Some Skills You Can Learn!
         </h1>
         <div className=" mt-2 bottom-0 left-0 w-2/6 h-0.5 bg-neutral-100 mx-auto"></div>
