@@ -24,7 +24,7 @@ function BarterCardProposed({barter}) {
  
      < div className ="flex justify-center">
      <Link to="/userprofile" state={{ from: skill }}>
-     <button className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">View {barter?.recipient?.first_name} Profile</button></Link>
+     <button className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">View Profile</button></Link>
      <Link to="/browse" >
      <button className=" ml-7 inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:-translate-y-1">Make Another Bartr</button></Link>
      </div>
