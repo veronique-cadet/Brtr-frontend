@@ -35,9 +35,9 @@ function Browse({ user, setUser }) {
   };
 
   return (
-    <div className="bg-[url('/public/browse.jpeg')] bg-cover">
+    <div className="bg-[url('/public/browse11.jpg')] bg-auto">
       <NavBarTwo setUser={setUser} />
-      <section className="h-screen relative mb-20 ">
+      <section className="h-screen relative ">
         <div className="container px-4 mx-auto mt-24 ">
           <p className="mb-6 text-sm text-indigo-600 text-center font-bold uppercase tracking-px">
             {" "}

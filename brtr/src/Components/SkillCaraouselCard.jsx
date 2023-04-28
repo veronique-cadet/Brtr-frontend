@@ -9,7 +9,9 @@ function SkillCaraouselCard({ skill }) {
           <div className="w-full p-2 lg:w-auto">
             <div className="items-center m-2">
               <div className="w-auto">
-                <h2 className="text-center text-2xl font-bold text-transparent transition duration-500 ease-in-out first-letter:leading-none font-heading  bg-gradient-to-r bg-clip-text from-indigo-500 via-orange-500 to-indigo-500 animate-text ">{skill?.name}</h2>
+                <h2 className="text-center text-2xl font-light">
+                  {skill?.name}
+                </h2>
               </div>
             </div>
           </div>
