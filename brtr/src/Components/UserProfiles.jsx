@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavBarTwo from "./NavBarTwo";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate  } from "react-router-dom";
 import Footer from "./Footer";
 import Reviews from "./Reviews";
 import OtherSkilledUsers from "./OtherSkilledUsers";
@@ -15,6 +15,8 @@ function UserProfiles({ user, setUser, yourBarters, setYourBarters }) {
   const [recipientHours, setRecipientHours] = useState("");
   const [barterClicked, setBarterClicked] = useState(true);
   const [otherUsers, setOtherUsers] = useState([]);
+
+  const navigate = useNavigate()
 
   const skill = useLocation();
   const { from } = skill.state?.from;
@@ -108,6 +110,44 @@ function UserProfiles({ user, setUser, yourBarters, setYourBarters }) {
 
   console.log(userProfile?.ski);
   console.log(barterAmount);
+
+
+
+
+  ///chats
+
+  const [chats, setChats] = useState([]);
+
+ const renderChats = () => {
+    fetch("/chats")
+      .then((res) => res.json())
+      .then((data) => {
+        setChats(data);
+        console.log(data);
+      })}
+
+  const newChat = {
+    chater_id: user?.id,
+    chatee_id: userProfile?.user?.id,
+  }
+
+  const handleChat = () => {
+    fetch("/chats", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newChat),
+    })
+      .then((response) => response.json())
+      .then(() => {
+        setChats([...chats, newChat]);
+        console.log(newChat)
+        navigate("/messages")
+        
+      });
+  };
+
 
   return (
     <div className="bg-slate-100">
@@ -237,11 +277,11 @@ function UserProfiles({ user, setUser, yourBarters, setYourBarters }) {
                   </div>
                 </div>
                 <div className="flex justify-center mt-6 mb-6">
-                {/* <Link to="/messages" state={{ from: skill }}> */}
-                  <button className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:scale-125">
+                  <button 
+                  onClick={handleChat}
+                  className="inline-block px-6 py-3 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:scale-125">
                     Message
                   </button>
-                  {/* </Link> */}
                   <button
                     onClick={() => setIsClicked(!isClicked)}
                     className="inline-block px-6 py-3 ml-6 leading-none text-white rounded shadow bg-amber-500 hover:bg-indigo-600 hover:scale-125"

@@ -112,7 +112,7 @@ function Messages({ setUser, user }) {
     const lastMessage = chat.messages[chat.messages.length - 1];
     const lastMessageContent = lastMessage ? lastMessage.message : "No messages yet";
     const lastMessageDate = lastMessage ? dayjs(lastMessage.created_at).format("MMM-DD h:mm A") : "";
-    const senderName = lastMessage.messanger?.user?.first_name
+    // const senderName = lastMessage.messanger?.user?.first_name
     console.log(lastMessage)
     return (
       <div
