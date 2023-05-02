@@ -55,31 +55,76 @@ function Messages({ setUser, user }) {
 
  
 
+  // useEffect(() => {
+  //   fetch("/chats")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setChats(data);
+  //       console.log(data);
+        
+  //       const sortedChats = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        
+  //       const mostRecentChat = sortedChats[0];
+  //       setSelectedChat(mostRecentChat);
+  
+  //       fetch(`/chats/${mostRecentChat.id}`)
+  //         .then(response => response.json())
+  //         .then(data => {
+  //           setSelectedChat(data);
+  //           console.log(data);
+  //         })
+  //         .catch(error => {
+  //           console.log('Error retrieving messages:', error);
+  //         });
+  //     });
+  // }, []);
+  
   useEffect(() => {
     fetch("/chats")
       .then((res) => res.json())
       .then((data) => {
         setChats(data);
         console.log(data);
-        
-        const sortedChats = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-        
-        const mostRecentChat = sortedChats[0];
-        setSelectedChat(mostRecentChat);
   
-        fetch(`/chats/${mostRecentChat.id}`)
-          .then(response => response.json())
-          .then(data => {
-            setSelectedChat(data);
-            console.log(data);
-          })
-          .catch(error => {
-            console.log('Error retrieving messages:', error);
-          });
+     
+        const filteredChats = data.filter((chat) => {
+          return user.id === chat.chatee_id || user.id === chat.chater_id;
+        });
+  
+     
+        const sortedChats = filteredChats.sort((a, b) => {
+          const lastMessageA = a.messages[a.messages.length - 1]?.created_at;
+          const lastMessageB = b.messages[b.messages.length - 1]?.created_at;
+  
+          if (lastMessageA && lastMessageB) {
+            return new Date(lastMessageB) - new Date(lastMessageA);
+          }
+          if (lastMessageA) {
+            return -1;
+          }
+          if (lastMessageB) {
+            return 1;
+          }
+          return 0;
+        });
+  
+      
+        if (sortedChats.length > 0) {
+          const firstSortedChat = sortedChats[0];
+          setSelectedChat(firstSortedChat);
+  
+          fetch(`/chats/${firstSortedChat.id}`)
+            .then(response => response.json())
+            .then(data => {
+              setSelectedChat(data);
+              console.log(data);
+            })
+            .catch(error => {
+              console.log('Error retrieving messages:', error);
+            });
+        }
       });
   }, []);
-  
-
 
   const filteredChat = chats.filter((chat) => {
     if (user.id === chat.chatee_id || user.id === chat.chater_id) {
@@ -153,7 +198,6 @@ function Messages({ setUser, user }) {
     );
   });
   
-
   
   
 
