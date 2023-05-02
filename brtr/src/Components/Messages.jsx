@@ -106,9 +106,23 @@ function Messages({ setUser, user }) {
       });
   }
 
+  const sortedChat = filteredChat.sort((a, b) => {
+    const lastMessageA = a.messages[a.messages.length - 1]?.created_at;
+    const lastMessageB = b.messages[b.messages.length - 1]?.created_at;
+  
+    if (lastMessageA && lastMessageB) {
+      return new Date(lastMessageB) - new Date(lastMessageA);
+    }
+    if (lastMessageA) {
+      return -1;
+    }
+    if (lastMessageB) {
+      return 1;
+    }
+    return 0;
+  });
 
-
-  const chatList = filteredChat.map((chat) => {
+  const chatList = sortedChat.map((chat) => {
     const lastMessage = chat.messages[chat.messages.length - 1];
     const lastMessageContent = lastMessage ? lastMessage.message : "No messages yet";
     const lastMessageDate = lastMessage ? dayjs(lastMessage.created_at).format("MMM-DD h:mm A") : "";

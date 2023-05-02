@@ -131,22 +131,61 @@ function UserProfiles({ user, setUser, yourBarters, setYourBarters }) {
     chatee_id: userProfile?.user?.id,
   }
 
+
+
   const handleChat = () => {
-    fetch("/chats", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newChat),
-    })
-      .then((response) => response.json())
-      .then(() => {
-        setChats([...chats, newChat]);
-        console.log(newChat)
-        navigate("/messages")
-        
+    const currentUserId = userProfile?.user?.id;
+  
+    // Function to check if the chat already exists
+    const findExistingChat = (chats, currentUserId) => {
+      return chats.find(chat => {
+        // Check if either chater_id or chateer_id matches the current user's ID
+        return chat.chater_id === currentUserId || chat.chateer_id === currentUserId;
       });
+    };
+  
+    // Check for existing chat
+    const existingChat = findExistingChat(chats, currentUserId);
+  
+    if (existingChat) {
+      // If the chat already exists, navigate to it
+      console.log("Chat already exists:", existingChat);
+      navigate(`/messages/${existingChat.id}`);
+    } else {
+      // If the chat doesn't exist, create a new one
+      fetch("/chats", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newChat),
+      })
+        .then((response) => response.json())
+        .then(() => {
+          setChats([...chats, newChat]);
+          console.log("New chat created:", newChat);
+          navigate(`/messages/${newChat.id}`);
+        });
+    }
   };
+  
+
+    // const handleChat = () => {
+  //   fetch("/chats", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(newChat),
+  //   })
+  //     .then((response) => response.json())
+  //     .then(() => {
+  //       setChats([...chats, newChat]);
+  //       console.log(newChat)
+  //       navigate("/messages")
+        
+  //     });
+  // };
 
 
   return (
