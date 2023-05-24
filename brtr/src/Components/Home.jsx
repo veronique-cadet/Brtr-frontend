@@ -26,7 +26,7 @@ function Home() {
                     <div className="block">
                       <Link to="/signup">
                         <button
-                          className="w-full px-6 py-4 font-semibold text-white transition duration-500 ease-in-out bg-indigo-500 border border-indigo-500 rounded-xl focus:ring hover:bg-amber-700 hover:scale-110"
+                          className="w-full px-4 py-3 lg:px-6 lg:py-4 md:text-sm lg:text-base font-semibold text-white transition duration-500 ease-in-out bg-indigo-500 border border-indigo-500 rounded-xl focus:ring hover:bg-amber-700 hover:scale-110"
                           type="button"
                         >
                           Sign Up for Free!
@@ -43,9 +43,9 @@ function Home() {
                   <div className="w-auto p-3"></div>
                 </div>
               </div>
-              <div className="w-full  md:w-1/2 ">
+              <div className="w-full   md:w-1/2 ">
                 <img
-                  className="center md:mt-7 hover:scale-110"
+                  className="center md:mt-10 lg:mt-7 hover:scale-110"
                   src="./hero2.jpeg"
                   alt=""
                 />
