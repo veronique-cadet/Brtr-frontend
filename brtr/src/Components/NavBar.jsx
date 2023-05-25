@@ -39,7 +39,7 @@ function NavBar() {
               <div className="inline-block">
                 <Link to="/signup">
                   <button
-                    className="w-full px-5 py-3 font-semibold text-white transition duration-200 ease-in-out bg-amber-500 border-amber-500 rounded-xl focus:ring focus:ring-indigo-300 hover:bg-amber-700"
+                    className="w-full px-4 py-3 lg:px-5 lg:py-3 md:text-sm lg:text-base font-semibold text-white transition duration-200 ease-in-out bg-amber-500 border-amber-500 rounded-xl focus:ring focus:ring-indigo-300 hover:bg-amber-700"
                     type="button"
                   >
                     Sign Up{" "}
