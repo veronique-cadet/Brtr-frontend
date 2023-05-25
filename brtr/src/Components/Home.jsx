@@ -17,7 +17,7 @@ function Home() {
                 <h1 className="mb-6 text-4xl sm:max-md:text-5xl text-center md:text-left font-bold text-transparent transition duration-500 ease-in-out first-letter:leading-none md:text-6xl lg:text-7xl font-heading md:max-w-xl bg-gradient-to-r bg-clip-text from-indigo-500 via-orange-500 to-indigo-500 animate-text hover:scale-105">
                   Barter Your Way to Success
                 </h1>
-                <p className=" text-sm sm:max-md:text-base md:text-lg font-medium mb-11 md:max-w-md text-center md:text-left hover:scale-105">
+                <p className=" text-sm sm:max-md:text-base md:text-lg font-medium md:mb-11 mb-6 md:max-w-md text-center md:text-left hover:scale-105">
                   Exchange Your Skills, Build Your Network - Join Our Bartering
                   Community Now!
                 </p>
@@ -34,7 +34,7 @@ function Home() {
                       </Link>
                     </div>
                   </div>
-                  <div className="w-full md:w-auto p-2.5"></div>
+                  {/* <div className="w-full md:w-auto p-2.5"></div> */}
                 </div>
 
                 <div className="flex flex-wrap -m-3">

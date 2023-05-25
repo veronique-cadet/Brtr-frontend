@@ -5,11 +5,11 @@ function HowItWorks() {
     <div><section className="pt-28 pb-36 bg-white overflow-hidden">
     <div className="container px-4 mx-auto">
       <div className="mb-20 flex flex-wrap items-end -m-8">
-        <div className="w-full md:w-1/2 p-8">
-          <h2 className="text-6xl md:text-7xl font-bold font-heading tracking-px-n leading-tight md:max-w-xl hover:scale-150" >Trade Talents, Expand Expertise </h2>
+        <div className="w-full md:w-1/2 md:p-8">
+          <h2 className="text-center md:text-left text-3xl sm:max-md:text-4xl md:max-lg:text-5xl lg:text-6xl font-bold font-heading md:tracking-px-n leading-tight md:max-w-xl hover:scale-110" >Trade Talents, Expand Expertise </h2>
         </div>
         <div className="w-full md:w-1/2 p-8">
-          <p className="text-lg text-gray-900 font-medium leading-relaxed md:max-w-lg">Revolutionize Your Capabilities - Share Your Skills and Unlock Your Potential! Maximize Your Resources, Minimize Your Expenses - Trade Talents and Thrive!</p>
+          <p className="text-sm sm:max-md:text-base md:text-lg font-medium leading-relaxed md:max-w-lg">Revolutionize Your Capabilities - Share Your Skills and Unlock Your Potential! Maximize Your Resources, Minimize Your Expenses - Trade Talents and Thrive!</p>
         </div>
       </div>
       <div className="flex flex-wrap -m-3">
