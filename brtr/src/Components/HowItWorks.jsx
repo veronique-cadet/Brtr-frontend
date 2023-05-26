@@ -5,9 +5,9 @@ function HowItWorks() {
     <div>
       <section className="pt-16 pb-10 md:pb-20 lg:pt-28 lg:pb-36 bg-white overflow-hidden">
         <div className="container px-4 mx-auto">
-          <div className="lg:mb-16 md:max-lg:mb-10 mb-2 md:mb-6 flex flex-wrap items-end -m-8">
+          <div className="lg:mb-10 md:max-lg:mb-6 mb-2 md:mb-6 flex flex-wrap items-end -m-8">
             <div className="w-full md:w-1/2 md:p-8">
-              <h2 className="text-center md:text-left text-3xl sm:max-md:text-4xl md:max-lg:text-5xl lg:text-6xl font-bold font-heading md:tracking-px-n leading-tight md:max-w-xl hover:scale-110">
+              <h2 className="text-center md:text-left text-2xl sm:max-md:text-4xl md:max-lg:text-5xl lg:text-6xl font-bold font-heading md:tracking-px-n leading-tight md:max-w-xl hover:scale-110">
                 Trade Talents, Expand Expertise{" "}
               </h2>
             </div>
@@ -28,9 +28,9 @@ function HowItWorks() {
                     src="https://images.unsplash.com/photo-1615339725569-80172615f345?crop=entropy&amp;cs=tinysrgb&amp;fm=jpg&amp;ixid=MnwzMzIzMzB8MHwxfHNlYXJjaHwxN3x8cGFpbnRpbmd8ZW58MHx8fHwxNjc3MTIwMDU3&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1920"
                     alt=""
                   />
-                  <div className="absolute bottom-0 left-0 w-full px-2 py-6 lg:px-11 lg:py-10">
+                  <div className="absolute bottom-0 left-0 w-full md:px-2 md:py-6 lg:px-11 lg:py-10">
                     <div
-                      className="px-2 py-2 lg:px-8 lg:py-4 bg-white bg-opacity-10 rounded-xl shadow-5xl"
+                      className="md:px-2 md:py-2 lg:px-8 lg:py-4 bg-white bg-opacity-10 rounded-xl shadow-5xl"
                       style={{
                         webkitBackdropFilter: "blur(5px)",
                         backdropFilter: "blur(5px)",
@@ -52,9 +52,9 @@ function HowItWorks() {
                     src="https://images.unsplash.com/photo-1607459726370-d1abfcda1370?crop=entropy&amp;cs=tinysrgb&amp;fm=jpg&amp;ixid=MnwzMzIzMzB8MHwxfHNlYXJjaHw3fHxvbiUyMGNvbXB1dGVyfGVufDB8fHx8MTY3NzE2NjE4NA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1920"
                     alt=""
                   />
-                  <div className="absolute bottom-0 left-0 w-full px-2 py-6 lg:px-11 lg:py-10">
+                  <div className="absolute bottom-0 left-0 w-full md:px-2 md:py-6 lg:px-11 lg:py-10">
                     <div
-                      className="px-2 py-2 lg:px-8 lg:py-4 bg-white bg-opacity-10 rounded-xl shadow-5xl"
+                      className="md:px-2 md:py-2 lg:px-8 lg:py-4 bg-white bg-opacity-10 rounded-xl shadow-5xl"
                       style={{
                         webkitBackdropFilter: "blur(5px)",
                         backdropFilter: "blur(5px)",
@@ -76,9 +76,9 @@ function HowItWorks() {
                     src="https://images.unsplash.com/photo-1580893246395-52aead8960dc?crop=entropy&amp;cs=tinysrgb&amp;fm=jpg&amp;ixid=MnwzMzIzMzB8MHwxfHNlYXJjaHwxMHx8YWdyZWVtZW50fGVufDB8fHx8MTY3NzE2NjA3Ng&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1920"
                     alt=""
                   />
-                  <div className="absolute bottom-0 left-0 w-full px-2 py-6 lg:px-11 lg:py-10">
+                  <div className="absolute bottom-0 left-0 w-full md:px-2 md:py-6 lg:px-11 lg:py-10">
                     <div
-                      className="px-2 py-2 lg:px-8 lg:py-4 bg-white bg-opacity-10 rounded-xl shadow-5xl"
+                      className="md:px-2 md:py-2 lg:px-8 lg:py-4 bg-white bg-opacity-10 rounded-xl shadow-5xl"
                       style={{
                         webkitBackdropFilter: "blur(5px)",
                         backdropFilter: "blur(5px)",
