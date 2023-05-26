@@ -2,26 +2,26 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div><section className="relative py-16 bg-amber-500 overflow-hidden">
+    <div><section className="relative py-4 md:py-16 bg-amber-500 overflow-hidden">
     <img className="absolute top-0 left-0 h-full" src="" alt=""/>
     <div className="relative z-10 container px-4 mx-auto">
       <div className="flex flex-wrap justify-between items-center -m-8">
-        <div className="w-auto p-8">
+        <div className="w-auto pt-6 pl-8 md:p-8">
           <a href="#" className="flex">
             <img className="h-14"src="./logo.png" alt=""/><p className="text-4xl font-bold mt-1
             ">artr</p>
           </a>
         </div>
-        <div className="w-auto p-8">
-          <ul className="flex flex-wrap items-center -m-5">
-            <li className="p-5"><a className="text-gray-600 hover:text-gray-700 font-medium" href="#">About</a></li>
-            <li className="p-5"><a className="text-gray-600 hover:text-gray-700 font-medium" href="#">Leadership</a></li>
-            <li className="p-5"><a className="text-gray-600 hover:text-gray-700 font-medium" href="#">Press/News</a></li>
-            <li className="p-5"><a className="text-gray-600 hover:text-gray-700 font-medium" href="#">Careers/Team</a></li>
-            <li className="p-5"><a className="text-gray-600 hover:text-gray-700 font-medium" href="#">Contact Us</a></li>
+        <div className="w-auto pl-8 md:p-8">
+          <ul className="flex flex-wrap items-center md:-m-5">
+            <li className="p-1 md:p-5"><a className="text-gray-600 hover:text-gray-700 font-medium" href="#">About</a></li>
+            <li className="p-1 md:p-5"><a className="text-gray-600 hover:text-gray-700 font-medium" href="#">Leadership</a></li>
+            <li className="p-1 md:p-5"><a className="text-gray-600 hover:text-gray-700 font-medium" href="#">Press/News</a></li>
+            <li className="p-1 md:p-5"><a className="text-gray-600 hover:text-gray-700 font-medium" href="#">Careers/Team</a></li>
+            <li className="p-1 md:p-5"><a className="text-gray-600 hover:text-gray-700 font-medium" href="#">Contact Us</a></li>
           </ul>
         </div>
-        <div className="w-auto p-8">
+        <div className="w-auto pl-8 pt-5 pb-8 md:p-8">
           <div className="flex flex-wrap -m-1.5">
             <div className="w-auto p-1.5">
               <a href="#">

@@ -3,7 +3,7 @@ import React from "react";
 function Features() {
   return (
     <div className="">
-      <section className="py-4 md:py-10 lg:py-12 bg-slate-100 overflow-hidden ">
+      <section className="py-6 md:py-10 lg:py-12 bg-slate-100 overflow-hidden ">
         <div className="container   md:mx-auto mx-auto">
           <div className="md:mx-auto flex md:items-center ">
             <div className=" w-1/3 md:p-8 p-2">

@@ -45,7 +45,7 @@ function Home() {
               </div>
               <div className="w-full  bg-slate-100 md:w-1/2">
                 <img
-                  className="  md:mt-10 lg:mt-8 hover:scale-110"
+                  className="mt-4  md:mt-10 lg:mt-8 hover:scale-110"
                   src="./hero2.jpeg"
                   alt=""
                 />
