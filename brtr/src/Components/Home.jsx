@@ -10,7 +10,7 @@ function Home() {
     <div className="md:h-screen bg-slate-100">
       <NavBar />
       <div className="container mx-auto overflow-hidden  bg-slate-100">
-        <div className="md:pt-10 lg:pt-12 overflow-hidden ">
+        <div className="md:pt-10 lg:pt-12 overflow-hidden">
           <div className="container px-4 mx-auto  bg-slate-100 lg:mb-5">
             <div className="flex flex-wrap -m-8">
               <div className="w-full pt-8 pl-8 pr-8 pb-2 md:p-8 md:w-1/2 ">
@@ -37,15 +37,15 @@ function Home() {
                   {/* <div className="w-full md:w-auto p-2.5"></div> */}
                 </div>
 
-                <div className="flex flex-wrap -m-3">
+                {/* <div className="flex flex-wrap -m-3">
                   <div className="w-auto p-3"></div>
                   <div className="w-auto p-3"></div>
                   <div className="w-auto p-3"></div>
-                </div>
+                </div> */}
               </div>
-              <div className="w-full  bg-slate-100 md:w-1/2 ">
+              <div className="w-full  bg-slate-100 md:w-1/2">
                 <img
-                  className="center md:mt-10 lg:mt-8 hover:scale-110"
+                  className="  md:mt-10 lg:mt-8 hover:scale-110"
                   src="./hero2.jpeg"
                   alt=""
                 />

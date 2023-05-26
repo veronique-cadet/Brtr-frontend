@@ -3,7 +3,7 @@ import React from "react";
 function HowItWorks() {
   return (
     <div>
-      <section className="pt-16 pb-10 md:pb-20 lg:pt-28 lg:pb-36 bg-white overflow-hidden">
+      <section className="pt-16 pb-10 md:pb-20 lg:pt-20  bg-white overflow-hidden">
         <div className="container px-4 mx-auto">
           <div className="lg:mb-10 md:max-lg:mb-6 mb-2 md:mb-6 flex flex-wrap items-end -m-8">
             <div className="w-full md:w-1/2 md:p-8">
