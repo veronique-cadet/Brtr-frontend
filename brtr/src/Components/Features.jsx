@@ -5,9 +5,9 @@ function Features() {
     <div className="">
       <section className="py-6 md:py-10 lg:py-12 bg-slate-100 overflow-hidden ">
         <div className="container   md:mx-auto mx-auto">
-          <div className="md:mx-auto flex md:items-center ">
+          <div className="md:mx-auto flex justify-center md:items-center ">
             <div className=" w-1/3 md:p-8 p-2">
-              <div className="md:max-w-sm">
+              <div className="">
                 <div className="flex flex-wrap items-center md:-m-3 justify-center">
                   <div className="w-auto md:p-3 ">
                     <div className="flex items-center justify-center h-12 w-12 md:h-16 md:w-16 lg:w-20 lg:h-20 bg-indigo-100 rounded-full hover:scale-150 ">
@@ -23,7 +23,7 @@ function Features() {
               </div>
             </div>
             <div className="w-1/3 md:p-8 p-2">
-              <div className="md:max-w-sm">
+              <div className="">
                 <div className="flex flex-wrap items-center md:-m-3 justify-center">
                   <div className="w-auto md:p-3">
                     <div className="flex items-center justify-center h-12 w-12 md:h-16 md:w-16 lg:w-20 lg:h-20 bg-indigo-100 rounded-full hover:scale-150">
@@ -39,7 +39,7 @@ function Features() {
               </div>
             </div>
             <div className="w-1/3 md:p-8 p-2">
-              <div className="md:max-w-sm">
+              <div className="">
                 <div className="flex flex-wrap items-center md:-m-3 justify-center">
                   <div className="w-auto md:p-3">
                     <div className="flex items-center justify-center h-12 w-12 md:h-16 md:w-16 lg:w-20 lg:h-20 bg-indigo-100 rounded-full hover:scale-150">
