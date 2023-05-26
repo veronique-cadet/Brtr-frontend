@@ -3,15 +3,15 @@ import React from "react";
 function HowItWorks() {
   return (
     <div>
-      <section className="pt-28 pb-36 bg-white overflow-hidden">
+      <section className="pt-16 pb-10 md:pb-20 lg:pt-28 lg:pb-36 bg-white overflow-hidden">
         <div className="container px-4 mx-auto">
-          <div className="lg:mb-16 md:max-lg:mb-10 mb-6 flex flex-wrap items-end -m-8">
+          <div className="lg:mb-16 md:max-lg:mb-10 mb-2 md:mb-6 flex flex-wrap items-end -m-8">
             <div className="w-full md:w-1/2 md:p-8">
               <h2 className="text-center md:text-left text-3xl sm:max-md:text-4xl md:max-lg:text-5xl lg:text-6xl font-bold font-heading md:tracking-px-n leading-tight md:max-w-xl hover:scale-110">
                 Trade Talents, Expand Expertise{" "}
               </h2>
             </div>
-            <div className="w-full md:w-1/2 p-8">
+            <div className="w-full md:w-1/2 p-4 md:p-8">
               <p className="text-sm sm:max-md:text-base md:text-lg font-medium leading-relaxed md:max-w-lg text-center md:text-left ">
                 Revolutionize Your Capabilities - Share Your Skills and Unlock
                 Your Potential! Maximize Your Resources, Minimize Your Expenses

@@ -13,7 +13,7 @@ function Home() {
         <div className="md:pt-10 lg:pt-12 overflow-hidden ">
           <div className="container px-4 mx-auto  bg-slate-100 lg:mb-5">
             <div className="flex flex-wrap -m-8">
-              <div className="w-full p-8 md:w-1/2 ">
+              <div className="w-full pt-8 pl-8 pr-8 pb-2 md:p-8 md:w-1/2 ">
                 <h1 className="mb-6 text-4xl sm:max-md:text-5xl text-center md:text-left font-bold text-transparent transition duration-500 ease-in-out first-letter:leading-none md:text-6xl lg:text-7xl font-heading md:max-w-xl bg-gradient-to-r bg-clip-text from-indigo-500 via-orange-500 to-indigo-500 animate-text hover:scale-105">
                   Barter Your Way to Success
                 </h1>
