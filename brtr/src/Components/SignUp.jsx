@@ -136,6 +136,17 @@ function SignUp({ user, setUser }) {
                           >
                             Sign Up!
                           </button>
+                          <p className="text-center">
+                  <span className="text-xs font-medium">
+                    Already have an account?
+                  </span>
+                  <a
+                    className="mt-5 inline-block text-xs font-medium text-amber-500 hover:text-indigo-600 hover:underline"
+                    href="#"
+                  >
+                    <Link to="/login">&nbsp;Log In</Link>
+                  </a>
+                </p>
                         </form>
                       </div>
                     </div>
