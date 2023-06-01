@@ -35,21 +35,27 @@ function Browse({ user, setUser }) {
   };
 
   return (
-    <div className="bg-[url('/public/browse11.jpg')] bg-auto">
+    <div
+      className="bg-[url('/public/browse11.jpg')] h-full"
+      style={{
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <NavBarTwo setUser={setUser} />
-      <section className="h-screen relative ">
+      <section className=" relative ">
         <div className="container px-4 mx-auto mt-24 ">
           <p className="mb-6 text-sm text-indigo-600 text-center font-bold uppercase tracking-px">
             {" "}
             Search For Skilled Professionals to Bartr With
           </p>
-          <h2 className="text-center mb-10 text-6xl font-bold text-transparent transition duration-500 ease-in-out first-letter:leading-none md:text-7xl lg:text-10xl font-heading  bg-gradient-to-r bg-clip-text from-indigo-500 via-orange-500 to-indigo-500 animate-text hover:scale-125">
+          <h2 className="text-center mb-10 text-4xl sm:max-md:text-5xl font-bold text-transparent transition duration-500 ease-in-out first-letter:leading-none md:text-5xl lg:text-6xl font-heading  bg-gradient-to-r bg-clip-text from-indigo-500 via-orange-500 to-indigo-500 animate-text hover:scale-125">
             {user?.first_name}, Start Bartering Today!
           </h2>
           <div className=" bottom-0 left-0 w-full h-0.5 bg-neutral-100"></div>
 
-          <div className="mx-auto mt-8 p-10 h-full w-4/6 hover:bg-slate-300 bg-opacity-70 rounded-xl transition ease-in-out duration-200 bg-slate-200">
-            <div className="flex justify-center">
+          <div className="mx-auto mt-8 p-10 h-full w-4/6 hover:bg-slate-100 bg-opacity-70 rounded-xl transition ease-in-out duration-200 bg-slate-200">
+            <div className="flex flex-wrap md:flex-nowrap justify-center">
               <input
                 className="block w-full px-4 py-3 mb-2 mr-3 leading-tight text-gray-700 bg-white border border-gray-200 rounded appearance-none md:mb-0 focus:bg-white focus:border-gray-500 focus:outline-none"
                 type="text"
@@ -88,7 +94,7 @@ function Browse({ user, setUser }) {
             )}
           </div>
         </div>
-        <h1 className="mt-14 mb-6 text-xl text-black text-center font-bold uppercase tracking-px hover:scale-125 ">
+        <h1 className="mt-10 mb-2 text-xl text-white  text-center font-bold uppercase tracking-px hover:scale-125 ">
           Here Are Some Skills You Can Learn!
         </h1>
         <div className=" mt-2 bottom-0 left-0 w-2/6 h-0.5 bg-neutral-100 mx-auto"></div>

@@ -8,7 +8,7 @@ console.log(skills)
 console.log(skills.slice(0,3))
 
   return (
-    <div className="mt-8">
+    <div className="py-6">
         <div className="flex justify-center">
           <div className="flex flex-wrap -m-3">
           {skills.slice(0, 3).map(skill => (
