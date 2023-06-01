@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function NavBar() {
   return (
     <div className="container mx-auto overflow-hidden ">
-      <div className="flex items-center justify-between px-4 py-5">
+      <div className="flex items-center justify-between pl-3  py-5">
         <div className="w-auto">
           <div className="flex flex-wrap items-center">
             <div className="flex w-auto mr-14">
