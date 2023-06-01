@@ -39,7 +39,7 @@ return <BarterCardProposed key= {barter.id} barter={barter}/> })
   <section className="pt-24 pb-36 bg-white overflow-auto h-screen">
   <div className="container px-4 mx-auto">
     <p className="mb-6 text-sm text-indigo-600 text-center font-bold uppercase tracking-px">{user?.first_name} {user?.last_name}</p>
-    <h2 className="mb- text-6xl md:text-8xl xl:text-10xl text-center font-bold font-heading tracking-px-n leading-none">Your Barters</h2>
+    <h2 className="mb- text-6xl md:text-8xl text-center font-bold font-heading tracking-px-n leading-none">Your Barters</h2>
 
     {/* //nav for barters// */}
     <section className="py-4 overflow-hidden ">
