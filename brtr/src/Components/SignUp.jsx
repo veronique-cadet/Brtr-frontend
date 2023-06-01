@@ -141,7 +141,7 @@ function SignUp({ user, setUser }) {
                     Already have an account?
                   </span>
                   <a
-                    className="mt-5 inline-block text-xs font-medium text-amber-500 hover:text-indigo-600 hover:underline"
+                    className="mt-5 inline-block text-xs font-medium text-indigo-500 hover:text-amber-500 hover:underline"
                     href="#"
                   >
                     <Link to="/login">&nbsp;Log In</Link>
@@ -171,7 +171,7 @@ function SignUp({ user, setUser }) {
               <div className="w-auto p-2">
                 <Link to="/login">
                   <a
-                    className="font-medium leading-relaxed text-amber-500 hover:text-indigo-700"
+                    className="font-medium leading-relaxed  text-indigo-500 hover:text-amber-500 "
                     href="#"
                   >
                     Log In
