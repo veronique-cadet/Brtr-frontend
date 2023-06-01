@@ -31,19 +31,19 @@ function NavBarTwo({user, setUser}) {
       <div className="flex flex-wrap items-center">
         <div className="hidden w-auto lg:block">
           <ul className="flex items-center mr-16">
-<Link to="/Browse"><li className="text-xl font-normal text-black mr-9 hover:text-amber-700"> Browse
+<Link to="/Browse"><li className="text-lg font-normal text-black mr-9 hover:text-amber-700"> Browse
             </li></Link>
             <Link to="/receivedbarters">
-            <li className="text-xl font-normal text-black mr-9 hover:text-amber-700"> Bartrs
+            <li className="text-lg font-normal text-black mr-9 hover:text-amber-700"> Bartrs
             </li></Link>
             <Link to="/Messages">
-            <li className="text-xl font-normal text-black mr-9 hover:text-amber-700"> Messages
+            <li className="text-lg font-normal text-black mr-9 hover:text-amber-700"> Messages
             </li></Link>
             <Link to="/calendar">
-            <li className="text-xl font-normal text-black mr-9 hover:text-amber-700">Calendar
+            <li className="text-lg font-normal text-black mr-9 hover:text-amber-700">Calendar
             </li></Link>
             <Link to="/yourprofile">
-            <li className="text-xl font-normal text-black mr-9 hover:text-amber-700"> Profile
+            <li className="text-lg font-normal text-black mr-9 hover:text-amber-700"> Profile
             </li> </Link>
           </ul>
 </div>
@@ -51,7 +51,7 @@ function NavBarTwo({user, setUser}) {
         
           <div className="inline-block">
             <button 
-            className="w-full px-5 py-3 font-semibold text-white transition duration-200 ease-in-out bg-indigo-500 border-indigo-500 rounded-xl focus:ring focus:ring-indigo-300 hover:bg-amber-700" 
+            className="w-full px-4 py-3 lg:px-5 lg:py-3 md:text-sm lg:text-base font-semibold text-white transition duration-200 ease-in-out bg-indigo-500 border-indigo-500 rounded-xl focus:ring focus:ring-indigo-300 hover:bg-amber-700" 
             type="button"
             onClick={handleDelete}
             >Log Out </button>
