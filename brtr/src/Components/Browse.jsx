@@ -11,7 +11,7 @@ function Browse({ user, setUser }) {
   const [skill, setSkill] = useState([]);
 
   useEffect(() => {
-    fetch("/skills")
+    fetch("/skills") 
       .then((res) => res.json())
       .then((data) => {
         setSkills(data);

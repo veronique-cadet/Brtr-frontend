@@ -1,101 +1,121 @@
 import React, { useState, useEffect } from "react";
 import NavBarTwo from "./NavBarTwo";
 import Footer from "./Footer";
-import { useLocation } from "react-router-dom";
 import dayjs from "dayjs";
-import { flushSync } from "react-dom";
-
-const ws = new WebSocket("ws://localhost:3000/cable");
-
-function Messages({ setUser, user }) {
 
 
+function Messages({ user, setUser }) {
   const [messages, setMessages] = useState([]);
-  const [guid, setGuid] = useState("");
+  const [chats, setChats] = useState([]);
+  const [selectedChat, setSelectedChat] = useState({});
+  const [message, setMessage] = useState("");
+  const ws = new WebSocket("ws://localhost:3000/cable");
 
-  ws.onopen = () => {
-    console.log("Connected to websocket server");
-    setGuid(Math.random().toString(36).substring(2, 15));
-
-    ws.send(
-      JSON.stringify({
+  useEffect(() => {
+    ws.onopen = () => {
+      console.log("Connected to websocket server");
+      // Subscribe to a specific chat channel based on user or chat ID
+      ws.send(JSON.stringify({
         command: "subscribe",
         identifier: JSON.stringify({
-          id: guid,
           channel: "MessagesChannel",
+          // Add any necessary identifiers for the channel
         }),
-      })
-    );
-  };
-// websocke
-  ws.onmessage = (e) => {
-    const data = JSON.parse(e.data);
-    if (data.type === "ping") return;
-    if (data.type === "welcome") return;
-    if (data.type === "confirm_subscription") return;
+      }));
+    };
 
-    const message = data.message;
-    setMessages([...messages, message]);
-  };
+    ws.onmessage = (e) => {
+      const response = JSON.parse(e.data);
+      if (response.type === "ping" || response.type === "welcome" || response.type === "confirm_subscription") {
+        return;
+      }
+      if (response.message) {
+        setMessages(prevMessages => [...prevMessages, response.message]);
+      }
+    };
 
-  const fetchMessages = async () => {
-    const response = await fetch("/messages");
-    const data = await response.json();
-    setMessages(data);
-    console.log(data);
-  };
-
-  useEffect(() => {
-    fetchMessages();
+    
+    return () => {
+      ws.close();
+    };
   }, []);
 
- 
-
-  const [chats, setChats] = useState([]);
-
- 
-
-  // useEffect(() => {
-  //   fetch("/chats")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setChats(data);
-  //       console.log(data);
-        
-  //       const sortedChats = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-        
-  //       const mostRecentChat = sortedChats[0];
-  //       setSelectedChat(mostRecentChat);
-  
-  //       fetch(`/chats/${mostRecentChat.id}`)
-  //         .then(response => response.json())
-  //         .then(data => {
-  //           setSelectedChat(data);
-  //           console.log(data);
-  //         })
-  //         .catch(error => {
-  //           console.log('Error retrieving messages:', error);
-  //         });
-  //     });
-  // }, []);
-  
   useEffect(() => {
+    // Fetch existing chats and messages
+    fetch("/chats")
+      .then(res => res.json())
+      .then(data => {
+        setChats(data);
+        // Select the first chat by default or based on some criteria
+        setSelectedChat(data[0]);
+      });
+  }, []);
+
+  const handleClick = (chatId) => {
+    // Fetch messages for a specific chat when clicked
+    fetch(`/chats/${chatId}`)
+      .then(response => response.json())
+      .then(data => {
+        setSelectedChat(data);
+        setMessages(data.messages);
+      })
+      .catch(error => console.error('Error retrieving messages:', error));
+  };
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  
+    // Send a new message
+    const newMessage = {
+      message: message,
+      messanger_id: user.id,
+      messangee_id: selectedChat.id, // Adjust based on your chat model
+      chat_id: selectedChat.id,
+    };
+  
+    fetch("/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newMessage),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Update the chat list to show the most recent chat at the top
+        fetch("/chats")
+          .then((res) => res.json())
+          .then((chatData) => {
+            setChats(chatData);
+  
+            // Find the chat that corresponds to the sent message
+            const updatedChat = chatData.find((chat) => chat.id === selectedChat.id);
+  
+            if (updatedChat) {
+              setSelectedChat(updatedChat);
+            }
+          });
+  
+        setMessages([...messages, data]);
+        setMessage("");
+      })
+      .catch((error) => console.error("Error sending message:", error));
+  };
+  
+
+
+  useEffect(() => {
+    // Fetch existing chats and messages
     fetch("/chats")
       .then((res) => res.json())
       .then((data) => {
         setChats(data);
-        console.log(data);
   
-     
-        const filteredChats = data.filter((chat) => {
-          return user.id === chat.chatee_id || user.id === chat.chater_id;
-        });
-  
-     
-        const sortedChats = filteredChats.sort((a, b) => {
+        // Sort chats by the most recent message date
+        const sortedChats = data.sort((a, b) => {
           const lastMessageA = a.messages[a.messages.length - 1]?.created_at;
           const lastMessageB = b.messages[b.messages.length - 1]?.created_at;
-  
           if (lastMessageA && lastMessageB) {
             return new Date(lastMessageB) - new Date(lastMessageA);
           }
@@ -108,23 +128,21 @@ function Messages({ setUser, user }) {
           return 0;
         });
   
-      
-        if (sortedChats.length > 0) {
-          const firstSortedChat = sortedChats[0];
-          setSelectedChat(firstSortedChat);
+        // Select the most recent chat
+        const mostRecentChat = sortedChats[0];
+        setSelectedChat(mostRecentChat);
   
-          fetch(`/chats/${firstSortedChat.id}`)
-            .then(response => response.json())
-            .then(data => {
-              setSelectedChat(data);
-              console.log(data);
-            })
-            .catch(error => {
-              console.log('Error retrieving messages:', error);
-            });
-        }
+        // Fetch messages for the selected chat
+        fetch(`/chats/${mostRecentChat.id}`)
+          .then((response) => response.json())
+          .then((data) => {
+            setSelectedChat(data);
+            setMessages(data.messages);
+          })
+          .catch((error) => console.error('Error retrieving messages:', error));
       });
   }, []);
+  
 
   const filteredChat = chats.filter((chat) => {
     if (user.id === chat.chatee_id || user.id === chat.chater_id) {
@@ -133,28 +151,25 @@ function Messages({ setUser, user }) {
     return false;
   });
 
+  // const [selectedChat, setSelectedChat] = useState({});
 
-
-
-  const [selectedChat, setSelectedChat] = useState({}); 
-
-  const handleClick = (id) => {
-    fetch(`/chats/${id}`)
-      .then(response => response.json())
-      .then(data => {
-        setMessages(data)
-        setSelectedChat(data)
-        console.log(data)
-      })
-      .catch(error => {
-        console.log('Error retrieving messages:', error);
-      });
-  }
+  // const handleClick = (id) => {
+  //   fetch(`/chats/${id}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setMessages(data);
+  //       setSelectedChat(data);
+  //       console.log(data);
+  //     })
+  //     .catch((error) => {
+  //       console.log("Error retrieving messages:", error);
+  //     });
+  // };
 
   const sortedChat = filteredChat.sort((a, b) => {
     const lastMessageA = a.messages[a.messages.length - 1]?.created_at;
     const lastMessageB = b.messages[b.messages.length - 1]?.created_at;
-  
+
     if (lastMessageA && lastMessageB) {
       return new Date(lastMessageB) - new Date(lastMessageA);
     }
@@ -169,10 +184,14 @@ function Messages({ setUser, user }) {
 
   const chatList = sortedChat.map((chat) => {
     const lastMessage = chat.messages[chat.messages.length - 1];
-    const lastMessageContent = lastMessage ? lastMessage.message : "No messages yet";
-    const lastMessageDate = lastMessage ? dayjs(lastMessage.created_at).format("MMM-DD h:mm A") : "";
+    const lastMessageContent = lastMessage
+      ? lastMessage.message
+      : "No messages yet";
+    const lastMessageDate = lastMessage
+      ? dayjs(lastMessage.created_at).format("MMM-DD h:mm A")
+      : "";
     // const senderName = lastMessage.messanger?.user?.first_name
-    console.log(lastMessage)
+    console.log(lastMessage);
     return (
       <div
         key={chat.id}
@@ -186,9 +205,10 @@ function Messages({ setUser, user }) {
             alt="user picture"
           />
           <div>
-            <h1 className="text-xl text-indigo-700 ml-5 font-light">{chat?.chatee?.first_name}</h1>
+            <h1 className="text-xl text-indigo-700 ml-5 font-light">
+              {chat?.chatee?.first_name}
+            </h1>
             <div className="flex">
-              
               <p className="text-gray-500 text-sm ml-5">{lastMessageContent}</p>
             </div>
             <p className="text-gray-500 text-sm ml-5">{lastMessageDate}</p>
@@ -197,11 +217,8 @@ function Messages({ setUser, user }) {
       </div>
     );
   });
-  
-  
-  
 
-   const showMessages = selectedChat?.messages?.map((m) => (
+  const showMessages = selectedChat?.messages?.map((m) => (
     <div className="max-h-96  " key={m?.id}>
       <div className="flex mb-7">
         <img className="h-13 w-13 rounded-full" src={m?.messanger?.picture} />
@@ -220,45 +237,9 @@ function Messages({ setUser, user }) {
     </div>
   ));
 
-  const [message, setMessage] = useState("");
+  // const [message, setMessage] = useState("");
 
-  const newMessage = {
-    message: message,
-    messanger_id: user?.id,
-    messangee_id:  user?.id === selectedChat?.chater_id 
-    ? selectedChat?.chatee_id 
-    : selectedChat?.chater_id,
-    chat_id: selectedChat?.id
-  };
-
-  const handleSubmit = () => {
-    fetch("/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newMessage),
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      setSelectedChat({
-        ...selectedChat,
-        messages: [...selectedChat.messages, data],
-      });
-      setMessage("");
-      console.log(newMessage);
-  
-      fetch("/chats")
-        .then((res) => res.json())
-        .then((data) => {
-          setChats(data);
-          console.log(data);
-        })
-    });
-  };
-  
-
-
+ 
 
   return (
     <div className="h-screen ">
@@ -290,13 +271,31 @@ function Messages({ setUser, user }) {
             </div>
             <div className=" py-10 px-64  h-5/6 overflow-scroll">
               {showMessages}
+              {messages.map((m) => (
+              <div className="max-h-96" key={m?.id}>
+                <div className="flex mb-7">
+                  <img className="h-13 w-13 rounded-full" src={m?.messanger?.picture} />
+                  <div>
+                    <div className="flex items-center ">
+                      <p className="text-indigo-700 font-bold text-xl ml-5">
+                        {m?.messanger?.first_name}
+                      </p>
+                      <p className=" text-sm ml-2 text-slate-700">
+                        {dayjs(m?.created_at).format("MMM-DD h:mm A")}
+                      </p>
+                    </div>
+                    <p className="ml-5">{m?.message}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
             </div>
             <div className="">
               <form
-                className="flex justify-center mt-5"
+               className="flex justify-center mt-5"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  handleSubmit();
+                  handleSubmit(e);
                 }}
               >
                 <input
@@ -312,7 +311,7 @@ function Messages({ setUser, user }) {
                 >
                   Send
                 </button>
-              </form>
+              </form> 
             </div>
           </div>
         </div>
